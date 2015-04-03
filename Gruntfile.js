@@ -54,7 +54,8 @@ module.exports = function (grunt) {
             '.tmp/css/**/*.css',
             '{.tmp,<%= yeoman.app %>}/js/**/*.js',
             '{<%= yeoman.app %>}/_bower_components/**/*.js',
-            '<%= yeoman.app %>/img/**/*.{gif,jpg,jpeg,png,svg,webp}'
+            '<%= yeoman.app %>/img/**/*.{gif,jpg,jpeg,png,webp}',
+            '.tmp/img/**/*.svg'
           ]
         },
         options: {
@@ -251,15 +252,37 @@ module.exports = function (grunt) {
         }]
       }
     },
-    svgmin: {
+    svg_sprite: {
+      stage: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/img',
+        src: ['**/*.svg'],
+        dest: '.tmp',
+        
+        // Target options 
+        options: {
+          mode: {
+            symbol: {
+              dest: 'img',
+              sprite: 'sprite.symbol.svg'
+            } 
+          }
+        }
+      },
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: '**/*.svg',
-          dest: '<%= yeoman.dist %>'
-        }]
-      }
+        expand: true,
+        cwd: '<%= yeoman.app %>/img',
+        src: ['**/*.svg'],
+        dest: '<%= yeoman.dist %>/img',
+        
+        // Target options 
+        options: {
+          mode: {
+            symbol: true
+          }
+        }
+      },
+      
     },
     copy: {
       dist: {
@@ -272,6 +295,8 @@ module.exports = function (grunt) {
             // Usemin moves CSS and javascript inside of Usemin blocks.
             // Copy moves asset files and directories.
             'img/**/*',
+            // Exclude svgs because they are moved by svg_sprite
+            '!img/**/*.svg',
             'fonts/**/*',
             // Like Jekyll, exclude files & folders prefixed with an underscore.
             '!**/_*{,/**}',
@@ -359,12 +384,14 @@ module.exports = function (grunt) {
       server: [
         'sass:server',
         'coffee:dist',
+        'svg_sprite:stage',
         'copy:stageCss',
         'jekyll:server'
       ],
       dist: [
         'sass:dist',
         'coffee:dist',
+        'svg_sprite',
         'copy:dist'
       ]
     }
@@ -419,7 +446,6 @@ module.exports = function (grunt) {
     'autoprefixer:dist',
     'uglify',
     'imagemin',
-    'svgmin',
     'filerev',
     'usemin',
     'htmlmin'
