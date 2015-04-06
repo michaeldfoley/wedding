@@ -1,0 +1,66 @@
+// Nav
+// --------------------------------------------------
+
+
+.nav {
+  max-width: $screen-sm;
+  margin: 0 auto;
+}
+
+// Nav List
+.nav-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  
+  li {
+    flex-grow: 1;
+  }
+  a {
+    display: block;
+    padding: 10px 15px;
+    
+    &:before {
+      height: 2px;
+    }
+  }
+  
+  .active:before {
+    background: $link-color;
+    visibility: visible;
+    transform: scale(1);
+  }
+    
+  @media (min-width: $screen-sm) {
+    font-size: $font-size-nav;
+    
+    a {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: ($grid-column-gutter / 2);
+      margin-right: ($grid-column-gutter / 2);
+    }
+  }
+}
+
+// Homepage nav styles
+.nav-home {
+  .nav-list a {
+    background: #fff;
+    
+    &:before {
+      background: #fff;
+    }
+    
+    @media (min-width: $screen-sm) {
+      background: transparent;
+      color: #fff;
+    }
+  }
+}
