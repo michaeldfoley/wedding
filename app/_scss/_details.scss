@@ -1,0 +1,58 @@
+// Details
+// --------------------------------------------------
+
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 92%;
+  background: url('/img/balloons.jpg') center bottom no-repeat;
+  background-size: cover;
+  text-align: center;
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+// Background
+.details-bg {
+}
+
+// Name image
+.details-names { 
+  display: block;
+  width: 28em;
+  margin: 0 auto;
+  fill: #FFF;
+}
+
+// Date
+.details-date {
+  display: block;
+  font-size: 1.4em;
+  font-weight: $font-weight-strong;
+}
+
+// Location
+.details-location {
+  font-size: 1.4em;
+  font-weight: $font-weight-strong;
+}
+
+.details-event,
+.details-address {
+  font-family: $font-family-alt;
+  font-size: 1.25em;
+  margin-top: 0;
+  margin-bottom: 7px;
+}
+
+// Break
+.details-break {
+  display: block;
+  width: 30em;
+  margin: -1em auto;
+  stroke: #FFF;
+  stroke-width: .5;
+  fill: transparent;
+}
