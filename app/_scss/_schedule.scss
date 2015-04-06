@@ -1,0 +1,39 @@
+// Schedule
+// --------------------------------------------------
+
+
+.schedule {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background: #f5f5f0;
+}
+
+// Event information
+.event {
+  max-width: $screen-sm;
+  margin: 0 auto 70px;
+  
+  @media (min-width: $screen-sm) {
+    margin-bottom: 0;
+  }
+}
+
+.event-info {
+  h3 {
+    margin-top: 0;
+    
+    @media (min-width: $screen-sm) {
+      margin-top: $line-height-computed;
+    }
+  }
+}
+
+.event-details {
+  @media (min-width: $screen-sm) {
+    text-align: right;
+    
+    h4 {
+      line-height: $font-size-h3 / $headings-line-height;
+    }
+  }
+}

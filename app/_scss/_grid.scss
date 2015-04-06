@@ -5,12 +5,14 @@
 
 // Container element
 .container {
-  padding: 15px;
+  padding-left: ($grid-column-gutter / 2);
+  padding-right: ($grid-column-gutter / 2);
   @include clearfix;
   
   @media (min-width: $screen-lg) {
     width: $screen-lg;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

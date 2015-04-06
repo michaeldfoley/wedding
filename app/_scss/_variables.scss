@@ -15,11 +15,8 @@ $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
-$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
-$brand-success:         #5cb85c !default;
-$brand-info:            #5bc0de !default;
-$brand-warning:         #f0ad4e !default;
-$brand-danger:          #d9534f !default;
+$brand-primary:          #006B5A;
+$brand-secondary:        #86754D;
 
 
 //== Scaffolding
@@ -34,7 +31,7 @@ $text-color:            $gray-dark !default;
 //** Global textual link color.
 $link-color:            $brand-primary !default;
 //** Link hover color set via `darken()` function.
-$link-hover-color:      darken($link-color, 15%) !default;
+$link-hover-color:      lighten($link-color, 5%) !default;
 //** Link hover decoration.
 $link-hover-decoration: underline !default;
 
@@ -44,8 +41,8 @@ $link-hover-decoration: underline !default;
 //## Font, line-height, and color for body text, headings, and more.
 
 $font-family-sans-serif:  "proxima-nova", "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-alt:         "proxima-nova-condensed", "Proxima Nova Condensed", "Helvetica Neue Condensed", Helvetica, Arial, sans-serif !default;
 $font-family-base:        $font-family-sans-serif !default;
-$font-family-headings:    "proxima-nova-condensed", "Proxima Nova Condensed", "Helvetica Neue Condensed", Helvetica, Arial, sans-serif !default;
 
 $font-weight-base:        300;
 $font-weight-strong:      600;
@@ -53,6 +50,7 @@ $font-weight-strong:      600;
 $font-size-base:          18px !default;
 $font-size-large:         1.25em !default;
 $font-size-small:         0.85em !default;
+$font-size-nav:           $font-size-large !default;
 
 $font-size-h1:            2.6em !default;
 $font-size-h2:            2.15em !default;
@@ -64,7 +62,7 @@ $font-size-h6:            0.85em !default;
 $line-height-base:        1.6 !default;
 $line-height-computed:    floor(($font-size-base * $line-height-base)) !default;
 
-$headings-font-family:    inherit !default;
+$headings-font-family:    $font-family-alt !default;
 $headings-font-weight:    400 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          inherit !default;
@@ -94,7 +92,7 @@ $line-height-small:         1.5 !default;
 //
 //
 $grid-columns:              12;
-$grid-column-gutter:        30px;
+$grid-column-gutter:        60px;
 
 
 //== Buttons
@@ -110,22 +108,6 @@ $btn-default-border:             #ccc !default;
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border:             darken($btn-primary-bg, 5%) !default;
-
-$btn-success-color:              #fff !default;
-$btn-success-bg:                 $brand-success !default;
-$btn-success-border:             darken($btn-success-bg, 5%) !default;
-
-$btn-info-color:                 #fff !default;
-$btn-info-bg:                    $brand-info !default;
-$btn-info-border:                darken($btn-info-bg, 5%) !default;
-
-$btn-warning-color:              #fff !default;
-$btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             darken($btn-warning-bg, 5%) !default;
-
-$btn-danger-color:               #fff !default;
-$btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
