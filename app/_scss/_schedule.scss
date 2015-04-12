@@ -3,21 +3,10 @@
 
 
 .schedule {
-  padding-top: 60px;
-  padding-bottom: 60px;
   background: #f5f5f0;
 }
 
 // Event information
-.event {
-  max-width: $screen-sm;
-  margin: 0 auto 70px;
-  
-  @media (min-width: $screen-sm) {
-    margin-bottom: 0;
-  }
-}
-
 .event-info {
   h3 {
     margin-top: 0;

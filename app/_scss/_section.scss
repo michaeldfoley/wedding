@@ -1,15 +1,29 @@
 // General Section Styles
 // --------------------------------------------------
 
-
-.section-header {
-  display: block;
-  width: 100%;
-  height: 5em;
-  fill: $brand-secondary;
-  margin: 0 auto;
+.section {
+  max-width: $screen-sm;
+  margin: 0 auto 70px;
+  
+  @media (min-width: $screen-sm) {
+    margin-bottom: $line-height-computed;
+  }
 }
 
+// Section header
+.section-header {
+  margin: 0;
+  
+  svg {
+    display: block;
+    height: 5rem;
+    width: 100%;
+    fill: $brand-secondary;
+    margin: 0 auto;
+  }
+}
+
+// Section break
 .section-break {
   display: block;
   width: 25em;
