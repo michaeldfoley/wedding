@@ -2,5 +2,9 @@
 layout: default
 ---
 <article class="post">
-{{ content }}
+  <div class="container">
+    <h1 class="section-header"><svg aria-labelledby="title" role="heading"><use xlink:href="/img/sprite.symbol.svg#{{ page.header }}" /></svg></h1>
+    <svg class="section-break" role="presentation"><use xlink:href="/img/sprite.symbol.svg#break" /></svg>
+    {{ content }}
+  </div>
 </article>
