@@ -54,7 +54,7 @@ h6 { font-size: $font-size-h6; }
 // -------------------------
 
 p {
-  margin: 0 0 ($line-height-computed / 2);
+  margin: 0 0 $line-height-computed;
   
   &:last-child {
     margin-bottom: 0;
@@ -115,4 +115,12 @@ address {
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+// Blockquotes
+blockquote {
+  margin: 1em 0;
+  font-size: 1.5em;
+  font-style: italic;
+  text-align: center;
 }
