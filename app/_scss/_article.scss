@@ -5,3 +5,9 @@ article {
   padding-top: 60px;
   padding-bottom: 60px;
 }
+
+@media (min-width: $screen-sm) {
+  .post {
+    padding-top: 0;
+  }
+}
