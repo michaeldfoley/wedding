@@ -1,4 +1,4 @@
-<nav class="nav {% if page.url == '/index.html' %}nav-home{% endif %}" role="navigation">
+<nav class="nav {% if page.url == '/index.html' %}nav-hero{% endif %}" role="navigation">
   <ul class="nav-list">
     {% assign pages = site.pages | sort:"weight"  %}
     {% for p in pages %}

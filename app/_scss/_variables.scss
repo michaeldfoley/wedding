@@ -29,9 +29,9 @@ $body-bg:               #fff !default;
 $text-color:            $gray-dark !default;
 
 //** Global textual link color.
-$link-color:            $brand-primary !default;
+$link-color:            lighten($brand-primary, 3%) !default;
 //** Link hover color set via `darken()` function.
-$link-hover-color:      lighten($link-color, 5%) !default;
+$link-hover-color:      darken($brand-primary, 2%) !default;
 //** Link hover decoration.
 $link-hover-decoration: underline !default;
 
@@ -110,6 +110,16 @@ $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border:             darken($btn-primary-bg, 5%) !default;
 
 $btn-link-disabled-color:        $gray-light !default;
+
+
+//== Nav
+//
+//##
+
+$nav-link-color:                 $brand-primary !default;
+$nav-link-hover-color:           $nav-link-color !default;
+
+$nav-line-color:                 $nav-link-hover-color !default;
 
 
 //== Forms

@@ -23,21 +23,28 @@
     flex-grow: 1;
     text-align: center;
   }
+  
   a {
     display: block;
     padding: 10px 15px;
+    color: $nav-link-color;
     
     &:before {
       height: 2px;
+      background: $nav-line-color;
     }
   }
   
-  .active:before {
-    background: $link-color;
+  a:hover,
+  .active {
+    color: $nav-link-hover-color;
+  }
+  
+  &:not(:hover) .active:before {
     visibility: visible;
     transform: scale(1);
   }
-    
+   
   @media (min-width: $screen-sm) {
     a {
       padding-left: 0;
@@ -49,7 +56,7 @@
 }
 
 // Homepage nav styles
-.nav-home {
+.nav-hero {
   .nav-list {
     a {
       background: #fff;
