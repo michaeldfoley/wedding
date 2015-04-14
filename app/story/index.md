@@ -2,7 +2,7 @@
 layout: post
 nav-name: Our Story
 title: Our Story
-header: story
+heading: story
 description: The story of how we met.
 weight: 3
 ---
