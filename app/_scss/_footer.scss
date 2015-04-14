@@ -10,9 +10,32 @@
   width: 100%;
 }
 
+// Footer Layout
+.footer-layout {
+  display: flex;
+  align-items: center;
+}
+
 .footer-break {
   display: block;
+  width: 3rem;
   height: 3rem;
-  margin: 1rem auto .5rem;
+  margin: 1rem 0 .5rem;
   fill: $brand-secondary;
+}
+
+@media (min-width: $screen-sm) {
+  .footer-break,
+  .footer-block {
+    flex-basis: 33.333333%;
+  }
+  .footer-break {
+    margin-left: 33.333333%;
+  }
+}
+
+.footer-block {
+  font-size: .8em;
+  width: 100%;
+  text-align: right;
 }
