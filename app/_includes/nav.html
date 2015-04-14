@@ -3,7 +3,7 @@
     {% assign pages = site.pages | sort:"weight"  %}
     {% for p in pages %}
       <li>
-        <a {% if p.url == page.url %}class="active"{% endif %} href="{{ p.url | remove:'index.html'}}">
+        <a {% if p.url == page.url %}class="active"{% else %}href="{{ p.url | remove:'index.html'}}"{% endif %}>
           {{ p.nav-name }}
         </a>
       </li>

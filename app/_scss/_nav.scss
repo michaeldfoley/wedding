@@ -12,6 +12,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -20,13 +21,12 @@
   font-weight: $headings-font-weight;
   
   li {
-    flex-grow: 1;
     text-align: center;
   }
   
   a {
     display: block;
-    padding: 10px 15px;
+    padding: 10px 12px;
     color: $nav-link-color;
     
     &:before {
@@ -43,15 +43,6 @@
   &:not(:hover) .active:before {
     visibility: visible;
     transform: scale(1);
-  }
-   
-  @media (min-width: $screen-sm) {
-    a {
-      padding-left: 0;
-      padding-right: 0;
-      margin-left: 15px;
-      margin-right: 15px;
-    }
   }
 }
 
@@ -70,15 +61,13 @@
   }
   
   .nav-list {
-    a {
-      background: #fff;
-    }
+    background: #fff;
     
     @media (min-width: $screen-sm) {
+      background: transparent;
       font-size: $font-size-nav;
       
       a {
-        background: transparent;
         color: #fff;
     
         &:before {
