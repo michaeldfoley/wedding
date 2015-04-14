@@ -1,8 +1,8 @@
-// Details
+// Hero Section
 // --------------------------------------------------
 
 
-.details {
+.hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,11 +28,11 @@
 }
 
 // Background
-.details-bg {
+.hero-bg {
 }
 
 // Name image
-.details-names { 
+.hero-names { 
   display: block;
   width: 28em;
   margin: 0 auto;
@@ -40,20 +40,20 @@
 }
 
 // Date
-.details-date {
+.hero-date {
   display: block;
   font-size: 1.4em;
   font-weight: $font-weight-strong;
 }
 
 // Location
-.details-location {
+.hero-location {
   font-size: 1.4em;
   font-weight: $font-weight-strong;
 }
 
-.details-event,
-.details-address {
+.hero-event,
+.hero-address {
   font-family: $font-family-alt;
   font-size: 1.25em;
   margin-top: 0;
@@ -61,7 +61,7 @@
 }
 
 // Break
-.details-break {
+.hero-break {
   display: block;
   width: 30em;
   margin: -1em auto;
