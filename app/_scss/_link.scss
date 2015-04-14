@@ -1,0 +1,31 @@
+// Fancy Link Underline
+// --------------------------------------------------
+
+
+main, .nav-list {
+  // Links
+  a {
+    position: relative;
+    transition: color 0.3s ease-out;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: $link-hover-color;
+      visibility: hidden;
+      transform: scaleX(0);
+      transition: all 0.3s ease-in-out 0s;
+    }
+  
+    &:hover,
+    &:focus {
+      &:before {
+        visibility: visible;
+        transform: scaleX(1);
+      }
+    }
+  }
+}
