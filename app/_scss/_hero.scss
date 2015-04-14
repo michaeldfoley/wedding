@@ -6,15 +6,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 800px;
-  min-height: 92vh;
   background-image: url('/img/balloons-small.jpg');
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: cover;
+  position: relative;
+  padding: 50px 0 70px;
   text-align: center;
   color: #FFF;
   text-transform: uppercase;
+  
+  @media (min-width: $screen-sm) {
+    min-height: 800px;
+    min-height: 92vh;
+    margin-bottom: 0;
+    padding: 0;
+  }
   
   @media (min-device-width: $screen-xs) and (max-device-width: $screen-sm) {
     background-image: url('/img/balloons-medium.jpg');
@@ -35,37 +42,55 @@
 .hero-names { 
   display: block;
   width: 28em;
+  height: 30vw;
   margin: 0 auto;
   fill: #FFF;
+  
+  @media (min-device-width: $screen-xs) {
+    height: auto;
+  }
 }
 
-// Date
+// Details
 .hero-date {
   display: block;
-  font-size: 1.4em;
-  font-weight: $font-weight-strong;
 }
 
-// Location
+.hero-date,
 .hero-location {
-  font-size: 1.4em;
+  font-size: 1em;
+  font-size: 5vw;
   font-weight: $font-weight-strong;
+  
+  @media (min-width: $screen-xs) {
+    font-size: 1.4em;
+  }
 }
 
 .hero-event,
 .hero-address {
   font-family: $font-family-alt;
-  font-size: 1.25em;
+  font-size: 1em;
+  font-size: 4.5vw;
   margin-top: 0;
   margin-bottom: 7px;
+  
+  @media (min-width: $screen-xs) {
+    font-size: 1.25em;
+  }
 }
 
 // Break
 .hero-break {
-  display: block;
+  display: none;
   width: 30em;
   margin: -1em auto;
   stroke: #FFF;
   stroke-width: .5;
   fill: transparent;
+  
+  
+  @media (min-width: $screen-sm) {
+    display: block;
+  }
 }

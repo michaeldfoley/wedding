@@ -57,6 +57,18 @@
 
 // Homepage nav styles
 .nav-hero {
+  position: absolute;
+  left: 0;
+  bottom: -70px;
+  width: 100%;
+  
+  @media (min-width: $screen-sm) {
+    position: static;
+    left: auto;
+    bottom: auto;
+    width: auto;
+  }
+  
   .nav-list {
     a {
       background: #fff;
@@ -68,8 +80,6 @@
       a {
         background: transparent;
         color: #fff;
-        margin-left: ($grid-column-gutter / 2);
-        margin-right: ($grid-column-gutter / 2);
     
         &:before {
           background: #fff;
