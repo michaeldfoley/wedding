@@ -38,6 +38,10 @@ module.exports = function (grunt) {
         files: ['test/spec/**/*.coffee'],
         tasks: ['coffee:test']
       },
+      svg_sprite: {
+        files: ['<%= yeoman.app %>/img/**/*.svg'],
+        tasks: ['svg_sprite:stage']
+      },
       jekyll: {
         files: [
           '<%= yeoman.app %>/**/*.{html,yml,md,mkd,markdown}',
@@ -239,6 +243,29 @@ module.exports = function (grunt) {
         }
       }
     },
+    responsive_images: {
+      options: {
+        sizes: [{
+          name: "small",
+          width: 480
+        },{
+          name: "medium",
+          width: 768
+        },{
+          name: "large",
+          width: 1200
+        },{
+          name: "xlarge",
+          width: 2000
+        }]
+      },
+      files: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/img/',
+        src: ['**/*.{jpg,gif,png}'],
+        dest: '.tmp/img/'
+      }
+    },
     imagemin: {
       dist: {
         options: {
@@ -294,9 +321,10 @@ module.exports = function (grunt) {
             // Jekyll processes and moves HTML and text files.
             // Usemin moves CSS and javascript inside of Usemin blocks.
             // Copy moves asset files and directories.
-            'img/**/*',
+            //'img/**/*',
             // Exclude svgs because they are moved by svg_sprite
-            '!img/**/*.svg',
+            //'!img/**/*.svg',
+            // Exclude items in the photos folder because we 
             'fonts/**/*',
             // Like Jekyll, exclude files & folders prefixed with an underscore.
             '!**/_*{,/**}',
@@ -385,6 +413,7 @@ module.exports = function (grunt) {
         'sass:server',
         'coffee:dist',
         'svg_sprite:stage',
+        'responsive_images',
         'copy:stageCss',
         'jekyll:server'
       ],

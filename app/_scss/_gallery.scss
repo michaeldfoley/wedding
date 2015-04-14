@@ -1,0 +1,23 @@
+//
+// Gallery Layout
+// --------------------------------------------------
+
+
+.gallery {
+  padding: 60px 15px 0;
+  
+  @media (min-width: $screen-sm) {
+    column-count: 3;
+    column-gap: 5px;
+  }
+  
+  @media (min-width: $screen-lg) {
+    column-count: 4;
+  }
+}
+
+.gallery-img {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 5px;
+}

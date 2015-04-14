@@ -8,11 +8,23 @@
   justify-content: center;
   min-height: 800px;
   min-height: 92vh;
-  background: url('/img/balloons.jpg') center bottom no-repeat;
+  background-image: url('/img/balloons-small.jpg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
   background-size: cover;
   text-align: center;
   color: #FFF;
   text-transform: uppercase;
+  
+  @media (min-device-width: $screen-xs) and (max-device-width: $screen-sm) {
+    background-image: url('/img/balloons-medium.jpg');
+  }
+  @media (min-device-width: $screen-sm) and (max-device-width: $screen-lg) {
+    background-image: url('/img/balloons-large.jpg');
+  }
+  @media (min-device-width: $screen-lg) {
+    background-image: url('/img/balloons-xlarge.jpg');
+  }
 }
 
 // Background

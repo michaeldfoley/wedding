@@ -1,13 +1,19 @@
 // General Section Styles
 // --------------------------------------------------
 
-.section {
-  max-width: $screen-sm;
-  margin: 0 auto 70px;
+
+section {
+  margin-bottom: 70px;
   
   @media (min-width: $screen-sm) {
     margin-bottom: $line-height-computed;
   }
+}
+
+.section {
+  max-width: $screen-sm;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Section header
