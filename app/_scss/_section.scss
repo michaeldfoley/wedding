@@ -16,19 +16,27 @@
   
   svg {
     display: block;
-    height: 6rem;
+    height: 4rem;
     width: 100%;
     fill: $brand-secondary;
     margin: 0 auto;
+    
+    @media (min-width: $screen-sm) {
+      height: 5rem;
+    }
+    
+    @media (min-width: $screen-md) {
+      height: 6rem;
+    }
   }
 }
 
 // Section break
 .section-break {
   display: block;
-  width: 25em;
+  width: 30em;
   margin: -1em auto;
   fill: transparent;
   stroke: $brand-secondary;
-  stroke-width: .5;
+  stroke-width: .3;
 }
