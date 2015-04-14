@@ -14,6 +14,6 @@ weight: 4
   {% if photo.type != null %}
     {% assign type = photo.type %}
   {% endif %}
-  <img src="/img/photos/{{ photo.src }}-small.{{ type }}" srcset="/img/photos/{{ photo.src }}-medium.{{ type }} 768w, /img/photos/{{ photo.src }}-large.{{ type }} 1200w, /img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw" class="gallery-img">
+  <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/photos/{{ photo.src }}-small.{{ type }}" data-srcset="/img/photos/{{ photo.src }}-small.{{ type }} 480w, /img/photos/{{ photo.src }}-medium.{{ type }} 768w, /img/photos/{{ photo.src }}-large.{{ type }} 1200w, /img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw" class="gallery-img js-lazyload">
   {% endfor %}
 </section>
