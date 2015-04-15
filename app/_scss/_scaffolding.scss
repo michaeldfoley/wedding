@@ -28,7 +28,10 @@ body {
   font-weight: $font-weight-base;
   color: $text-color;
   background-color: $body-bg;
-  margin: 0 0 $footer-height;
+  
+  &:not(.home){
+    margin: 0 0 $footer-height;
+  }
 }
 
 

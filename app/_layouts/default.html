@@ -20,21 +20,25 @@
     <!-- endbuild -->
     {% include type.html %}
   </head>
-  <body>
+  {% assign ishome = false %}
+  {% if page.url == '/index.html' %}
+    {% assign ishome = true %}
+  {% endif %}
+  <body {% if ishome %}class="home"{% endif %}>
     <!--[if lt IE 8]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     
-    {% if page.url == '/index.html' %}
-      {% include header-hero.html %}
-    {% else %}
+    {% if ishome == false %}
       {% include header.html %}
     {% endif %}
     <main role="main">
       {{ content }}
     </main>
     
-    {% include footer.html %}
+    {% if ishome == false %}
+      {% include footer.html %}
+    {% endif %}
 
     {% include scripts.html %}
     {% include googleanalytics.html %}
