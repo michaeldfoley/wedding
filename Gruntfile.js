@@ -5,7 +5,7 @@
 //   css: css
 //   sass: _scss
 //   javascript: js
-//   coffeescript: _src
+//   coffeescript: _js
 //   images: img
 //   fonts: fonts
 
@@ -33,6 +33,10 @@ module.exports = function (grunt) {
       coffee: {
         files: ['<%= yeoman.app %>/_src/**/*.coffee'],
         tasks: ['coffee:dist']
+      },
+      js: {
+        files: ['<%= yeoman.app %>/_src/**/*.js'],
+        tasks: ['copy:stageJs']
       },
       coffeeTest: {
         files: ['test/spec/**/*.coffee'],
@@ -345,6 +349,15 @@ module.exports = function (grunt) {
           src: '**/*.css',
           dest: '.tmp/css'
         }]
+      },
+      stageJs: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/_src',
+          src: '**/*.js',
+          dest: '.tmp/js'
+        }]
       }
     },
     filerev: {
@@ -415,6 +428,7 @@ module.exports = function (grunt) {
         'svg_sprite:stage',
         'responsive_images',
         'copy:stageCss',
+        'copy:stageJs',
         'jekyll:server'
       ],
       dist: [
