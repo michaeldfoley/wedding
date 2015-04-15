@@ -322,6 +322,7 @@ module.exports = function (grunt) {
             // Jekyll processes and moves HTML and text files.
             // Usemin moves CSS and javascript inside of Usemin blocks.
             // Copy moves asset files and directories.
+            '_src/**/*.js',
             'fonts/**/*',
             // Like Jekyll, exclude files & folders prefixed with an underscore.
             '!**/_*{,/**}',
@@ -331,6 +332,12 @@ module.exports = function (grunt) {
             'apple-touch*.png'
           ],
           dest: '<%= yeoman.dist %>'
+        },{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/_src',
+          src: '**/*.js',
+          dest: '.tmp/js'
         }]
       },
       // Copy CSS into .tmp directory for Autoprefixer processing
