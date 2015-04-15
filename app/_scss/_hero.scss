@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url('/img/balloons-small.jpg');
+  background-image: url('../img/balloons-small.jpg');
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: cover;
@@ -24,13 +24,13 @@
   }
   
   @media (min-device-width: $screen-xs) and (max-device-width: $screen-sm) {
-    background-image: url('/img/balloons-medium.jpg');
+    background-image: url('../img/balloons-medium.jpg');
   }
   @media (min-device-width: $screen-sm) and (max-device-width: $screen-lg) {
-    background-image: url('/img/balloons-large.jpg');
+    background-image: url('../img/balloons-large.jpg');
   }
   @media (min-device-width: $screen-lg) {
-    background-image: url('/img/balloons-xlarge.jpg');
+    background-image: url('../img/balloons-xlarge.jpg');
   }
 }
 

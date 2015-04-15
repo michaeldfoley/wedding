@@ -16,7 +16,7 @@ weight: 4
     {% endif %}
   <div class="gallery-img js-lazyload" data-noscript="" style="padding-bottom: {{ photo.ratio }}%">
     <noscript>
-      <img src="/img/photos/{{ photo.src }}-medium.{{ type }}" srcset="/img/photos/{{ photo.src }}-small.{{ type }} 480w, /img/photos/{{ photo.src }}-medium.{{ type }} 768w, /img/photos/{{ photo.src }}-large.{{ type }} 1200w, /img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw">
+      <img src="../img/photos/{{ photo.src }}-medium.{{ type }}" srcset="../img/photos/{{ photo.src }}-small.{{ type }} 480w, ../img/photos/{{ photo.src }}-medium.{{ type }} 768w, ../img/photos/{{ photo.src }}-large.{{ type }} 1200w, ../img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw">
     </noscript>
   </div>
   {% endfor %}
