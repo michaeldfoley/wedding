@@ -1,12 +1,15 @@
 <nav class="nav {% if page.url == '/index.html' %}nav-hero{% endif %}" role="navigation">
   <ul class="nav-list">
-    {% assign pages = site.pages | sort:"weight"  %}
+    {% assign pages = site.pages | sort: "weight"  %}
     {% for p in pages %}
-      <li>
-        <a {% if p.url == page.url %}class="active"{% else %}href="{{ p.url | remove:'index.html'}}"{% endif %}>
-          {{ p.nav-name }}
-        </a>
-      </li>
+      {% if p.weight > 0 %}
+        <li>
+          <a {% if p.url == page.url %}class="active"{% else %}href="{{ p.url | remove:'index.html'}}"{% endif %}>
+            {{ p.nav-name }}
+          </a>
+        </li>
+    
+      {% endif %}
     {% endfor %}
   </ul>
 </nav>
