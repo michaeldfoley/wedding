@@ -10,10 +10,14 @@ weight: 4
 {% include heading.html %}
 <section class="gallery">
   {% for photo in site.data.photos %}
-  {% assign type = 'jpg' %}
-  {% if photo.type != null %}
-    {% assign type = photo.type %}
-  {% endif %}
-  <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/photos/{{ photo.src }}-small.{{ type }}" data-srcset="/img/photos/{{ photo.src }}-small.{{ type }} 480w, /img/photos/{{ photo.src }}-medium.{{ type }} 768w, /img/photos/{{ photo.src }}-large.{{ type }} 1200w, /img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw" class="gallery-img js-lazyload">
+    {% assign type = 'jpg' %}
+    {% if photo.type != null %}
+      {% assign type = photo.type %}
+    {% endif %}
+  <div class="gallery-img js-lazyload" data-noscript="" style="padding-bottom: {{ photo.ratio }}%">
+    <noscript>
+      <img src="/img/photos/{{ photo.src }}-medium.{{ type }}" srcset="/img/photos/{{ photo.src }}-small.{{ type }} 480w, /img/photos/{{ photo.src }}-medium.{{ type }} 768w, /img/photos/{{ photo.src }}-large.{{ type }} 1200w, /img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw">
+    </noscript>
+  </div>
   {% endfor %}
 </section>
