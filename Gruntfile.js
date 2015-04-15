@@ -290,7 +290,6 @@ module.exports = function (grunt) {
       }
     },
     svg_sprite: {
-      // Target options 
       options: {
         mode: {
           symbol: {
@@ -323,10 +322,6 @@ module.exports = function (grunt) {
             // Jekyll processes and moves HTML and text files.
             // Usemin moves CSS and javascript inside of Usemin blocks.
             // Copy moves asset files and directories.
-            //'img/**/*',
-            // Exclude svgs because they are moved by svg_sprite
-            //'!img/**/*.svg',
-            // Exclude items in the photos folder because we 
             'fonts/**/*',
             // Like Jekyll, exclude files & folders prefixed with an underscore.
             '!**/_*{,/**}',
