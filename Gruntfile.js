@@ -69,9 +69,9 @@ module.exports = function (grunt) {
         options: {
           server: {
             baseDir: [
-              ".jekyll",
-              ".tmp",
-              "<%= yeoman.app %>"
+              '.jekyll',
+              '.tmp',
+              '<%= yeoman.app %>'
             ]
           },
           watchTask: true
@@ -80,7 +80,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
           server: {
-            baseDir: "<%= yeoman.dist %>"
+            baseDir: '<%= yeoman.dist %>'
           }
         }
       },
@@ -97,9 +97,9 @@ module.exports = function (grunt) {
         options: {
           server: {
             baseDir: [
-              ".jekyll",
-              ".tmp",
-              "<%= yeoman.app %>"
+              '.jekyll',
+              '.tmp',
+              '<%= yeoman.app %>'
             ]
           },
           watchTask: true
@@ -250,16 +250,16 @@ module.exports = function (grunt) {
     responsive_images: {
       options: {
         sizes: [{
-          name: "small",
+          name: 'small',
           width: 480
         },{
-          name: "medium",
+          name: 'medium',
           width: 768
         },{
-          name: "large",
+          name: 'large',
           width: 1200
         },{
-          name: "xlarge",
+          name: 'xlarge',
           width: 2000
         }]
       },
