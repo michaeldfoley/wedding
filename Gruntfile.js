@@ -265,14 +265,14 @@ module.exports = function (grunt) {
       },
       stage: {
         expand: true,
-        cwd: '<%= yeoman.app %>/img/',
-        src: ['**/*.{jpg,gif,png}'],
-        dest: '.tmp/img/'
+        cwd: '<%= yeoman.app %>',
+        src: ['img/**/*.{jpg,gif,png}'],
+        dest: '.tmp'
       },
       dist: {
         expand: true,
-        cwd: '<%= yeoman.app %>/img/',
-        src: ['**/*.{jpg,gif,png}'],
+        cwd: '<%= yeoman.app %>',
+        src: ['img/**/*.{jpg,gif,png}'],
         dest: '<%= yeoman.dist %>'
       }
     },
