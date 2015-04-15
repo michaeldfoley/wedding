@@ -263,11 +263,17 @@ module.exports = function (grunt) {
           width: 2000
         }]
       },
-      files: {
+      stage: {
         expand: true,
         cwd: '<%= yeoman.app %>/img/',
         src: ['**/*.{jpg,gif,png}'],
         dest: '.tmp/img/'
+      },
+      dist: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/img/',
+        src: ['**/*.{jpg,gif,png}'],
+        dest: '<%= yeoman.dist %>'
       }
     },
     imagemin: {
@@ -284,34 +290,26 @@ module.exports = function (grunt) {
       }
     },
     svg_sprite: {
+      // Target options 
+      options: {
+        mode: {
+          symbol: {
+            dest: 'img',
+            sprite: 'sprite.symbol.svg'
+          } 
+        }
+      },
       stage: {
         expand: true,
         cwd: '<%= yeoman.app %>/img',
         src: ['**/*.svg'],
         dest: '.tmp',
-        
-        // Target options 
-        options: {
-          mode: {
-            symbol: {
-              dest: 'img',
-              sprite: 'sprite.symbol.svg'
-            } 
-          }
-        }
       },
       dist: {
         expand: true,
         cwd: '<%= yeoman.app %>/img',
         src: ['**/*.svg'],
-        dest: '<%= yeoman.dist %>/img',
-        
-        // Target options 
-        options: {
-          mode: {
-            symbol: true
-          }
-        }
+        dest: '<%= yeoman.dist %>',
       },
       
     },
@@ -426,7 +424,7 @@ module.exports = function (grunt) {
         'sass:server',
         'coffee:dist',
         'svg_sprite:stage',
-        'responsive_images',
+        'responsive_images:stage',
         'copy:stageCss',
         'copy:stageJs',
         'jekyll:server'
@@ -435,6 +433,7 @@ module.exports = function (grunt) {
         'sass:dist',
         'coffee:dist',
         'svg_sprite',
+        'responsive_images:dist',
         'copy:dist'
       ]
     }
