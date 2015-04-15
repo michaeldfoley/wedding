@@ -20,29 +20,26 @@ section {
 .section-header {
   margin: 0;
   
-  svg {
-    display: block;
-    height: 4rem;
-    width: 100%;
-    fill: $brand-secondary;
-    margin: 0 auto;
-    
-    @media (min-width: $screen-sm) {
-      height: 5rem;
-    }
-    
-    @media (min-width: $screen-md) {
-      height: 6rem;
-    }
+  @media (min-width: $screen-sm) {
+    margin-top: -15px;
   }
+}
+
+.section-heading {
+  display: block;
+  height: 4.2rem;
+  width: 100%;
+  fill: $brand-secondary;
+  margin: 0 auto;
 }
 
 // Section break
 .section-break {
   display: block;
-  width: 30em;
-  margin: -1em auto;
+  width: 24rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
   fill: transparent;
   stroke: $brand-secondary;
-  stroke-width: .3;
+  stroke-width: .4;
 }
