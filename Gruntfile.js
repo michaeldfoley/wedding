@@ -214,10 +214,29 @@ module.exports = function (grunt) {
     },
     usemin: {
       options: {
-        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/img']
+        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/img'],
+        patterns: {
+          html: [
+            [/<(?:img|source)[^\>]*[^\>\S]+srcset=['"]([^"'\s]+)/gm,
+              'Update the HTML with the new image filenames for srcset links'
+            ],
+            [/<(?:img|source)[^\>]*[^\>\S]+srcset=['"](?:(?:[^"'\s]+)\s*?(?:\s\d*?[w])?(?:\s\d*?[x])?\s*?,\s*?){1}([^"'\s]+)/gm,
+              'Update the HTML with the new image filenames for srcset links'
+            ],
+            [/<(?:img|source)[^\>]*[^\>\S]+srcset=['"](?:(?:[^"'\s]+)\s*?(?:\s\d*?[w])?(?:\s\d*?[x])?\s*?,\s*?){2}([^"'\s]+)/gm,
+              'Update the HTML with the new image filenames for srcset links'
+            ],
+            [/<(?:img|source)[^\>]*[^\>\S]+srcset=['"](?:(?:[^"'\s]+)\s*?(?:\s\d*?[w])?(?:\s\d*?[x])?\s*?,\s*?){3}([^"'\s]+)/gm,
+              'Update the HTML with the new image filenames for srcset links'
+            ],
+            [/<(?:img|source)[^\>]*[^\>\S]+srcset=['"](?:(?:[^"'\s]+)\s*?(?:\s\d*?[w])?(?:\s\d*?[x])?\s*?,\s*?){4}([^"'\s]+)/gm,
+              'Update the HTML with the new image filenames for srcset links'
+            ],
+          ]
+        }
       },
       html: ['<%= yeoman.dist %>/**/*.html'],
-      css: ['<%= yeoman.dist %>/css/**/*.css']
+      css: ['<%= yeoman.dist %>/css/**/*.css'],
     },
     htmlmin: {
       dist: {
