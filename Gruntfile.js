@@ -270,17 +270,21 @@ module.exports = function (grunt) {
       options: {
         sizes: [{
           name: 'small',
-          width: 480
+          width: 480,
+          quality: 80
         },{
           name: 'medium',
-          width: 768
+          width: 768,
+          quality: 80
         },{
           name: 'large',
-          width: 1200
+          width: 1200,
+          quality: 80
         },{
           name: 'xlarge',
-          width: 2000
-        }]
+          width: 2000,
+          quality: 80
+        }],
       },
       stage: {
         expand: true,
