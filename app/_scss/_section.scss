@@ -21,7 +21,7 @@ section {
   margin: 0;
   
   @media (min-width: $screen-sm) {
-    margin-top: -15px;
+    transform: translateY(-15px);
   }
 }
 
