@@ -16,7 +16,7 @@ main, .nav-list {
       left: 0;
       background-color: $link-hover-color;
       visibility: hidden;
-      transform: scaleX(0);
+      transform: scaleX(0) translateZ(0);
       transition: all 0.3s ease-in-out 0s;
     }
   
@@ -24,7 +24,7 @@ main, .nav-list {
     &:focus {
       &:before {
         visibility: visible;
-        transform: scaleX(1);
+        transform: scaleX(1) translateZ(0);
       }
     }
   }
