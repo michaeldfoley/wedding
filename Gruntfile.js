@@ -380,6 +380,12 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>/_src',
           src: '**/*.js',
           dest: '.tmp/js'
+        },{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/_bower_components/modernizr/',
+          src: 'modernizr.js',
+          dest: '.tmp/js'
         }]
       }
     },
@@ -437,13 +443,54 @@ module.exports = function (grunt) {
         ]
       }
     },
-    // https://github.com/robwierzbowski/generator-jekyllrb/issues/106
-    // scsslint: {
-    //   // See https://www.npmjs.org/package/grunt-scss-lint for options.
-    //   allFiles: [
-    //     '<%= yeoman.app %>/_scss/**/*.scss'
-    //   ]
-    // },
+    modernizr: {
+      dist: {
+        devFile : '<%= yeoman.app %>/_bower_components/modernizr/modernizr.js',
+        outputFile : '.tmp/js/modernizr.js',
+
+        extra : {
+          shiv : false,
+          printshiv : false,
+          load : false,
+          mq : false,
+          cssclasses : true
+        },
+
+        extensibility : {
+          addtest : false,
+          prefixed : false,
+          teststyles : false,
+          testprops : true,
+          testallprops : true,
+          hasevents : false,
+          prefixes : true,
+          domprefixes : true,
+          cssclassprefix: ''
+        },
+        
+        uglify : false,
+        parseFiles : true,
+        matchCommunityTests : false,
+        
+        tests: [
+          'generatedcontent',
+          'csstransforms',
+          'csstransforms3d',
+          'csstransitions'
+        ],
+        
+        files: {
+          src: [
+            '.tmp/**/*',
+            '<%= yeoman.app %>/**/*',
+            '!<%= yeoman.app %>/_bower_components/lazysizes/plugins/**/*',
+            '!<%= yeoman.app %>/_bower_components/modernizr/**/*',
+            '!<%= yeoman.app %>/**/bower.json',
+            ]
+        }
+      }
+  
+    },
     concurrent: {
       server: [
         'sass:server',
@@ -508,6 +555,7 @@ module.exports = function (grunt) {
     'jekyll:dist',
     'concurrent:dist',
     'useminPrepare',
+    'modernizr',
     'concat',
     'autoprefixer:dist',
     'cssmin',
