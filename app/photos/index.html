@@ -7,19 +7,21 @@ description: Some photos of us throughout the year. Check back after the wedding
 weight: 4
 ---
 
+<article class="post">
 {% include heading.html %}
-<section class="gallery">
-  {% for photo in site.data.photos %}
-    {% assign type = 'jpg' %}
-    {% if photo.type != null %}
-      {% assign type = photo.type %}
-    {% endif %}
-  <div class="gallery-item">
-    <div class="gallery-img js-lazyload" data-noscript="" style="padding-bottom: {{ photo.ratio }}%">
-      <noscript>
-        <img src="../img/photos/{{ photo.src }}-medium.{{ type }}" srcset="../img/photos/{{ photo.src }}-small.{{ type }} 480w, ../img/photos/{{ photo.src }}-medium.{{ type }} 768w, ../img/photos/{{ photo.src }}-large.{{ type }} 1200w, ../img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw">
-      </noscript>
+  <section class="gallery">
+    {% for photo in site.data.photos %}
+      {% assign type = 'jpg' %}
+      {% if photo.type != null %}
+        {% assign type = photo.type %}
+      {% endif %}
+    <div class="gallery-item">
+      <div class="gallery-img js-lazyload" data-noscript="" style="padding-bottom: {{ photo.ratio }}%">
+        <noscript>
+          <img src="../img/photos/{{ photo.src }}-medium.{{ type }}" srcset="../img/photos/{{ photo.src }}-small.{{ type }} 480w, ../img/photos/{{ photo.src }}-medium.{{ type }} 768w, ../img/photos/{{ photo.src }}-large.{{ type }} 1200w, ../img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw">
+        </noscript>
+      </div>
     </div>
-  </div>
-  {% endfor %}
-</section>
+    {% endfor %}
+  </section>
+</article>
