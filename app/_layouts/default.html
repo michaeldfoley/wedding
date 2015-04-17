@@ -6,20 +6,41 @@
     <title>{{ page.title }}</title>
     <meta name="description" content="{{ page.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
-
+    {% assign ishome = false %}
+    {% if page.url == '/index.html' %}
+      {% assign ishome = true %}
+    {% endif %}
+    
+    {% if site.environment == 'production' %}
+    <style type="text/css">
+      {% if ishome %}
+        {% include _critical_homepage.css %}
+      {% else %}
+        {% include _critical_posts.css %}
+      {% endif %}
+    </style>
+    <script>
+        {% include _loadCSS.js %}
+        loadCSS("/css/style.css");
+    </script>
+    <noscript>
+    {% endif %}
+    
     <!-- build:css({app,.tmp}) /css/style.css -->
-    <link rel="stylesheet" href="/_bower_components/normalize-css/normalize.css">
     <link rel="stylesheet" href="/css/style.css">
     <!-- endbuild -->
+
+    {% if site.environment == 'production' %}
+    </noscript>
+    {% endif %}
     
-    {% include type.html %}
+    <script type="text/javascript">
+      {% include _html5shiv.js %}
+    </script>
+    <script type="text/javascript">
+      {% include _type.js %}
+    </script>
   </head>
-  {% assign ishome = false %}
-  {% if page.url == '/index.html' %}
-    {% assign ishome = true %}
-  {% endif %}
   <body {% if ishome %}class="home"{% endif %}>
     <!--[if lt IE 8]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

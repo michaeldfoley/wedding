@@ -24,7 +24,7 @@ module.exports = function (grunt) {
     watch: {
       sass: {
         files: ['<%= yeoman.app %>/_scss/**/*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer:dist']
+        tasks: ['sass:server', 'autoprefixer:dist', 'penthouse', 'cssmin:critical']
       },
       autoprefixer: {
         files: ['<%= yeoman.app %>/css/**/*.css'],
@@ -232,6 +232,7 @@ module.exports = function (grunt) {
             [/<(?:img|source)[^\>]*[^\>\S]+srcset=['"](?:(?:[^"'\s]+)\s*?(?:\s\d*?[w])?(?:\s\d*?[x])?\s*?,\s*?){4}([^"'\s]+)/gm,
               'Update the HTML with the new image filenames for srcset links'
             ],
+            [/loadCSS\(['"]([^"']+)['"]\)/gm, 'Replacing reference to CSS within loadCSS']
           ]
         }
       },
@@ -264,6 +265,29 @@ module.exports = function (grunt) {
         options: {
           check: 'gzip'
         }
+      },
+      critical: {
+        expand: true,
+				cwd: '<%= yeoman.app %>',
+				src: ['_includes/**/_*.css'],
+				dest: '<%= yeoman.app %>',
+      }
+      
+    },
+    penthouse: {
+      homepage : {
+        outfile: '<%= yeoman.app %>/_includes/_critical_homepage.css',
+        css: '.tmp/css/style.css',
+        url: 'http://localhost:3000',
+        width: 1280,
+        height: 800
+      },
+      posts: {
+        outfile: '<%= yeoman.app %>/_includes/_critical_posts.css',
+        css: '.tmp/css/style.css',
+        url: 'http://localhost:3000/story/',
+        width: 1280,
+        height: 800
       }
     },
     responsive_images: {

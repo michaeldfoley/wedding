@@ -36,3 +36,4 @@ markdown: kramdown
 #     coderay_css: style
 
 pygments: false
+environment: 'development'
