@@ -42,11 +42,9 @@
 }
 
 // Undeline styles
-.no-touch {
-  .nav-list a:before {
-    height: 2px;
-    background: $nav-line-color;
-  }
+.nav-list a:before {
+  height: 2px;
+  background: $nav-line-color;
 }
 
 // Homepage nav styles

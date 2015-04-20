@@ -1,0 +1,33 @@
+// Buttons
+// --------------------------------------------------
+
+
+.btn {
+  display: inline-block;
+  padding: $padding-base-vertical $padding-base-horizontal;
+  margin-bottom: 0;
+  font-size: $font-size-base;
+  font-weight: $btn-font-weight;
+  line-height: $line-height-base;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+  background-image: none;
+  background-color: $btn-default-bg;
+  border: 1px solid $btn-default-border;
+  color: $btn-default-color;
+  transition: background 0.3s ease-out, border 0.3s ease-out;
+  
+  &:hover {
+    background-color: $btn-default-hover-bg;
+    border-color: $btn-default-hover-border;
+    color: $btn-default-hover-color;
+  }
+  
+  &:before {
+    content: none;
+  }
+}
