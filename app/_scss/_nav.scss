@@ -28,11 +28,6 @@
     display: block;
     padding: 10px 12px;
     color: $nav-link-color;
-    
-    &:before {
-      height: 2px;
-      background: $nav-line-color;
-    }
   }
   
   a:hover,
@@ -43,6 +38,14 @@
   &:not(:hover) .active:before {
     visibility: visible;
     transform: scale(1);
+  }
+}
+
+// Undeline styles
+.no-touch {
+  .nav-list a:before {
+    height: 2px;
+    background: $nav-line-color;
   }
 }
 
