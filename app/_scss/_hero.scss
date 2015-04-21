@@ -6,36 +6,35 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url('../img/balloons-small.jpg');
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: cover;
   position: relative;
-  padding: 50px 0 70px;
+  margin-bottom: 0;
+  color: $brand-primary;
   text-align: center;
-  color: #FFF;
-  text-transform: uppercase;
+  min-height: 500px;
+  min-height: 100vh;
   
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-xs) {
+    padding: 50px 0 70px;
+    color: #FFF;
+    width: 100%;
     min-height: 800px;
     min-height: 100vh;
     margin-bottom: 0;
     padding: 0;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
   }
   
-  @media (min-device-width: $screen-xs) and (max-device-width: $screen-sm) {
+  @media (min-width: $screen-xs) and (min-device-width: $screen-xs) and (max-device-width: $screen-sm) {
     background-image: url('../img/balloons-medium.jpg');
   }
-  @media (min-device-width: $screen-sm) and (max-device-width: $screen-lg) {
+  @media (min-width: $screen-xs) and (min-device-width: $screen-sm) and (max-device-width: $screen-lg) {
     background-image: url('../img/balloons-large.jpg');
   }
-  @media (min-device-width: $screen-lg) {
+  @media (min-width: $screen-xs) and (min-device-width: $screen-lg) {
     background-image: url('../img/balloons-xlarge.jpg');
   }
-}
-
-// Background
-.hero-bg {
 }
 
 // Name image
@@ -44,14 +43,22 @@
   width: 28em;
   height: 30vw;
   margin: 0 auto;
-  fill: #FFF;
+  fill: $brand-secondary;
   
-  @media (min-device-width: $screen-xs) {
+  @media (min-width: $screen-xs) {
     height: auto;
+    fill: #FFF;
   }
 }
 
 // Details
+.hero-date,
+.hero-location,
+.hero-event,
+.hero-address {
+  text-transform: uppercase;
+}
+
 .hero-date {
   display: block;
 }
@@ -82,15 +89,16 @@
 
 // Break
 .hero-break {
-  display: none;
+  display: block;
   width: 30em;
   margin: -1em auto;
-  stroke: #FFF;
+  stroke: $brand-secondary;
   stroke-width: .4;
   fill: transparent;
   
   
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-xs) {
     display: block;
+    stroke: #FFF;
   }
 }

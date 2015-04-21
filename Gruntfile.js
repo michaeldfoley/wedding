@@ -24,7 +24,7 @@ module.exports = function (grunt) {
     watch: {
       sass: {
         files: ['<%= yeoman.app %>/_scss/**/*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer:dist', 'penthouse', 'cssmin:critical']
+        tasks: ['sass:server', 'autoprefixer:dist']
       },
       autoprefixer: {
         files: ['<%= yeoman.app %>/css/**/*.css'],
