@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 230vw;
+    height: 310vw;
   }
   
   .gallery-item {
@@ -27,7 +27,7 @@
 
 @media (min-width: $screen-xl) {
   .gallery {
-    height: 130vw
+    height: 180vw
   }
   .gallery-item {
     width: 25%;
