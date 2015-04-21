@@ -95,6 +95,8 @@
 .hero-break {
   display: block;
   width: 30em;
+  height: 8.5em;
+  height: 30vw;
   margin: -1em auto;
   stroke: $brand-secondary;
   stroke-width: .4;
@@ -104,5 +106,6 @@
   @media (min-width: $screen-xs) {
     display: block;
     stroke: #FFF;
+    height: 8.5em;
   }
 }
