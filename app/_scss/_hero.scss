@@ -38,16 +38,20 @@
 }
 
 // Name image
-.hero-names { 
-  display: block;
-  width: 28em;
-  height: 30vw;
-  margin: 0 auto;
-  fill: $brand-secondary;
+.hero-names {
+  margin: 0;
   
-  @media (min-width: $screen-xs) {
-    height: auto;
-    fill: #FFF;
+  svg { 
+    display: block;
+    width: 32rem;
+    height: 30vw;
+    margin: 0 auto;
+    fill: $brand-secondary;
+    
+    @media (min-width: $screen-xs) {
+      height: auto;
+      fill: #FFF;
+    }
   }
 }
 
