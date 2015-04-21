@@ -1,6 +1,11 @@
 // Registry
 // --------------------------------------------------
 
+
+.no-touch .registry a:before {
+  content: none;
+}
+
 .registry-icon {
   display: block;
   height: 30px;
