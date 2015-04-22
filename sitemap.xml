@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>/events/</loc>
+  </url>
+  <url>
+    <loc>/</loc>
+  </url>
+  <url>
+    <loc>/photos/</loc>
+  </url>
+  <url>
+    <loc>/registry/</loc>
+  </url>
+  <url>
+    <loc>/stay/</loc>
+  </url>
+  <url>
+    <loc>/story/</loc>
+  </url>
+  <url>
+    <loc>/404.html</loc>
+    <lastmod>2015-04-03T09:32:35-04:00</lastmod>
+  </url>
+</urlset>
