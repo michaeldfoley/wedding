@@ -528,7 +528,7 @@ module.exports = function (grunt) {
       dist: [
         'sass:dist',
         'coffee:dist',
-        'svg_sprite',
+        'svg_sprite:dist',
         'responsive_images:dist',
         'copy:dist'
       ]
