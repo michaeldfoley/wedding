@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/events/</loc>
+    <loc>http://emandmike.us/events/</loc>
   </url>
   <url>
-    <loc>/</loc>
+    <loc>http://emandmike.us/</loc>
   </url>
   <url>
-    <loc>/photos/</loc>
+    <loc>http://emandmike.us/photos/</loc>
   </url>
   <url>
-    <loc>/registry/</loc>
+    <loc>http://emandmike.us/registry/</loc>
   </url>
   <url>
-    <loc>/stay/</loc>
+    <loc>http://emandmike.us/stay/</loc>
   </url>
   <url>
-    <loc>/story/</loc>
+    <loc>http://emandmike.us/story/</loc>
   </url>
   <url>
-    <loc>/404.html</loc>
+    <loc>http://emandmike.us/404.html</loc>
     <lastmod>2015-04-03T09:32:35-04:00</lastmod>
   </url>
 </urlset>
