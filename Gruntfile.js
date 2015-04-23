@@ -497,10 +497,6 @@ module.exports = function (grunt) {
         matchCommunityTests : false,
         
         tests: [
-          'generatedcontent',
-          'csstransforms',
-          'csstransforms3d',
-          'csstransitions'
         ],
         
         files: {
