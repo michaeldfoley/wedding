@@ -251,7 +251,9 @@ AddDefaultCharset utf-8
 # | Shortcut urls                                                              |
 # ------------------------------------------------------------------------------
 
-RedirectMatch 301 hotel/?$ http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Klein%20%26%20Foley%20Wedding%20Room%20Block%5Enycwe%60KFWKFWA%60159%60USD%60false%609/25/15%609/27/15%6009/04/2015&app=resvlink&stop_mobi=yes
+<IfModule mod_rewrite.c>
+  RewriteRule ^hotel/?$ http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Klein%20%26%20Foley%20Wedding%20Room%20Block%5Enycwe%60KFWKFWA%60159%60USD%60false%609/25/15%609/27/15%6009/04/2015&app=resvlink&stop_mobi=yes [NC,L,R=301]
+</IfModule>
 
 
 # ##############################################################################
