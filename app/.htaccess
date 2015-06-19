@@ -247,6 +247,14 @@ AddDefaultCharset utf-8
 #    RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # </IfModule>
 
+# ------------------------------------------------------------------------------
+# | Shortcut urls                                                              |
+# ------------------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+  RewriteRule ^hotel/?$ http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Klein%20%26%20Foley%20Wedding%20Room%20Block%5Enycwe%60KFWKFWA%60159%60USD%60false%609%2F25%2F15%609%2F27%2F15%6009%2F04%2F2015&app=resvlink&stop_mobi=yes [NC,L,R=301]
+</IfModule>
+
 
 # ##############################################################################
 # # SECURITY                                                                   #
