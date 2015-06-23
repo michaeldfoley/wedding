@@ -74,6 +74,7 @@ module.exports = function (grunt) {
               '<%= yeoman.app %>'
             ]
           },
+          port: 8000,
           watchTask: true
         }
       },
