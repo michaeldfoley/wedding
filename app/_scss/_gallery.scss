@@ -16,6 +16,13 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+  }
+  
+  .gallery-engagement {
+    height: 260vw;
+  }
+  
+  .gallery-other {
     height: 310vw;
   }
   
@@ -26,7 +33,10 @@
 }
 
 @media (min-width: $screen-xl) {
-  .gallery {
+  .gallery-engagement {
+    height: 160vw;
+  }
+  .gallery-other {
     height: 180vw
   }
   .gallery-item {
