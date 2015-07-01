@@ -87,6 +87,20 @@ hr {
 }
 
 
+// Only display content to screen readers
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+
 // iOS "clickable elements" fix for role="button"
 [role="button"] {
   cursor: pointer;
