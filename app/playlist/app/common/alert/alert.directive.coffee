@@ -5,15 +5,16 @@ angular.module 'spotifyPlaylistCollab'
       
     templateUrl: 'app/common/alert/alert-template.html'
     link: (scope, elem, attrs) ->
-      
       scope.alerts = []
       
       alert = {
-        add: (msg, style, id) ->
+        add: (msg, style, song, type) ->
           scope.alerts.push({
-            id: id
+            id: song.track.id
             msg: msg
             style: style
+            song: song
+            type: type
           })
           
         remove: (id) ->
@@ -24,24 +25,38 @@ angular.module 'spotifyPlaylistCollab'
           scope.alerts = []
       }
       
+      scope.undo = (alert) ->
+        if alert.type == 'add'
+          $rootScope.$emit 'song.delete', 
+            song: alert.song
+          
+        if alert.type == 'remove'
+          $rootScope.$emit 'song.add', 
+            song: alert.song
+          
+      
       $rootScope.$on 'songs.update', (event, args) ->
+      
         track = args.song.track
+        alert.clearAll()
+        $timeout.cancel( timer );
+        
         if args.type == 'add'
-          track
-          alert.add('Added ' + track.name + '.', 'alert-default', track.id)
+          alert.add('Added ' + track.name + '.', 'alert-default', args.song, args.type)
           
           
         if args.type == 'remove'
-          alert.clearAll()
-          alert.add('Removed ' + track.name + '.', 'alert-default', track.id)
+          alert.add('Removed ' + track.name + '.', 'alert-default', args.song, args.type)
 
-
-        $timeout () ->
+        
+        timer = $timeout () ->
           elem.find('.alert').addClass('alert-removing')
             .one 'webkitAnimationEnd oanimationend msAnimationEnd animationend', () ->
               alert.clearAll()
               this.remove()
+              return
           return
-        , 3000
+        , 5000
+        return
         
   ]
