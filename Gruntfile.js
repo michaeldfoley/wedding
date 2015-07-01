@@ -31,12 +31,16 @@ module.exports = function (grunt) {
         tasks: ['copy:stageCss', 'autoprefixer:dist']
       },
       coffee: {
-        files: ['<%= yeoman.app %>/_src/**/*.coffee'],
+        files: ['<%= yeoman.app %>/**/*.coffee'],
         tasks: ['coffee:dist']
       },
       js: {
         files: ['<%= yeoman.app %>/_src/**/*.js'],
         tasks: ['copy:stageJs']
+      },
+      playlist: {
+        files: ['.tmp/js/playlist/**/*.js'],
+        tasks: ['injectAngular']
       },
       coffeeTest: {
         files: ['test/spec/**/*.coffee'],
@@ -51,7 +55,7 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/**/*.{html,yml,md,mkd,markdown}',
           '!<%= yeoman.app %>/_bower_components/**/*'
         ],
-        tasks: ['jekyll:server']
+        tasks: ['jekyll:server', 'injectAngular']
       }
     },
     browserSync: {
@@ -74,7 +78,7 @@ module.exports = function (grunt) {
               '<%= yeoman.app %>'
             ]
           },
-          port: 8000,
+          port: 3000,
           watchTask: true
         }
       },
@@ -169,7 +173,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/_src',
+          cwd: '<%= yeoman.app %>',
           src: '**/*.coffee',
           dest: '.tmp/js',
           ext: '.js'
@@ -183,6 +187,19 @@ module.exports = function (grunt) {
           dest: '.tmp/spec',
           ext: '.js'
         }]
+      }
+    },
+    angularFileLoader: {
+      options: {
+        scripts: ['.tmp/js/playlist/**/*.js'],
+        relative: '.tmp/img',
+        html: {recipe:  '<script src="/%" type="text/javascript"></script>'},
+      },
+      server: {
+        src: '.jekyll/playlist/index.html'
+      },
+      dist: {
+        src: '<%= yeoman.dist %>/playlist/index.html'
       }
     },
     jekyll: {
@@ -205,6 +222,24 @@ module.exports = function (grunt) {
         options: {
           doctor: true
         }
+      }
+    },
+    replace: {
+      server: {
+        src: '.jekyll/playlist/index.html',
+        overwrite: true, 
+        replacements: [{
+          from: '<script src="js', 
+          to: '<script src="/js'
+        }]
+      },
+      dist: {
+        src: '<%= yeoman.dist %>/playlist/index.html',
+        overwrite: true, 
+        replacements: [{
+          from: '<script src="js', 
+          to: '<script src="/js'
+        }]
       }
     },
     useminPrepare: {
@@ -533,7 +568,16 @@ module.exports = function (grunt) {
   });
 
   // Define Tasks
+  grunt.registerTask('injectAngular', function (target) {
+    if (target === 'dist') {
+      return grunt.task.run(['angularFileLoader:dist','replace:dist']);
+    }
+    
+    grunt.task.run(['angularFileLoader:server','replace:server']);
+  });
+  
   grunt.registerTask('serve', function (target) {
+    
     if (target === 'dist') {
       return grunt.task.run(['build', 'browserSync:dist']);
     }
@@ -541,6 +585,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
+      'injectAngular',
       'autoprefixer:dist',
       'browserSync:server',
       'watch'
@@ -575,6 +620,7 @@ module.exports = function (grunt) {
     // Jekyll cleans files from the target directory, so must run first
     'jekyll:dist',
     'concurrent:dist',
+    'injectAngular:dist',
     'useminPrepare',
     'modernizr',
     'concat',

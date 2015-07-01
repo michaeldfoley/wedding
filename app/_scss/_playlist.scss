@@ -1,0 +1,57 @@
+//
+// Playlists
+// --------------------------------------------------
+
+.playlist {
+  margin: 0 -15px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+// Individual Songs
+
+.playlist-item {
+  width: 250px;
+  margin: 0 15px 30px 15px;
+  animation: zoomIn .3s ease-out;
+  
+  &.deleting {
+    animation: zoomOut .3s ease-out;
+  }
+}
+
+.playlist-thumb {
+  img {
+    max-width: 100%;
+    height: 250px;
+  }
+}
+
+
+//
+// Login and buttons
+// --------------------------------------------------
+
+.spotify-login {
+  text-align: center;
+}
+.spotify-listen {
+  text-align: center;
+  
+  svg {
+    width: 400px;
+    height: 75px;
+  }
+}
+.spotify-button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 270px;
+  height: 50px;
+}

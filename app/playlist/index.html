@@ -1,0 +1,33 @@
+---
+layout: default
+nav-name: Playlist
+title: Playlist
+heading: playlist
+description: We are building a playlist for the welcome dinner. We'd like your help!
+weight: 5
+---
+
+<article class="gallery" ng-app="spotifyPlaylistCollab">
+  <div ng-controller="PlaylistCtrl">
+    <div ng-init="init()" class="container">
+      <mfalert></mfalert>
+      <div ng-hide="token" class="spotify-login"> 
+        <p class="lead">In order to view and add to the playlist, please login with your spotify account.</p>
+        <button ng-click="login()" class="spotify-button">
+          <svg aria-label="Login with Spotify">
+            <use xlink:href="/img/spotify.svg#login"></use>
+          </svg>
+        </button>
+      </div>
+      <mfsearch ng-if="token"></mfsearch>
+      <mfplaylist ng-if="token"></mfplaylist>
+      <div ng-if="token" class="spotify-listen">
+        <a href="https://open.spotify.com/user/{{playlistOwnerId}}/playlist/{{playlistId}}">
+          <svg aria-label="Listen on Spotify">
+            <use xlink:href="/img/spotify.svg#listen"></use>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</article>

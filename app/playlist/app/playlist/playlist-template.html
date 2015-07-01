@@ -1,0 +1,6 @@
+
+<ul class="playlist">
+  <li ng-repeat="song in playlist.songs | unique:'track.external_ids.isrc' | orderBy:['added_at']:true track by song.track.external_ids.isrc" class="playlist-item">
+    <mfsong song="song" playlist="playlistId"></mfsong>
+  </li>
+</ul>
