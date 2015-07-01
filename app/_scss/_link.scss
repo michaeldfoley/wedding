@@ -28,6 +28,16 @@ a {
           transform: scaleX(1);
         }
       }
+      
+      &.no-decoration {
+        &:hover,
+        &:focus {
+          &:before {
+            visibility: hidden;
+            transform: scaleX(0);
+          }
+        }
+      }
     }
   }
 }
