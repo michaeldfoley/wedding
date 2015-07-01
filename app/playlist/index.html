@@ -7,27 +7,33 @@ description: We are building a playlist for the welcome dinner. We'd like your h
 weight: 5
 ---
 
-<article class="gallery" ng-app="spotifyPlaylistCollab">
-  <div ng-controller="PlaylistCtrl">
-    <div ng-init="init()" class="container">
-      <mfalert></mfalert>
-      <div ng-hide="token" class="spotify-login"> 
-        <p class="lead">In order to view and add to the playlist, please login with your spotify account.</p>
-        <button ng-click="login()" class="spotify-button">
-          <svg aria-label="Login with Spotify">
-            <use xlink:href="/img/spotify.svg#login"></use>
-          </svg>
-        </button>
-      </div>
-      <mfsearch ng-if="token"></mfsearch>
-      <mfplaylist ng-if="token"></mfplaylist>
-      <div ng-if="token" class="spotify-listen">
-        <a href="https://open.spotify.com/user/{{playlistOwnerId}}/playlist/{{playlistId}}">
-          <svg aria-label="Listen on Spotify">
-            <use xlink:href="/img/spotify.svg#listen"></use>
-          </svg>
-        </a>
+<article class="post">
+{% include heading.html %}
+  <section class="gallery" ng-app="spotifyPlaylistCollab">
+    <div ng-controller="PlaylistCtrl">
+      <div ng-init="init()">
+        <mfalert></mfalert>
+        <div class="container">
+          <h2 class="playlist-title">We're building a playlist for the welcome barbecue.</h2>
+          <div ng-hide="token" class="spotify-login"> 
+            <p class="lead">To view and add to the playlist, please login with your Spotify account.</p>
+            <button ng-click="login()" class="spotify-button">
+              <svg aria-label="Login with Spotify">
+                <use xlink:href="/img/spotify.svg#login"></use>
+              </svg>
+            </button>
+          </div>
+          <mfsearch ng-if="token"></mfsearch>
+        </div>
+        <mfplaylist ng-if="token"></mfplaylist>
+        <div ng-if="token" class="spotify-listen">
+          <a href="https://open.spotify.com/user/{{playlistOwnerId}}/playlist/{{playlistId}}">
+            <svg aria-label="Listen on Spotify">
+              <use xlink:href="/img/spotify.svg#listen"></use>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </article>

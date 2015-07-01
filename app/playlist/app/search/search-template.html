@@ -1,8 +1,8 @@
 
 <form name="songSearch" ng-submit="search()" novalidate="novalidate" class="search">
   <div class="form-group">
-    <label for="songQuery" class="search-label">Add a song to the playlist</label>
-    <input type="search" id="songQuery" ng-model="songQuery" ng-change="search()" ng-model-options="{ debounce: 300 }" placeholder="Search for a song, artist, or album" autocomplete="off"/>
+    <label for="songQuery" class="search-label">Add to the playlist. </label>
+    <input type="search" class="form-control" id="songQuery" ng-model="songQuery" ng-change="search()" ng-model-options="{ debounce: 300 }" placeholder="Search for a song, artist, or album" autocomplete="off"/>
   </div>
   <ul id="searchResults" ng-show="searchResults" off-click="closeSearch()" off-click-if="searchResults" class="search-results">
     <li ng-if="!searchResults.items.length" class="search-result empty">Sorry, no results.</li>

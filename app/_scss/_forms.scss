@@ -1,0 +1,43 @@
+//
+// Forms
+// --------------------------------------------------
+
+
+.form-group {
+  margin-top: 2em;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: $input-height-base;
+  padding: $padding-base-vertical $padding-base-horizontal;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $input-color;
+  background-color: $input-bg;
+  background-image: none;
+  border: 1px solid $input-border;
+  border-radius: $input-border-radius;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  
+  &:focus {
+    border-color: $input-border-focus;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($input-border-focus, .6);
+  }
+  
+  &::-moz-placeholder {
+    color: $input-color-placeholder;
+    opacity: 1; 
+  }
+  &:-ms-input-placeholder { color: $input-color-placeholder; }
+  &::-webkit-input-placeholder  { color: $input-color-placeholder; }
+}
+
+input[type="search"] {
+  -webkit-appearance: none;
+  border-radius: $search-border-radius;
+  box-sizing: border-box;
+}
