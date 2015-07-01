@@ -10,8 +10,9 @@ angular.module 'spotifyPlaylistCollab'
       scope.lastResults = null
       scope.playlist = playlist
       
-      $rootScope.$on 'songs.update', (event) ->
+      $rootScope.$on 'songs.update', (event, args) ->
         scope.closeSearch()
+        if args.type == 'add' then scope.songQuery = ''
       
       scope.addSong = (song) ->
         if scope.playlistId
