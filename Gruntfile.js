@@ -125,6 +125,11 @@ module.exports = function (grunt) {
         }]
       },
       server: [
+        '.tmp/*',
+        '.jekyll',
+        '!.tmp/img'
+      ],
+      serverReset: [
         '.tmp',
         '.jekyll'
       ]
@@ -350,7 +355,8 @@ module.exports = function (grunt) {
         expand: true,
         cwd: '<%= yeoman.app %>',
         src: ['img/**/*.{jpg,gif,png}'],
-        dest: '.tmp'
+        dest: '.tmp',
+        newFilesOnly: true
       },
       dist: {
         expand: true,
@@ -578,18 +584,26 @@ module.exports = function (grunt) {
   
   grunt.registerTask('serve', function (target) {
     
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'browserSync:dist']);
-    }
-
-    grunt.task.run([
-      'clean:server',
+    var serve = [
       'concurrent:server',
       'injectAngular',
       'autoprefixer:dist',
       'browserSync:server',
       'watch'
-    ]);
+    ]
+    
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'browserSync:dist']);
+    }
+    
+    if (target === 'reset') {
+      serve.unshift('clean:serverReset')
+      return grunt.task.run(serve);
+    }
+    
+    serve.unshift('clean:server')
+    
+    grunt.task.run(serve);
   });
 
   grunt.registerTask('server', function () {
