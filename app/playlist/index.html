@@ -12,7 +12,6 @@ weight: 5
   <section class="gallery" ng-app="spotifyPlaylistCollab">
     <div ng-controller="PlaylistCtrl">
       <div ng-init="init()">
-        {{playlistId.owner}}
         <mfalert></mfalert>
         <div class="container">
           <h2 class="playlist-title">We're building a playlist for the welcome barbecue.</h2>
@@ -21,16 +20,17 @@ weight: 5
         <mfplaylist ng-if="token"></mfplaylist>
         
         <div class="spotify-controls container"> 
-          <p ng-hide="token" class="lead">To view and add to the playlist, please login with your Spotify account.</p>
-          <button ng-hide="token" ng-click="login()" class="spotify-button">
+          <p ng-if="!token" class="lead">To add to the playlist, please login with your Spotify account.</p>
+          <button ng-if="!token" ng-click="login()" class="spotify-button">
             <svg aria-label="Listen on Spotify"><use xlink:href="../img/sprite.symbol.svg#spotify-login" /></svg>
           </button>
-          <div class="spotify-button" ng-if="token">
+          <div class="spotify-button" ng-if="!token">
             <a href="https://open.spotify.com/user/michaeldfoley/playlist/5L5t7NUqA9xL1wvUFIoaYl" class="no-decoration">
               <svg aria-label="Listen on Spotify"><use xlink:href="../img/sprite.symbol.svg#spotify-listen" /></svg>
             </a>
           </div>
         </div>
+        <mfplayerbar playlist="playlistId" ng-if="token"></mfplayerbar>
       </div>
     </div>
   </section>

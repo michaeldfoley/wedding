@@ -1,0 +1,76 @@
+//
+// Playlists
+// --------------------------------------------------
+
+.playerbar {
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: $zindex-1;
+}
+
+.playerbar,
+.playerbar-song {
+  display: flex;
+  align-items: center;
+}
+
+.playerbar-song,
+.playerbar-link,
+.playerbar-info {
+  flex: 1;
+}
+
+.isPlaying,
+.isPaused {
+  .playerbar-toggle {
+    animation: none;
+    opacity: 1;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.playerbar-artists {
+  margin-bottom: 0;
+}
+
+.playerbar-link,
+.playerbar-artist {
+  font-size: $font-size-small;
+}
+
+.playerbar-link {
+  text-align: center;
+  font-weight: $font-weight-strong;
+  text-transform: uppercase;
+  margin: 10px 0;
+  
+  a {
+    display: inline-block;
+    margin-right: 15px;
+  }
+}
+
+.isPaused, .isPlaying {
+  .playerbar-link {
+    text-align: right;
+  }
+  .playerbar-controls {
+    margin: 0 30px;
+  }
+}
+
+.playerbar-title {
+  margin-top: 0;
+  font-size: $font-size-h4 * .85;
+}
+
+.playerbar-thumb {
+  margin-right: 30px;
+  width: 80px;
+  height: auto;
+}
