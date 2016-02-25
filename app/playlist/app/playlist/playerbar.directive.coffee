@@ -8,7 +8,7 @@ angular.module 'spotifyPlaylistCollab'
     templateUrl: 'app/playlist/playerbar-template.html'
     link: (scope, elem) ->
       elem.on 'click', '.playerbar-toggle', () ->
-        player.toggle()
+        player.toggle(scope.song)
       
       elem.on 'click', '.playerbar-next:not(.disabled)', () ->
         player.toggle( playlist.nextSong(player.current).track )
@@ -16,16 +16,20 @@ angular.module 'spotifyPlaylistCollab'
       elem.on 'click', '.playerbar-prev:not(.disabled)', () ->
         player.toggle( playlist.prevSong(player.current).track )
       
-      $rootScope.$on 'player.playing', () ->
-        elem.removeClass 'isPaused'
-          .addClass 'isPlaying'
+      $rootScope.$on 'player.playing', (event, args) ->
+        if args != 'search'
+          elem.removeClass 'isPaused'
+            .addClass 'isPlaying'
+          
+          scope.isFirst = playlist.isFirst(player.current)
+          scope.isLast = playlist.isLast(player.current)
+          
+          scope.song = player.song
+          scope.image = scope.song.album.images[1].url
         
-        scope.isFirst = playlist.isFirst(player.current)
-        scope.isLast = playlist.isLast(player.current)
-      
-        scope.$apply(
-          scope.player = player
-        )
+          scope.$evalAsync(
+            scope.player = player
+          )
               
       $rootScope.$on 'player.paused', () ->
         elem.removeClass 'isPlaying'

@@ -1,12 +1,12 @@
 <aside class="playerbar">
   <div class="playerbar-song" ng-if="player">
     <div class="playerbar-thumb">
-      <img ng-src="{{player.previewImg}}"/>
+      <img ng-src="{{image}}"/>
     </div>
     <div class="playerbar-info song-info">
-      <h4 class="playerbar-title song-title">{{player.name}}</h4>
+      <h4 class="playerbar-title song-title">{{song.name}}</h4>
       <ul class="playerbar-artists song-artists">
-        <li ng-repeat="artist in player.artists" class="playerbar-artist song-artist">{{artist.name}}</li>
+        <li ng-repeat="artist in song.artists" class="playerbar-artist song-artist">{{artist.name}}</li>
       </ul>
     </div>
   </div>

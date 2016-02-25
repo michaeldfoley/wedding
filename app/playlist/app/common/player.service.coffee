@@ -8,19 +8,17 @@ angular.module 'spotifyPlaylistCollab'
       name: null
       artists: null
       
-      play: (song) ->
+      play: (song, source) ->
         songId = song.external_ids.isrc
         if player.isPlaying
           player.stop()
         if !player.isCurrent(songId)
           audio.src = song.preview_url
           player.current = songId
-          player.previewImg = song.album.images[1].url
-          player.name = song.name
-          player.artists = song.artists
+          player.song = song
         audio.play()
         player.isPlaying = true
-        $rootScope.$emit 'player.playing'
+        $rootScope.$emit 'player.playing', source
       
       pause: () ->
         if player.isPlaying
@@ -46,13 +44,13 @@ angular.module 'spotifyPlaylistCollab'
       thisIsPaused: (track) ->
         !player.isPlaying && player.isCurrent(track.external_ids.isrc)
         
-      toggle: (song) ->
+      toggle: (song, source) ->
         if typeof song == 'undefined'
           song = external_ids: isrc: player.current
         if player.isPlaying && player.isCurrent(song.external_ids.isrc)
           player.pause()
         else
-          player.play(song)
+          player.play(song, source)
     
     audio.addEventListener 'ended', () ->
       $rootScope.$apply () ->

@@ -7,7 +7,7 @@
   <ul id="searchResults" ng-show="searchResults" off-click="closeSearch()" off-click-if="searchResults" class="search-results">
     <li ng-if="!searchResults.items.length" class="search-result empty">Sorry, no results.</li>
     <li bindonce="item" ng-repeat="item in searchResults.items | unique:'external_ids.isrc' track by item.external_ids.isrc" ng-class="{isPlaying: player.thisIsPlaying(item), isPaused: player.thisIsPaused(item), 'in-playlist': playlist.inPlaylist(item.external_ids.isrc)}" on-finish-resize="on-finish-resize" class="search-result">
-      <div ng-click="player.toggle(item)" class="search-thumb song-thumb"><img bo-src="item.album.images[2].url"/>
+      <div ng-click="player.toggle(item, 'search')" class="search-thumb song-thumb"><img bo-src="item.album.images[2].url"/>
         <div bo-if="item.preview_url" class="song-controls">
           <div class="song-toggle search-toggle"></div>
         </div>
