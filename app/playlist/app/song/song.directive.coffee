@@ -6,7 +6,7 @@ angular.module 'spotifyPlaylistCollab'
       song: "="
       playlistId: "=playlist"
     }
-    templateUrl: 'app/playlist/song-template.html'
+    templateUrl: 'app/song/song-template.html'
     link: (scope, elem, attrs) ->
       track = scope.song.track
       
@@ -23,16 +23,11 @@ angular.module 'spotifyPlaylistCollab'
             playlist.removeSong(scope.playlistId.owner, scope.playlistId.id, scope.song)
             return
       
-      $rootScope.$on 'player.playing', () ->
-        elem.removeClass 'isPaused'
-        if player.thisIsPlaying(track)
-          elem.addClass 'isPlaying'
       
-      $rootScope.$on 'player.paused', () ->
-        elem.removeClass 'isPlaying'
-        if player.thisIsPaused(track)
-          elem.addClass 'isPaused'
-      
-      $rootScope.$on 'player.stopped', () ->
-        elem.removeClass 'isPlaying isPaused'
+      $rootScope.$on 'player.update', (event, args) ->
+        
+        scope.$evalAsync(
+          scope.isPlaying = player.thisIsPlaying(track)
+          scope.isPlaying = player.thisIsPlaying(track)
+        )
   ]

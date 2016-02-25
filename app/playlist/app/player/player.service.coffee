@@ -18,19 +18,23 @@ angular.module 'spotifyPlaylistCollab'
           player.song = song
         audio.play()
         player.isPlaying = true
-        $rootScope.$emit 'player.playing', source
+        $rootScope.$emit 'player.update',
+          status: 'playing'
+          source: source
       
       pause: () ->
         if player.isPlaying
           audio.pause()
           player.isPlaying = false
-          $rootScope.$emit 'player.paused'
+          $rootScope.$emit 'player.update',
+            status: 'paused'
       
       stop: () ->
         if player.isPlaying
           player.pause()
           audio.currentTime = 0
-          $rootScope.$emit 'player.stopped'
+          $rootScope.$emit 'player.update',
+            status: 'stopped'
       
       hasTrack: () ->
         !!player.current

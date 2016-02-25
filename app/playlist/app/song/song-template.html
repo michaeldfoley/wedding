@@ -1,10 +1,11 @@
 
-<div bindonce="song.hasControls" class="song">
+<div bindonce="song.hasControls" class="song" ng-class="{isPlaying: isPlaying, isPaused: isPaused}">
   <div class="playlist-thumb song-thumb"><img bo-src="song.track.album.images[1].url"/>
     <div bo-if="song.hasControls" class="song-controls">
       <div bo-if="song.hasPreview" class="song-toggle"></div>
       <div bo-if="song.isOwner" class="song-delete"></div>
     </div>
+    <mffreq song="song" ng-if="isPlaying"></mffreq>
   </div>
   <div class="song-info">
     <h4 bo-text="song.track.name" class="song-title"></h4>

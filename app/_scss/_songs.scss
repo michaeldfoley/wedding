@@ -133,6 +133,17 @@
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="37px" height="37px"><path fill="#FFFFFF" d="M24.1 18.5l8.1-8.1c1.1-1.1 1.1-2.9 0-4.1l-1.5-1.5c-1.1-1.1-2.9-1.1-4.1 0l-8.1 8.1 -8.1-8.1c-1.1-1.1-2.9-1.1-4.1 0L4.8 6.3c-1.1 1.1-1.1 2.9 0 4.1l8.1 8.1 -8.1 8.1c-1.1 1.1-1.1 2.9 0 4.1l1.5 1.5c1.1 1.1 2.9 1.1 4.1 0l8.1-8.1 8.1 8.1c1.1 1.1 2.9 1.1 4.1 0l1.5-1.5c1.1-1.1 1.1-2.9 0-4.1L24.1 18.5z"/></svg>');
 }
 
+@keyframes playing {
+  0% {
+   opacity: .4;
+   height: .2em;
+  }
+  100% {  
+    opacity: 1;
+    height: 4em;        
+  }
+}
+
 
 //
 // Play States
@@ -149,8 +160,8 @@
 
 .isPlaying .song-toggle {
   animation: spin 3.636363s linear infinite;
-  
-  &:hover {
-    animation: none;
-  }
+}
+
+.song-controls:hover .song-toggle {
+  animation: none;
 }
