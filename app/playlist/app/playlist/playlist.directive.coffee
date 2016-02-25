@@ -16,11 +16,9 @@ angular.module 'spotifyPlaylistCollab'
       getPlaylist()
       
       $rootScope.$on 'song.delete', (event, args) ->
-        console.log args
         playlist.removeSong(scope.playlistId.owner, scope.playlistId.id, args.song)
       
       $rootScope.$on 'song.add', (event, args) ->
-        console.log args
         playlist.addSong(scope.playlistId.owner, scope.playlistId.id, args.song.track)
         
   ]

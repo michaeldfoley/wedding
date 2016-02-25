@@ -13,7 +13,8 @@
 }
 
 .playerbar,
-.playerbar-song {
+.playerbar-song,
+.playerbar-controls {
   display: flex;
   align-items: center;
 }
@@ -24,6 +25,10 @@
   flex: 1;
 }
 
+.playerbar-toggle {
+  background-color: $brand-secondary;
+}
+
 .isPlaying,
 .isPaused {
   .playerbar-toggle {
@@ -31,6 +36,7 @@
     opacity: 1;
     width: 60px;
     height: 60px;
+    margin: 0 30px;
   }
 }
 
@@ -72,5 +78,23 @@
 .playerbar-thumb {
   margin-right: 30px;
   width: 80px;
-  height: auto;
+  height: 80px;
+}
+
+.playerbar-prev,
+.playerbar-next {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="37px" height="37px"><path fill="#{$text-color}" d="M3.9,32.1c-1.7,0.9-3.1,0.2-3.1-1.8V6.6C0.8,4.7,2.2,4,3.7,5l20.1,12.7c1.6,1.1,1.5,2.6-0.2,3.5L3.9,32.1z"/><path fill="#{$text-color}" d="M36.3,31.4V5.5c0-1.5-1.2-2.7-2.7-2.7h-2.8c-1.5,0-2.8,1.2-2.8,2.7v25.9c0,1.5,1.2,2.7,2.7,2.7h2.8
+	C35,34.2,36.3,32.9,36.3,31.4z"/></svg>');
+	background-size: 15px 15px;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	
+	&.disabled {
+  	cursor: default;
+	}
+}
+
+.playerbar-prev {
+  transform: scaleX(-1);
 }

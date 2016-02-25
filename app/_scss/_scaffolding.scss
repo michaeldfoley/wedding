@@ -87,6 +87,13 @@ hr {
 }
 
 
+// General styles for disabled elements
+.disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+
 // Only display content to screen readers
 
 .sr-only {

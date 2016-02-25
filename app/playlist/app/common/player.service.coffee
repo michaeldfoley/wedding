@@ -9,11 +9,12 @@ angular.module 'spotifyPlaylistCollab'
       artists: null
       
       play: (song) ->
-        url = song.preview_url
+        songId = song.external_ids.isrc
         if player.isPlaying
           player.stop()
-        if !player.isCurrent(url)
-          player.current = audio.src = url
+        if !player.isCurrent(songId)
+          audio.src = song.preview_url
+          player.current = songId
           player.previewImg = song.album.images[1].url
           player.name = song.name
           player.artists = song.artists
@@ -30,26 +31,25 @@ angular.module 'spotifyPlaylistCollab'
       stop: () ->
         if player.isPlaying
           player.pause()
+          audio.currentTime = 0
           $rootScope.$emit 'player.stopped'
-          audio.remove()
-          player.previewImg = player.current = player.name = player.artists = null
       
       hasTrack: () ->
         !!player.current
       
-      isCurrent: (track) ->
-        player.current && player.current == track
+      isCurrent: (id) ->
+        player.current && player.current == id
       
       thisIsPlaying: (track) ->
-        player.isPlaying && player.isCurrent(track.preview_url)
+        player.isPlaying && player.isCurrent(track.external_ids.isrc)
       
       thisIsPaused: (track) ->
-        !player.isPlaying && player.isCurrent(track.preview_url)
+        !player.isPlaying && player.isCurrent(track.external_ids.isrc)
         
       toggle: (song) ->
         if typeof song == 'undefined'
-          song = preview_url: player.current
-        if player.isPlaying && player.isCurrent(song.preview_url)
+          song = external_ids: isrc: player.current
+        if player.isPlaying && player.isCurrent(song.external_ids.isrc)
           player.pause()
         else
           player.play(song)

@@ -10,10 +10,10 @@
       </ul>
     </div>
   </div>
-  <div class="playerbar-controls">
-    <div class="playerbar-prev"></div>
-    <div class="playerbar-toggle song-toggle"></div>
-    <div class="playerbar-next"></div>
+  <div class="playerbar-controls" ng-if="player">
+    <div class="playerbar-prev" ng-class="{disabled: isFirst}" aria-role="button" ng-disabled="isFirst"></div>
+    <div class="playerbar-toggle song-toggle" aria-role="button" aria-disabled="false"></div>
+    <div class="playerbar-next" ng-class="{disabled: isLast}" aria-role="button" ng-disabled="isLast"></div>
   </div>
   <div class="playerbar-link">
     <a ng-href="https://open.spotify.com/user/{{playlistId.owner}}/playlist/{{playlistId.id}}" target="_blank">Listen to the full playlist on Spotify</a>

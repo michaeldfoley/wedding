@@ -21,6 +21,11 @@ angular.module 'spotifyPlaylistCollab'
       songIds: []
       
       getPlaylist: (playlistOwner, playlistId, playlistOptions) ->
+        orderByDate = (a,b) ->
+          if a.added_at < b.added_at then -1
+          else if a.added_at > b.added_at then 1
+          else 0
+        
         if $rootScope.token
           playlist.getUserId()
           # If more than 100 tracks just take the last 100.
@@ -30,6 +35,7 @@ angular.module 'spotifyPlaylistCollab'
               Spotify.getPlaylistTracks(playlistOwner, playlistId, playlistOptions)
                 .then (data) ->
                   playlist.songs = data.items
+                  playlist.songs.sort(orderByDate)
                   playlist.songIds = []
                   angular.forEach(playlist.songs, (item, key) ->
                     playlist.songIds.push(item.track.external_ids.isrc)
@@ -37,6 +43,12 @@ angular.module 'spotifyPlaylistCollab'
            
       inPlaylist: (value) ->
         playlist.songIds.indexOf(value) > -1
+      
+      isFirst: (id) ->
+        playlist.songIds.indexOf(id) == playlist.songIds.length - 1
+      
+      isLast: (id) ->
+        playlist.songIds.indexOf(id) == 0
       
       addSong: (playlistOwner, playlistId, song) ->
         if $rootScope.token && !playlist.inPlaylist(song.external_ids.isrc)
@@ -57,6 +69,21 @@ angular.module 'spotifyPlaylistCollab'
           Spotify.removePlaylistTracks(playlistOwner, playlistId, song.track.id)
             .then () ->
               songsUpdated('remove', song)
+        
+      nextSong: (id) ->
+        position = playlist.songIds.indexOf(id) - 1
+        # if the next song doesn't have a preview find one that does
+        while !playlist.songs[position].hasPreview
+          position--
+        playlist.songs[position]
+      
+      prevSong: (id) ->
+        position = playlist.songIds.indexOf(id) + 1
+        # if the next song doesn't have a preview find one that does
+        while !playlist.songs[position].hasPreview
+          position++
+        playlist.songs[position]
+        
             
     return playlist
   ]
