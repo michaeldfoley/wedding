@@ -2,11 +2,11 @@ angular.module 'spotifyPlaylistCollab'
   .directive 'mfalert', ['$rootScope', '$timeout', ($rootScope, $timeout) ->
     restrict: 'E'
     replace: true
-      
+    scope:{}
     templateUrl: 'app/common/alert/alert-template.html'
     link: (scope, elem, attrs) ->
       scope.alerts = []
-      
+        
       alert = {
         add: (msg, style, song, type) ->
           scope.alerts.push({
@@ -33,13 +33,10 @@ angular.module 'spotifyPlaylistCollab'
         if alert.type == 'remove'
           $rootScope.$emit 'song.add', 
             song: alert.song
-          
       
       $rootScope.$on 'songs.update', (event, args) ->
-      
         track = args.song.track
         alert.clearAll()
-        $timeout.cancel( timer );
         
         if args.type == 'add'
           alert.add('Added ' + track.name + '.', 'alert-default', args.song, args.type)
@@ -47,16 +44,16 @@ angular.module 'spotifyPlaylistCollab'
           
         if args.type == 'remove'
           alert.add('Removed ' + track.name + '.', 'alert-default', args.song, args.type)
-
         
-        timer = $timeout () ->
-          elem.find('.alert').addClass('alert-removing')
+        $timeout.cancel(scope.startTimer)
+        scope.startTimer = $timeout(
+          () ->
+            elem.find('.alert').addClass('alert-removing')
             .one 'webkitAnimationEnd oanimationend msAnimationEnd animationend', () ->
               alert.clearAll()
-              this.remove()
+              @remove()
               return
-          return
-        , 5000
-        return
+            return
+          , 5000 )
         
   ]
