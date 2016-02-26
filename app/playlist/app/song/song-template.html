@@ -5,7 +5,7 @@
       <div bo-if="song.hasPreview" class="song-toggle"></div>
       <div bo-if="song.isOwner" class="song-delete"></div>
     </div>
-    <mffreq song="song" ng-if="isPlaying"></mffreq>
+    <mffreq song="song" ng-if="isPlaying || isPaused"></mffreq>
   </div>
   <div class="song-info">
     <h4 bo-text="song.track.name" class="song-title"></h4>

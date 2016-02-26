@@ -28,6 +28,6 @@ angular.module 'spotifyPlaylistCollab'
         
         scope.$evalAsync(
           scope.isPlaying = player.thisIsPlaying(track)
-          scope.isPlaying = player.thisIsPlaying(track)
+          scope.isPaused = player.thisIsPaused(track)
         )
   ]
