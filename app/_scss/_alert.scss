@@ -13,7 +13,7 @@
 .alert {
   display: inline-block;
   padding: 10px 40px;
-  animation: slideDown .2s ease-out;
+  animation: slideDownIn .2s ease-out;
 }
 
 .alert-default {
@@ -23,9 +23,9 @@
 }
 
 .alert-adding {
-  animation: slideDown .3s ease-out;
+  animation: slideDownIn .3s ease-out;
 }
 
 .alert-removing {
-  animation: slideUp .3s ease-out;
+  animation: slideUpOut .3s ease-out;
 }
