@@ -1,5 +1,6 @@
 angular.module 'spotifyPlaylistCollab'
   .factory 'player', ['audio', '$rootScope', (audio, $rootScope) ->
+    audio.crossOrigin = 'anonymous'
     
     player =
       current: null

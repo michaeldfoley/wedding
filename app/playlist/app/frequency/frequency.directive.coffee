@@ -7,8 +7,8 @@ angular.module 'spotifyPlaylistCollab'
     }
     templateUrl: 'app/frequency/frequency-template.html'
     link: (scope, elem, attrs) ->
+      
       frequency.draw(elem, audio)
-      frequency.startDrawing()
       
       $rootScope.$on 'player.update', (event, args) ->
         id = scope.song.track.external_ids.isrc

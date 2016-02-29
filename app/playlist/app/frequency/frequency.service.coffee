@@ -11,20 +11,6 @@ angular.module 'spotifyPlaylistCollab'
     request = null
     svg = null
     
-    # Get the average frequency amplitudes
-    getAverageVolume = (array) ->
-      values = 0
-      average = undefined
-      length = array.length
-      # get all the frequency amplitudes
-      i = 0
-      while i < length
-        values += array[i]
-        i++
-      average = values / length
-      average
-    
-    # Create the svg
     createSvg = (parent, height, width) ->
       d3.select(parent.context)
         .append('svg')
@@ -33,10 +19,7 @@ angular.module 'spotifyPlaylistCollab'
     
     draw = 
       setup: (audio) ->
-        audio.crossOrigin = 'anonymous'
         audioSrc = audioCtx.createMediaElementSource(audio)
-        
-        # Bind our analyser to the media element source.
         audioSrc.connect(analyser)
         audioSrc.connect(audioCtx.destination)
         
@@ -45,7 +28,6 @@ angular.module 'spotifyPlaylistCollab'
       draw: (element, audio) ->
         if !setup
           draw.setup(audio)
-        
         svg = createSvg(element, svgHeight, svgWidth)
         svg.selectAll('rect')
           .data(frequencyData)
@@ -54,13 +36,14 @@ angular.module 'spotifyPlaylistCollab'
           .attr 'x', (d, i) ->
             i * svgWidth / frequencyData.length
           .attr 'width', svgWidth / frequencyData.length - barPadding
+          
+        draw.startDrawing()
         
         
       renderChart: () ->
         draw.startDrawing()
         
         analyser.getByteFrequencyData(frequencyData)
-        average = Math.ceil(getAverageVolume(frequencyData) / 10) * 10
         
         svg.selectAll('rect')
           .data(frequencyData)
@@ -80,6 +63,4 @@ angular.module 'spotifyPlaylistCollab'
         
     
     return draw
-    
-    
   
