@@ -2,7 +2,7 @@ angular.module 'spotifyPlaylistCollab'
   .directive 'mfsearch', ['$rootScope', 'Spotify', 'playlist', ($rootScope, Spotify, playlist) ->
     restrict: 'E'
     replace: true
-    templateUrl: 'app/search/search-template.html'
+    templateUrl: '/js/playlist/search/search-template.html'
     link: (scope, elem, attrs) ->
       scope.songQuery = ''
       scope.searchResults = null

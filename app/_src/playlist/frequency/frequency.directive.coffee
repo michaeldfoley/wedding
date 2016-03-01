@@ -5,7 +5,7 @@ angular.module 'spotifyPlaylistCollab'
     scope: {
       song: "="
     }
-    templateUrl: 'app/frequency/frequency-template.html'
+    templateUrl: '/js/playlist/frequency/frequency-template.html'
     link: (scope, elem, attrs) ->
       
       frequency.draw(elem, audio)

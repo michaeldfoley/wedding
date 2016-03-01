@@ -6,7 +6,7 @@ angular.module 'spotifyPlaylistCollab'
       song: "="
       playlistId: "=playlist"
     }
-    templateUrl: 'app/song/song-template.html'
+    templateUrl: '/js/playlist/song/song-template.html'
     link: (scope, elem, attrs) ->
       track = scope.song.track
       

@@ -3,7 +3,7 @@ angular.module 'spotifyPlaylistCollab'
     restrict: 'E'
     replace: true
     scope:{}
-    templateUrl: 'app/alert/alert-template.html'
+    templateUrl: '/js/playlist/alert/alert-template.html'
     link: (scope, elem, attrs) ->
       scope.alerts = []
         

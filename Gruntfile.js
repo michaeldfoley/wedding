@@ -50,9 +50,16 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/img/**/*.svg'],
         tasks: ['svg_sprite:stage']
       },
+      angular_html: {
+        files: [
+          '<%= yeoman.app %>/_src/**/*.html'
+        ],
+        tasks: ['copy:stageTemplates']
+      },
       jekyll: {
         files: [
           '<%= yeoman.app %>/**/*.{html,yml,md,mkd,markdown}',
+          '!<%= yeoman.app %>/_src/**/*.html',
           '!<%= yeoman.app %>/_bower_components/**/*'
         ],
         tasks: ['jekyll:server', 'injectAngular']
@@ -63,6 +70,7 @@ module.exports = function (grunt) {
         bsFiles: {
           src: [
             '.jekyll/**/*.html',
+            '.tmp/js/**/*.html',
             '.tmp/css/**/*.css',
             '{.tmp,<%= yeoman.app %>}/js/**/*.js',
             '{<%= yeoman.app %>}/_bower_components/**/*.js',
@@ -183,7 +191,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>',
+          cwd: '<%= yeoman.app %>/_src',
           src: '**/*.coffee',
           dest: '.tmp/js',
           ext: '.js'
@@ -458,6 +466,15 @@ module.exports = function (grunt) {
           src: 'modernizr.js',
           dest: '.tmp/js'
         }]
+      },
+      stageTemplates: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/_src',
+          src: 'playlist/**/*.html',
+          dest: '.tmp/js'
+        }]
       }
     },
     filerev: {
@@ -566,6 +583,7 @@ module.exports = function (grunt) {
         'responsive_images:stage',
         'copy:stageCss',
         'copy:stageJs',
+        'copy:stageTemplates',
         'jekyll:server'
       ],
       dist: [

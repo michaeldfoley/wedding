@@ -5,7 +5,7 @@ angular.module 'spotifyPlaylistCollab'
     scope: {
       playlistId: "=playlist"
     }
-    templateUrl: 'app/playerbar/playerbar-template.html'
+    templateUrl: '/js/playlist/playerbar/playerbar-template.html'
     link: (scope, elem) ->
       elem.on 'click', '.playerbar-toggle', () ->
         player.toggle(scope.song)
