@@ -1,5 +1,5 @@
 angular.module 'spotifyPlaylistCollab'
-  .directive 'mfsearch', ['$rootScope', 'Spotify', 'playlist', ($rootScope, Spotify, playlist) ->
+  .directive 'mfsearch', ['$rootScope', '$window', 'Spotify', 'playlist', 'smoothScroll', ($rootScope, $window, Spotify, playlist, smoothScroll) ->
     restrict: 'E'
     replace: true
     templateUrl: '/js/playlist/search/search-template.html'
@@ -13,6 +13,14 @@ angular.module 'spotifyPlaylistCollab'
       $rootScope.$on 'songs.update', (event, args) ->
         scope.closeSearch()
         if args.type == 'add' then scope.songQuery = ''
+      
+            
+      elem.on 'click', '#songQuery', () ->
+        options =
+          duration: 200,
+          easing: 'easeIn',
+          offset: 60
+        smoothScroll(this, options)
       
       scope.addSong = (song) ->
         if scope.playlistId

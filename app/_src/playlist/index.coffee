@@ -1,6 +1,7 @@
 angular.module 'spotifyPlaylistCollab', [
   'spotify',
   'ngAria',
+  'smoothScroll',
   'ui.unique',
   'offClick',
   'pasvaz.bindonce']
