@@ -53,8 +53,10 @@
   height: 100%;
   top: 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  align-content: center;
   transition-property: opacity, background-color;
   transition-duration: 0.3s;
   transition-timing-function: ease;
@@ -131,4 +133,24 @@
     height: 8%;
     width: 8%;
   }
+}
+
+
+//
+// No Preview
+// --------------------------------------------------
+
+.song-nopreview {
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  border-radius: $search-border-radius;
+  width: 100%;
+  margin: 20px;
+  padding: 5px 15px;
+  text-align: center;
+  transform: scale(0);
+  transition: transform 0.3s ease-out;
+}
+.song-controls:hover .song-nopreview {
+  transform: scale(1);
 }

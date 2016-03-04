@@ -6,6 +6,9 @@
         <svg role="presentation" aria-hidden="true" ng-if="!isPlaying"><use xlink:href="/img/sprite.symbol.svg#song-play" /></svg>
         <svg role="presentation" aria-hidden="true" ng-if="isPlaying"><use xlink:href="/img/sprite.symbol.svg#song-pause" /></svg>
       </div>
+      <div bo-if="!song.hasPreview" class="song-nopreview">
+        Preview not available
+      </div>
       <div bo-if="song.isOwner" class="song-delete" aria-role="button" title="Remove this song">
         <svg role="presentation" aria-hidden="true"><use xlink:href="/img/sprite.symbol.svg#delete" /></svg>
       </div>
