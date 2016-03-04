@@ -6,6 +6,7 @@ angular.module "spotifyPlaylistCollab"
     'player',
     ($rootScope, $scope, Spotify, player) ->
       $rootScope.token = localStorage.getItem('spotify-token')
+      $scope.ag = false
       $scope.player = player
       $scope.playlistId =
         owner: 'michaeldfoley'
