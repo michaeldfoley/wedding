@@ -50,14 +50,13 @@ angular.module 'spotifyPlaylistCollab'
       isLast: (id) ->
         playlist.songIds.indexOf(id) == 0
       
-      addSong: (playlistOwner, playlistId, song) ->
-        if $rootScope.token && !playlist.inPlaylist(song.external_ids.isrc)
-          playlistItem = {added_at: $filter('date')(Date.now(), 'yyyy-MM-ddTHH:mm:ss', 'UTC') + 'Z', added_by: {id: $rootScope.userId}, track: song}
+      addSong: (playlistOwner, playlistId, track) ->
+        if $rootScope.token && !playlist.inPlaylist(track.external_ids.isrc)
+          playlistItem = {added_at: $filter('date')(Date.now(), 'yyyy-MM-ddTHH:mm:ss', 'UTC') + 'Z', added_by: {id: $rootScope.userId}, track: track}
           
           playlist.songs.push(playlistItem)
-          playlist.songIds.push(song.external_ids.isrc)
-          
-          Spotify.addPlaylistTracks(playlistOwner, playlistId, song.uri)
+          playlist.songIds.push(track.external_ids.isrc)
+          Spotify.addPlaylistTracks(playlistOwner, playlistId, track.id)
             .then () ->
               songsUpdated('add', playlistItem)
             
