@@ -1,9 +1,18 @@
 angular.module 'spotifyPlaylistCollab'
   .factory 'playlist', ['$rootScope', 'Spotify', '$filter', ($rootScope, Spotify, $filter) ->
     
+    resetToken = ()->
+      $rootScope.token = ''
+      localStorage.setItem('spotify-token', '')
+    
     getPlaylistCount = (playlistOwner, playlistId) ->
       if $rootScope.token
         Spotify.getPlaylistTracks(playlistOwner, playlistId, {fields:'total'})
+          .then (data) ->
+            return data      
+          , (e) ->
+            if e.error.status == 401
+              resetToken()
     
     songsUpdated = (type, song) ->
       $rootScope.$emit 'songs.update',
@@ -31,15 +40,20 @@ angular.module 'spotifyPlaylistCollab'
           # If more than 100 tracks just take the last 100.
           getPlaylistCount(playlistOwner, playlistId)
             .then (count) ->
-              playlistOptions.offset = if count.total > 100 then count.total - 100 else 0
-              Spotify.getPlaylistTracks(playlistOwner, playlistId, playlistOptions)
-                .then (data) ->
-                  playlist.songs = data.items
-                  playlist.songs.sort(orderByDate)
-                  playlist.songIds = []
-                  angular.forEach(playlist.songs, (item, key) ->
-                    playlist.songIds.push(item.track.external_ids.isrc)
-                  )
+              if count
+                playlistOptions.offset = if count.total > 100 then count.total - 100 else 0
+                Spotify.getPlaylistTracks(playlistOwner, playlistId, playlistOptions)
+                  .then (data) ->
+                    playlist.songs = data.items
+                    playlist.songs.sort(orderByDate)
+                    playlist.songIds = []
+                    angular.forEach(playlist.songs, (item, key) ->
+                      playlist.songIds.push(item.track.external_ids.isrc)
+                    )
+                  , (e) ->
+                    if e.error.status = 401
+                      resetToken()
+              
            
       inPlaylist: (value) ->
         playlist.songIds.indexOf(value) > -1

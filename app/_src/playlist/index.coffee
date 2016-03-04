@@ -16,6 +16,4 @@ angular.module 'spotifyPlaylistCollab', [
       SpotifyProvider.setScope 'playlist-modify-private'
       
       $locationProvider.html5Mode true
-      
-      $httpProvider.interceptors.push('authHttpResponseInterceptor')
   ]
