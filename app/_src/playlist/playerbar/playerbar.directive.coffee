@@ -17,6 +17,8 @@ angular.module 'spotifyPlaylistCollab'
         player.toggle( playlist.prevSong(player.current).track )
       
       $rootScope.$on 'player.update', (event, args) ->
+        scope.isPlaying = (args.status == 'playing')
+        scope.isPaused = (args.status == 'paused' || args.status == 'stopped')
         
         if args.source != 'search' && args.status == 'playing'
           elem.removeClass 'isPaused'

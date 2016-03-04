@@ -3,38 +3,34 @@
 // --------------------------------------------------
 
 .playerbar {
+  display: flex;
+  align-items: center;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0,0,0,0.4);
   bottom: 0;
   left: 0;
   position: fixed;
   width: 100%;
-  z-index: $zindex-1;
+  z-index: $zindex-5;
 }
+
+.playerbar-song,
+.playerbar-controls {
+  position: relative;
+  animation: slideUpIn 0.2s ease-out;
+}
+
+
+//
+// Song info
+// --------------------------------------------------
 
 .playerbar-song {
   display: none;
 }
+
 @media screen and (min-width: $screen-sm) {
   .playerbar-song {
-    display: flex;
-    align-items: center;
-  }
-}
-
-
-.playerbar-controls {
-  display: flex;
-  align-items: center;
-}
-
-.playerbar-controls {
-  margin: 10px auto 0;
-  width: 150px;
-}
-
-@media screen and (min-width: $screen-sm) {
-  .playerbar {
     display: flex;
     align-items: center;
   }
@@ -44,6 +40,50 @@
 .playerbar-link,
 .playerbar-info {
   flex: 1;
+}
+
+.playerbar-link,
+.playerbar-artist {
+  font-size: $font-size-small;
+}
+
+.playerbar-artists {
+  margin-bottom: 0;
+}
+
+.playerbar-title {
+  margin-top: 0;
+  font-size: $font-size-h4 * .85;
+}
+
+.playerbar-thumb {
+  margin-right: 30px;
+  width: 80px;
+  height: 80px;
+}
+
+.playerbar-link {
+  text-align: right;
+  margin: 10px 0;
+  
+  svg {
+    width: 110px;
+    height: 40px;
+    margin-right: 15px;
+  }
+}
+
+
+
+//
+// Controls
+// --------------------------------------------------
+
+.playerbar-controls {
+  display: flex;
+  align-items: center;
+  margin: 10px auto 0;
+  width: 150px;
 }
 
 .playerbar-toggle {
@@ -61,66 +101,27 @@
   }
 }
 
-.playerbar-artists {
-  margin-bottom: 0;
-}
-
-.playerbar-link,
-.playerbar-artist {
-  font-size: $font-size-small;
-}
-
-.playerbar-link {
-  text-align: center;
-  font-weight: $font-weight-strong;
-  text-transform: uppercase;
-  margin: 10px 0;
-}
-
-.playerbar-song,
-.playerbar-controls {
-  position: relative;
-  animation: slideUpIn 0.2s ease-out;
-}
-
-@media screen and (min-width: $screen-sm) {
-  .isPaused, .isPlaying {
-    .playerbar-link {
-      text-align: right;
-  
-      a {
-        display: inline-block;
-        margin-right: 15px;
-      }
-    }
-    .playerbar-controls {
-      margin: 0 auto;
-    }
+.isPaused, .isPlaying {
+  .playerbar-controls {
+    margin: 10px 15px;
   }
-}
-
-.playerbar-title {
-  margin-top: 0;
-  font-size: $font-size-h4 * .85;
-}
-
-.playerbar-thumb {
-  margin-right: 30px;
-  width: 80px;
-  height: 80px;
 }
 
 .playerbar-prev,
 .playerbar-next {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="37px" height="37px"><path fill="#{$text-color}" d="M3.9,32.1c-1.7,0.9-3.1,0.2-3.1-1.8V6.6C0.8,4.7,2.2,4,3.7,5l20.1,12.7c1.6,1.1,1.5,2.6-0.2,3.5L3.9,32.1z"/><path fill="#{$text-color}" d="M36.3,31.4V5.5c0-1.5-1.2-2.7-2.7-2.7h-2.8c-1.5,0-2.8,1.2-2.8,2.7v25.9c0,1.5,1.2,2.7,2.7,2.7h2.8
-	C35,34.2,36.3,32.9,36.3,31.4z"/></svg>');
-	background-size: 15px 15px;
 	width: 15px;
 	height: 15px;
 	cursor: pointer;
 	
 	&.disabled {
   	cursor: default;
+	}
+	
+	svg {
+  	display: inline-block;
+  	width: 100%;
+  	height: 100%;
+  	vertical-align: top;
 	}
 }
 

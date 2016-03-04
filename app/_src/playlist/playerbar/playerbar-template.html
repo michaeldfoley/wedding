@@ -11,11 +11,19 @@
     </div>
   </div>
   <div class="playerbar-controls" ng-if="player">
-    <div class="playerbar-prev" ng-class="{disabled: isFirst}" aria-role="button" ng-disabled="isFirst"></div>
-    <div class="playerbar-toggle song-toggle" aria-role="button" aria-disabled="false"></div>
-    <div class="playerbar-next" ng-class="{disabled: isLast}" aria-role="button" ng-disabled="isLast"></div>
+    <div class="playerbar-prev" ng-class="{disabled: isFirst}" aria-role="button" ng-disabled="isFirst" title="Previous song">
+      <svg role="presentation" aria-hidden="true"><use xlink:href="/img/sprite.symbol.svg#song-direction" /></svg>
+    </div>
+    <div class="playerbar-toggle song-toggle" aria-role="button" aria-disabled="false" title="{{(isPlaying)?'Pause':'Play a preview'}}">
+      <svg role="presentation" aria-hidden="true" ng-if="!isPlaying"><use xlink:href="/img/sprite.symbol.svg#song-play" /></svg>
+      <svg role="presentation" aria-hidden="true" ng-if="isPlaying"><use xlink:href="/img/sprite.symbol.svg#song-pause" /></svg>
+    </div>
+    <div class="playerbar-next" ng-class="{disabled: isLast}" aria-role="button" ng-disabled="isLast" title="Next song">
+      <svg role="presentation" aria-hidden="true"><use xlink:href="/img/sprite.symbol.svg#song-direction" /></svg>
+    </div>
   </div>
   <div class="playerbar-link">
-    <a ng-href="https://open.spotify.com/user/{{playlistId.owner}}/playlist/{{playlistId.id}}" target="_blank">Listen to the full playlist on Spotify</a>
+    <a ng-href="https://open.spotify.com/user/{{playlistId.owner}}/playlist/{{playlistId.id}}" target="_blank" class="no-decoration">
+      <svg aria-label="Listen on Spotify"><use xlink:href="../img/sprite.symbol.svg#spotify-listen" /></svg></a>
   </div>
 </aside>
