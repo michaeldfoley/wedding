@@ -1,6 +1,13 @@
-
-<ul class="playlist">
-  <li ng-repeat="song in playlist.songs | unique:'track.external_ids.isrc' | orderBy:['added_at']:true track by song.track.external_ids.isrc" class="playlist-item">
-    <mfsong song="song" playlist="playlistId"></mfsong>
-  </li>
-</ul>
+<div class="playlist-container">
+  <div ng-if="!playlist.songs" class="playlist-loading" aria-label="Loading...">
+    <div class="bar" role="presentation"></div>
+    <div class="bar" role="presentation"></div>
+    <div class="bar" role="presentation"></div>
+    <div class="bar" role="presentation"></div>
+  </div>
+  <ul class="playlist">
+    <li ng-repeat="song in playlist.songs | unique:'track.external_ids.isrc' | orderBy:['added_at']:true track by song.track.external_ids.isrc" class="playlist-item">
+      <mfsong song="song" playlist="playlistId"></mfsong>
+    </li>
+  </ul>
+</div>

@@ -16,6 +16,42 @@
 }
 
 
+// Loading
+
+.playlist-loading {
+  font-size: 10px;
+  height: 4em;
+	overflow-y:hidden;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.playlist-loading .bar {
+  background: #006B5A;
+  width: .6em;
+  margin: 0 0.1em;
+  animation: playing 0ms -1000ms linear infinite alternate;
+
+  &:nth-child(5n+1) {
+    animation-duration: 399ms;
+  }
+  &:nth-child(5n+2) {
+    animation-duration: 435ms;
+  }
+  &:nth-child(5n+3) {  
+    animation-duration: 489ms;
+  }
+  &:nth-child(5n+4) {
+    animation-duration: 446ms;
+  }
+  &:nth-child(5n+5) {
+    animation-duration: 412ms;
+  } 
+}
+
+
 // Individual Songs
 
 .playlist-item {

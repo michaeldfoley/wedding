@@ -12,6 +12,17 @@
   animation: zoomIn .3s ease-out;
 }
 
+@keyframes playing {
+  0% {
+   opacity: .4;
+   height: .2em;
+  }
+  100% {  
+    opacity: 1;
+    height: 4em;        
+  }
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
