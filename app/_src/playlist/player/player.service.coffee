@@ -2,12 +2,20 @@ angular.module 'spotifyPlaylistCollab'
   .factory 'player', ['audio', '$rootScope', (audio, $rootScope) ->
     audio.crossOrigin = 'anonymous'
     
+    audio.addEventListener("playing", () ->
+      player.isPlaying = true
+      $rootScope.$emit 'player.update',
+        status: 'playing'
+        source: player.source
+    )
+    
     player =
       current: null
       isPlaying: false
       previewImg: null
       name: null
       artists: null
+      source: null
       
       play: (song, source) ->
         songId = song.external_ids.isrc
@@ -18,10 +26,7 @@ angular.module 'spotifyPlaylistCollab'
           player.current = songId
           player.song = song
         audio.play()
-        player.isPlaying = true
-        $rootScope.$emit 'player.update',
-          status: 'playing'
-          source: source
+        player.source = source
       
       pause: () ->
         if player.isPlaying
