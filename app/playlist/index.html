@@ -9,12 +9,12 @@ weight: 5
 
 <article class="post">
 {% include heading.html %}
-  <section class="gallery" ng-app="spotifyPlaylistCollab">
+  <section ng-app="spotifyPlaylistCollab">
     <div ng-controller="PlaylistCtrl">
       <div ng-init="init()">
         <mfalert></mfalert>
         <div class="container">
-          <h2 class="playlist-title">We're building a playlist for the welcome barbecue.</h2>
+          <h2 class="playlist-title">Help us make a playlist for the welcome barbecue.</h2>
           <mfsearch ng-if="token"></mfsearch>
         </div>
         <mfplaylist ng-if="token"></mfplaylist>

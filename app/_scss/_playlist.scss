@@ -2,6 +2,7 @@
 // Playlists
 // --------------------------------------------------
 
+
 .playlist {
   margin: 0 -15px;
   padding-left: 0;
@@ -11,8 +12,18 @@
   justify-content: center;
 }
 
+.playlist-container {
+  padding: 0 15px;
+}
+
 .playlist-title {
+  font-size: $font-size-h2 * .8;
   text-align: center;
+  
+  
+  @media (min-width: $screen-sm) {
+    font-size: $font-size-h2;
+  }
 }
 
 

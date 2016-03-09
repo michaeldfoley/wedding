@@ -13,27 +13,47 @@
 
 .search-label {
   display: block;
-  font-size: $font-size-h3;
+  font-size: $font-size-h3 * .8;
   text-align: center;
   margin-bottom: .5em;
+  
+  @media (min-width: $screen-sm) {
+    font-size: $font-size-h3;
+  }
 }
 
 
 // Search Results
 
 .search-results {
-  position: absolute;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  max-height: 300px;
+  position: relative;
+  box-sizing: content-box;
   width: 100%;
-  width: calc(100% - 30px);
-  margin: 10px 15px 0;
-  padding: 10px 30px 0;
-  border: 1px solid #ccc;
+  margin: 10px 0 0 ($grid-column-gutter / -4);
+  padding: 10px ($grid-column-gutter / 4) 0;
   background: white;
   list-style: none;
-  z-index: $zindex-5;
+  z-index: $zindex-6;
+  
+  @media (min-width: $screen-xs) {
+    margin-left: ($grid-column-gutter / -2);
+    padding-left: ($grid-column-gutter / 2);
+    padding-right: ($grid-column-gutter / 2);
+  }
+  
+  @media (min-width: $screen-sm) {
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 300px;
+    max-height: calc(100vh - 200px);
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    width: calc(100% - 30px);
+    margin: 10px 15px 0;
+    padding: 10px 30px 0;
+    z-index: $zindex-5;
+  }
 }
 
 .search-result {
@@ -56,22 +76,38 @@
   }
 }
 
+.search-close {
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #D8D8D8;
+  color: $link-color;
+}
+
 .search-meta {
   width: 64px;
   flex: 0 0 64px;
   margin-left: 30px;
+  display: none;
 }
 
 .search-info,
 .search-meta {
-  padding: 20px 0;
   cursor: pointer;
+  margin: 10px 0;
+  
+  @media (min-width: $screen-sm) {
+    margin: 20px 0;
+  }
 }
 
 .search-info {
   flex: 1;
   position: relative;
-  margin-left: 35px;
+  margin-left: 15px;
+  
+  @media (min-width: $screen-sm) {
+    margin-left: 35px;
+  }
 }
 
 .search-title {
@@ -83,7 +119,11 @@
   flex: 0 0 64px;
   z-index: $zindex-1;
   background-color: $body-bg;
-  margin: 20px 0;
+  margin: 10px 0;
+  
+  @media (min-width: $screen-sm) {
+    margin: 20px 0;
+  }
   
   .song-controls {
     cursor: pointer;
