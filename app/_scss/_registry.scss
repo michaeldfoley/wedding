@@ -8,7 +8,9 @@
 
 .registry-icon {
   display: block;
-  height: 30px;
   margin: 0 auto 50px;
   text-align: center;
+  width: 100%;
+  max-width: 300px;
+  max-height: 30px;
 }

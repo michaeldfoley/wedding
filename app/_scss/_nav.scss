@@ -2,30 +2,28 @@
 // --------------------------------------------------
 
 .navbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
   
   @media (min-width: $screen-xs) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: flex-start;
   }
 }
 
 .navbar-brand {
-  width: 100px;
-  margin-bottom: 20px;
+  max-width: 150px;
+  margin: 0 auto 20px;
   
   @media (min-width: $screen-xs) {
     width: auto;
     max-width: 150px;
+    margin-bottom: 0;
   }
 }
 .navbar-nav {
-  flex: 1;
-  margin-left: $grid-column-gutter/3;
-  
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-xs) {
+    flex: 1;
     margin: 15px 0 15px $grid-column-gutter;
   }
 }
@@ -45,7 +43,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
   margin-top: 10px;
   padding: 0;
@@ -54,8 +52,7 @@
   font-weight: $headings-font-weight;
   
   @media (min-width: $screen-sm) {
-    justify-content: space-between;
-    margin-top: 0;
+    justify-content: flex-end;
   }
   
   li {
@@ -70,6 +67,11 @@
     display: block;
     padding: 10px 12px;
     color: $nav-link-color;
+  
+    @media (min-width: $screen-sm) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
   }
   
   a:hover,

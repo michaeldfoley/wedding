@@ -2,11 +2,11 @@
 // --------------------------------------------------
 
 article {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 60px;
 }
 
-@media (min-width: $screen-sm) {
+@media (min-width: $screen-xs) {
   article {
     padding-top: 60px;
   }
