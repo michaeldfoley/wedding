@@ -1,6 +1,39 @@
-// Nav
+// Navbar
 // --------------------------------------------------
 
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  
+  @media (min-width: $screen-xs) {
+    align-items: flex-start;
+  }
+}
+
+.navbar-brand {
+  width: 100px;
+  margin-bottom: 20px;
+  
+  @media (min-width: $screen-xs) {
+    width: auto;
+    max-width: 150px;
+  }
+}
+.navbar-nav {
+  flex: 1;
+  margin-left: $grid-column-gutter/3;
+  
+  @media (min-width: $screen-sm) {
+    margin: 15px 0 15px $grid-column-gutter;
+  }
+}
+
+
+
+// Nav
+// --------------------------------------------------
 
 .nav {
   max-width: $screen-sm;
@@ -12,9 +45,9 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
-  margin-top: 25px;
+  margin-top: 10px;
   padding: 0;
   list-style: none;
   font-family: $headings-font-family;
@@ -85,13 +118,15 @@
 }
 
 // Brand
-.nav-brand {
+.brand-img {
+  display: block;
   width: 100%;
   fill: $brand-secondary;
-  margin: 10px 0 0 0;
-}
-
-// Navbar
-.navbar .nav {
-  margin-top: 15px;
+  margin: 10px auto 0;
+  max-width: 150px;
+  
+  
+  @media (min-width: $screen-sm) {
+    max-width: 100%;
+  }
 }
