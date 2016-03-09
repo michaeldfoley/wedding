@@ -1,0 +1,26 @@
+<li bindonce="track" ng-class="{isPlaying: isPlaying, isPaused: isPaused}" class="search-result">
+  <div ng-click="toggleSong()" class="search-thumb song-thumb">
+    <img bo-src="track.album.images[2].url"/>
+    <div bo-if="track.preview_url" class="song-controls">
+      <div class="song-toggle search-toggle" aria-role="button" title="{{(isPlaying)?'Pause':'Play a preview'}}">
+        <svg role="presentation" aria-hidden="true" ng-if="!isPlaying"><use xlink:href="/img/sprite.symbol.svg#song-play" /></svg>
+        <svg role="presentation" aria-hidden="true" ng-if="isPlaying"><use xlink:href="/img/sprite.symbol.svg#song-pause" /></svg>
+      </div>
+    </div>
+  </div>
+  <div ng-click="addSong(track)" class="search-info">
+    <h4 bo-text="track.name" class="song-title search-title"></h4>
+    <ul class="song-artists">
+      <li ng-repeat="artist in track.artists" bo-text="artist.name" class="song-artist"></li>
+    </ul>
+  </div>
+  <div ng-click="addSong(track)" class="search-meta">
+    <div bo-text="track.duration_ms | mstotime" class="song-duration"></div>
+    <div class="popularity"> 
+      <div aria-valuemin="0" aria-valuemax="100" bo-style="{width: track.popularity + '%'}" class="popularity-bar">
+        <div class="sr-only" bo-bind="'Popularity ' + track.popularity"></div>
+      </div>
+    </div>
+  </div>
+</li>
+

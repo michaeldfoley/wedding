@@ -83,20 +83,14 @@
   color: $link-color;
 }
 
-.search-meta {
-  width: 64px;
-  flex: 0 0 64px;
-  margin-left: 30px;
-  display: none;
-}
-
 .search-info,
 .search-meta {
   cursor: pointer;
   margin: 10px 0;
   
   @media (min-width: $screen-sm) {
-    margin: 20px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 
@@ -107,6 +101,17 @@
   
   @media (min-width: $screen-sm) {
     margin-left: 35px;
+  }
+}
+
+.search-meta {
+  width: 64px;
+  flex: 0 0 64px;
+  margin-left: 30px;
+  display: none;
+  
+  @media (min-width: $screen-sm) {
+    display: block;
   }
 }
 
@@ -137,6 +142,10 @@
     width: 50%;
     height: 50%;
   }
+}
+
+.isPlaying .song-toggle {
+  opacity: 0.8;
 }
 
 

@@ -6,27 +6,7 @@
   </div>
   <ul id="searchResults" ng-show="searchResults" off-click="closeSearch()" off-click-if="searchResults" class="search-results">
     <li ng-if="!searchResults.items.length" class="search-result empty">Sorry, no results.</li>
-    <li bindonce="item" ng-repeat="item in searchResults.items | unique:'external_ids.isrc' track by item.external_ids.isrc" ng-class="{isPlaying: player.thisIsPlaying(item), isPaused: player.thisIsPaused(item), 'in-playlist': playlist.inPlaylist(item.external_ids.isrc)}" class="search-result">
-      <div ng-click="player.toggle(item, 'search')" class="search-thumb song-thumb"><img bo-src="item.album.images[2].url"/>
-        <div bo-if="item.preview_url" class="song-controls">
-          <div class="song-toggle search-toggle"></div>
-        </div>
-      </div>
-      <div ng-click="addSong(item)" class="search-info">
-        <h4 bo-text="item.name" class="song-title search-title"></h4>
-        <ul class="song-artists">
-          <li ng-repeat="artist in item.artists" bo-text="artist.name" class="song-artist"></li>
-        </ul>
-      </div>
-      <div ng-click="addSong(item)" class="search-meta">
-        <div bo-text="item.duration_ms | mstotime" class="song-duration"></div>
-        <div class="popularity"> 
-          <div aria-valuenow="{{item.popularity}}" aria-valuemin="0" aria-valuemax="100" style="width: {{item.popularity}}%;" class="popularity-bar">
-            <div class="sr-only">Popularity {{item.popularity}}%</div>
-          </div>
-        </div>
-      </div>
-    </li>
+    <li ng-repeat="result in searchResults.items | unique:'external_ids.isrc' track by result.external_ids.isrc" mfsearchresult track="result"></li>
     <li class="search-close" aria-role="button" ng-click="closeSearch()">Close search results.</li>
   </ul>
 </form>

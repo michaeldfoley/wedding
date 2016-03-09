@@ -100,14 +100,20 @@
 }
 
 .isPaused .song-toggle {
-  height: 25%;
-  width: 25%;
   opacity: .8;
 }
 
 .song-delete svg {
   width: 90%;
   height: 100%;
+}
+
+.song-controls:hover,
+.isPaused {
+  .song-toggle {
+    height: 25%;
+    width: 25%;
+  }
 }
 
 .song-controls:hover {
@@ -122,11 +128,6 @@
       opacity: 1;
       transform: scale(1.1);
     }
-  }
-  
-  .song-toggle {
-    height: 25%;
-    width: 25%;
   }
   
   .song-delete {
