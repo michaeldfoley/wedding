@@ -6,7 +6,7 @@ angular.module 'spotifyPlaylistCollab'
       percent = 0
       
       $rootScope.$on 'player.update', (event, args) ->
-        if args.status == 'playing'
+        if args.source != 'search' && args.status == 'playing'
           advance()
           return
         
