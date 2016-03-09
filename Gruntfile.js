@@ -84,12 +84,7 @@ module.exports = function (grunt) {
               '.jekyll',
               '.tmp',
               '<%= yeoman.app %>'
-            ],
-            middleware: function (req, res, next) {
-              console.log('Adding CORS header for ' + req.method + ': ' + req.url);
-              res.setHeader('Access-Control-Allow-Origin', '*');
-              next();
-            }
+            ]
           },
           port: 3000,
           watchTask: true
