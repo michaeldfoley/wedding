@@ -22,6 +22,14 @@
   }
 }
 
+.search-group {
+  position: relative;
+  
+  .has-results {
+    padding-right: 38px;
+  }
+}
+
 
 // Search Results
 
@@ -81,6 +89,21 @@
   padding: 10px 0;
   border-bottom: 1px solid #D8D8D8;
   color: $link-color;
+}
+
+.search-close--button {
+  position: absolute;
+  bottom: 7px;
+  right: 15px;
+  width: 25px;
+  padding-left: 10px;
+  border: 0;
+  background: #fff;
+  animation: zoomIn 0.3s ease-out;
+  
+  svg {
+    fill: $gray-light;
+  }
 }
 
 .search-info,

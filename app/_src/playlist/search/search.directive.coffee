@@ -10,8 +10,8 @@ angular.module 'spotifyPlaylistCollab'
       scope.lastResults = null
       
       $rootScope.$on 'songs.update', (event, args) ->
-        scope.closeSearch()
-        if args.type == 'add' then scope.songQuery = ''
+        if args.type == 'add' then c = 'clear'
+        scope.closeSearch(c)
       
             
       elem.on 'click', '#songQuery', () ->
@@ -37,7 +37,11 @@ angular.module 'spotifyPlaylistCollab'
         
         lastSearched = scope.songQuery
             
-      scope.closeSearch = () ->
+      scope.closeSearch = (c) ->
+        if typeof(c) == 'undefined'
+          c = ''
+        if c.toLowerCase() == 'clear'
+          scope.songQuery = ''
         scope.searchResults = null
         scope.player.stop()
   ]

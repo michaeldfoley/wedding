@@ -1,8 +1,11 @@
 
 <form name="songSearch" ng-submit="search()" novalidate="novalidate" class="search">
-  <div class="form-group">
+  <div class="form-group search-group">
     <label for="songQuery" class="search-label">Add to the Playlist </label>
-    <input type="search" class="form-control" id="songQuery" ng-model="songQuery" ng-change="search()" ng-model-options="{ debounce: 300 }" placeholder="Search for a song, artist, or album" autocomplete="off"/>
+    <input type="search" class="form-control" id="songQuery" ng-class="{'has-results': searchResults}" ng-model="songQuery" ng-change="search()" ng-model-options="{ debounce: 300 }" placeholder="Search for a song, artist, or album" autocomplete="off" />
+    <div ng-if="songQuery" ng-click="closeSearch('clear')" class="search-close--button" aria-role="button" title="Close search">
+      <svg role="presentation" aria-hidden="true"><use xlink:href="/img/sprite.symbol.svg#delete" /></svg>
+    </div>
   </div>
   <ul id="searchResults" ng-show="searchResults" off-click="closeSearch()" off-click-if="searchResults" class="search-results">
     <li ng-if="!searchResults.items.length" class="search-result empty">Sorry, no results.</li>
