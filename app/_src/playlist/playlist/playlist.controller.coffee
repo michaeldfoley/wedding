@@ -15,10 +15,4 @@ angular.module "spotifyPlaylistCollab"
       $scope.init = () ->
         if $rootScope.token
           Spotify.setAuthToken($rootScope.token)
-              
-      
-      $scope.login = () ->
-        Spotify.login()
-          .then (data) ->
-            $rootScope.token = data
   ]

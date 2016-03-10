@@ -20,10 +20,7 @@ weight: 5
         <mfplaylist ng-if="token"></mfplaylist>
         
         <div class="spotify-controls container"> 
-          <p ng-if="!token" class="lead">To add to the playlist, please login with your Spotify account.</p>
-          <button ng-if="!token" ng-click="login()" class="spotify-button">
-            <svg aria-label="Listen on Spotify"><use xlink:href="../img/sprite.symbol.svg#spotify-login" /></svg>
-          </button>
+          <mflogin ng-if="!token"></mflogin>
           <div class="spotify-button" ng-if="ag">
             <a href="https://open.spotify.com/user/michaeldfoley/playlist/5L5t7NUqA9xL1wvUFIoaYl" class="no-decoration">
               <svg aria-label="Listen on Spotify"><use xlink:href="../img/sprite.symbol.svg#spotify-listen" /></svg>
