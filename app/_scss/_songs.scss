@@ -18,7 +18,12 @@
 // Song info
 
 .song-title {
-  margin-bottom: 0;
+  margin-bottom: 3px;
+  font-size: $font-size-base;
+  
+  @media (min-width: $screen-sm) {
+    font-size: $font-size-h4;
+  }
 }
 
 .song-duration {
@@ -32,6 +37,12 @@
   list-style: none;
   padding: 0;
   color: $gray-light;
+  font-size: $font-size-small;
+  line-height: 1.3;
+  
+  @media (min-width: $screen-sm) {
+    font-size: $font-size-base;
+  }
 }
 
 .song-artist {
@@ -100,8 +111,11 @@
   margin-left: 0;
 }
 
-.isPaused .song-toggle {
-  opacity: .8;
+.touch,
+.isPaused {
+  .song-toggle {
+    opacity: .8;
+  }
 }
 
 .song-delete svg {
@@ -109,6 +123,7 @@
   height: 100%;
 }
 
+.touch,
 .song-controls:hover,
 .isPaused {
   .song-toggle {

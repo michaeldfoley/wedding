@@ -102,6 +102,8 @@
   animation: zoomIn 0.3s ease-out;
   
   svg {
+    width: 25px;
+    height: 25px;
     fill: $gray-light;
   }
 }
@@ -158,18 +160,20 @@
   }
 }
 
+.touch,
 .song-controls:hover,
 .isPlaying,
 .isPaused { 
-  .search-toggle.song-toggle {
+  .search-toggle {
     width: 50%;
     height: 50%;
   }
 }
 
-.isPlaying .song-toggle {
+.isPlaying .search-toggle {
   opacity: 0.8;
 }
+
 
 
 // Add to playlist indicator

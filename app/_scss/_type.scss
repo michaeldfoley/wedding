@@ -9,7 +9,6 @@
 h1, h2, h3, h4 {
   font-family: $headings-font-family;
   font-weight: $headings-font-weight;
-  line-height: $headings-line-height;
   color: $headings-color;
 
   small,
@@ -23,6 +22,14 @@ h1, h2, h3, h4 {
 h1, h2, h3, h4 {
   margin-top: $line-height-computed;
   margin-bottom: ($line-height-computed / 2);
+}
+
+h1, h2, h3 {
+  line-height: $headings-line-height;
+}
+
+h4 {
+  line-height: $headings-line-height + 0.1;
 }
 
 h1, h2, {
