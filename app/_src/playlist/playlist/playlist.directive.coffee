@@ -15,10 +15,14 @@ angular.module 'spotifyPlaylistCollab'
         playlist.getPlaylist(scope.playlistId.owner, scope.playlistId.id, playlistOptions)
       getPlaylist()
       
-      $rootScope.$on 'song.delete', (event, args) ->
-        playlist.removeSong(scope.playlistId.owner, scope.playlistId.id, args.song)
-      
-      $rootScope.$on 'song.add', (event, args) ->
-        playlist.addSong(scope.playlistId.owner, scope.playlistId.id, args.song.track)
+      scope.$on '$destroy', () ->
+        deregister()
+        
+      deregister = $rootScope.$on 'song.update', (event, args) ->
+        if args.type == 'remove'
+          playlist.removeSong(scope.playlistId.owner, scope.playlistId.id, args.song)
+          
+        if args.type == 'add'
+          playlist.addSong(scope.playlistId.owner, scope.playlistId.id, args.song.track)
         
   ]

@@ -16,7 +16,10 @@ angular.module 'spotifyPlaylistCollab'
       elem.on 'click', '.playerbar-prev:not(.disabled)', () ->
         player.toggle( playlist.prevSong(player.current).track )
       
-      $rootScope.$on 'player.update', (event, args) ->
+      scope.$on '$destroy', () ->
+        deregister()
+        
+      deregister = $rootScope.$on 'player.update', (event, args) ->
         if args.source != 'search'
           scope.isPlaying = (args.status == 'playing')
         

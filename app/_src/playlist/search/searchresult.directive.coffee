@@ -22,7 +22,10 @@ angular.module 'spotifyPlaylistCollab'
       scope.toggleSong = () ->
         player.toggle(scope.track, 'search')
       
-      $rootScope.$on 'player.update', (event, args) ->
+      scope.$on '$destroy', () ->
+        deregister()
+        
+      deregister = $rootScope.$on 'player.update', (event, args) ->
         scope.$evalAsync(
           scope.isPlaying = player.thisIsPlaying(scope.track)
           scope.isPaused = player.thisIsPaused(scope.track)

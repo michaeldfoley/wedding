@@ -5,7 +5,10 @@ angular.module 'spotifyPlaylistCollab'
     link: (scope, elem) ->
       percent = 0
       
-      $rootScope.$on 'player.update', (event, args) ->
+      scope.$on '$destroy', () ->
+        deregister()
+        
+      deregister = $rootScope.$on 'player.update', (event, args) ->
         if args.source != 'search' && args.status == 'playing'
           advance()
           return

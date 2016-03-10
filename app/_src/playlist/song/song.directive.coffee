@@ -30,7 +30,10 @@ angular.module 'spotifyPlaylistCollab'
             return
       
       
-      $rootScope.$on 'player.update', (event, args) ->
+      scope.$on '$destroy', () ->
+        deregister()
+        
+      deregister = $rootScope.$on 'player.update', (event, args) ->
         
         scope.$evalAsync(
           scope.isPlaying = player.thisIsPlaying(track)

@@ -9,7 +9,10 @@ angular.module 'spotifyPlaylistCollab'
       lastSearched = ''
       scope.lastResults = null
       
-      $rootScope.$on 'songs.update', (event, args) ->
+      scope.$on '$destroy', () ->
+        deregister()
+        
+      deregister = $rootScope.$on 'playlist.update', (event, args) ->
         if args.type == 'add' then c = 'clear'
         scope.closeSearch(c)
       

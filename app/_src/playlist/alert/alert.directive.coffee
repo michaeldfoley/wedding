@@ -27,14 +27,18 @@ angular.module 'spotifyPlaylistCollab'
       
       scope.undo = (alert) ->
         if alert.type == 'add'
-          $rootScope.$emit 'song.delete', 
-            song: alert.song
+          type = 'remove'
+        else
+          type = 'add'
           
-        if alert.type == 'remove'
-          $rootScope.$emit 'song.add', 
+        $rootScope.$emit 'song.update', 
+            type: type
             song: alert.song
       
-      $rootScope.$on 'songs.update', (event, args) ->
+      scope.$on '$destroy', () ->
+        deregister()
+        
+      deregister = $rootScope.$on 'playlist.update', (event, args) ->
         track = args.song.track
         alert.clearAll()
         

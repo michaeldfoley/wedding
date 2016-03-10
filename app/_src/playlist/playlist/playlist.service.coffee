@@ -15,7 +15,8 @@ angular.module 'spotifyPlaylistCollab'
               resetToken()
     
     songsUpdated = (type, song) ->
-      $rootScope.$emit 'songs.update',
+      console.log 'playlist update'
+      $rootScope.$emit 'playlist.update',
         type: type
         song: song
        
