@@ -3,11 +3,6 @@
 // --------------------------------------------------
 
 
-.song {
-  position: relative;
-}
-
-
 // Song image
 
 .song-thumb {
@@ -18,10 +13,12 @@
 // Song info
 
 .song-title {
+  margin-top: 10px;
   margin-bottom: 3px;
   font-size: $font-size-base;
   
   @media (min-width: $screen-sm) {
+    margin-top: 20px;
     font-size: $font-size-h4;
   }
 }
@@ -118,37 +115,64 @@
   }
 }
 
-.song-delete svg {
-  width: 90%;
-  height: 100%;
+.song-delete {
+  position: absolute;
+  right: 0;
+  top: 8px;
+  
+  @media (min-width: $screen-sm) {
+    position: static;
+    right: auto;
+    top: auto;
+  }
+  
+  svg {
+    width: 90%;
+    height: 100%;
+  }
 }
 
 .touch,
 .song-controls:hover,
 .isPaused {
   .song-toggle {
-    height: 25%;
-    width: 25%;
+    height: 33%;
+    width: 33%;
+    
+    @media (min-width: $screen-sm) {
+      height: 25%;
+      width: 25%;
+    }
   }
 }
 
+.touch,
 .song-controls:hover {
   background-color: rgba(0,0,0,0.4);
   
   .song-toggle,
   .song-delete {
     opacity: .8;
-    margin: 0 10px;
+    margin: 0 8px;
     
     &:hover {
       opacity: 1;
       transform: scale(1.1);
     }
+    
+    @media (min-width: $screen-sm) {
+      margin: 0 13px;
+    }
   }
   
   .song-delete {
-    height: 8%;
-    width: 8%;
+    height: 13%;
+    width: 13%;
+    
+    @media (min-width: $screen-sm) {
+      height: 8%;
+      width: 8%;
+    }
   }
 }
 
