@@ -137,10 +137,12 @@
   }
 }
 
-.touch,
 .song-controls:hover {
   background-color: rgba(0,0,0,0.4);
-  
+}
+
+.touch,
+.song-controls:hover {
   .song-toggle,
   .song-delete {
     opacity: .8;
