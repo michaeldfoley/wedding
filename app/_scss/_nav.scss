@@ -2,12 +2,19 @@
 // --------------------------------------------------
 
 .navbar {
+  width: 100%;
+  padding-left: ($grid-column-gutter / 4);
+  padding-right: ($grid-column-gutter / 4);
+  max-width: $screen-lg;
+  margin: 0 auto;
   
   @media (min-width: $screen-xs) {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
+    padding-left: ($grid-column-gutter / 2);
+    padding-right: ($grid-column-gutter / 2);
   }
 }
 
@@ -33,10 +40,6 @@
 // Nav
 // --------------------------------------------------
 
-.nav {
-  max-width: $screen-sm;
-  margin: 0 auto;
-}
 
 // Nav List
 .nav-list {
@@ -99,14 +102,12 @@
   }
   
   .nav-list {
-    display: block;
     margin-top: 0;
     font-size: 4.7vw;
     
     @media (min-width: $screen-xs) {
-      display: flex;
       font-size: $font-size-nav;
-      
+      justify-content: center;
       
       a {
         color: #fff;
@@ -115,6 +116,13 @@
           background: #fff;
         }
       }
+    }
+  }
+  li {
+    width: 100%;
+    
+    @media (min-width: $screen-xs) {
+      width: auto;
     }
   }
 }
