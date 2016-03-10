@@ -1,4 +1,4 @@
-<li bindonce="track" ng-class="{isPlaying: isPlaying, isPaused: isPaused}" class="search-result">
+<li bindonce="artists" ng-class="{isPlaying: isPlaying, isPaused: isPaused}" class="search-result">
   <div ng-click="toggleSong()" class="search-thumb song-thumb">
     <img bo-src="track.album.images[2].url"/>
     <div bo-if="track.preview_url" class="song-controls">
@@ -10,9 +10,7 @@
   </div>
   <div ng-click="addSong(track)" class="search-info">
     <h4 bo-text="track.name" class="song-title search-title"></h4>
-    <ul class="song-artists">
-      <li ng-repeat="artist in track.artists" bo-text="artist.name" class="song-artist"></li>
-    </ul>
+    <div class="song-artists" bo-text="artists"></div>
   </div>
   <div ng-click="addSong(track)" class="search-meta">
     <div bo-text="track.duration_ms | mstotime" class="song-duration"></div>

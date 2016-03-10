@@ -28,6 +28,12 @@ angular.module 'spotifyPlaylistCollab'
           scope.isLast = playlist.isLast(player.current)
           scope.song = player.song
           scope.image = scope.song.album.images[1].url
+          scope.artists = ''
+      
+          angular.forEach scope.song.artists, (artist, key) ->
+            scope.artists += artist.name
+            if key < scope.song.artists.length - 1
+              scope.artists += ', '
         
           scope.$evalAsync(
             scope.player = player

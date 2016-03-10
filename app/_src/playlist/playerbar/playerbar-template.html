@@ -8,9 +8,7 @@
     </div>
     <div class="playerbar-info song-info">
       <h4 class="playerbar-title song-title">{{song.name}}</h4>
-      <ul class="playerbar-artists song-artists">
-        <li ng-repeat="artist in song.artists" class="playerbar-artist song-artist">{{artist.name}}</li>
-      </ul>
+      <div class="playerbar-artists song-artists">{{artists}}</div>
     </div>
   </div>
   <div class="playerbar-controls" ng-if="player">

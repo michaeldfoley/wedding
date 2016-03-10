@@ -8,6 +8,12 @@ angular.module 'spotifyPlaylistCollab'
     templateUrl: '/js/playlist/search/searchresult-template.html'
     link: (scope, elem, attrs) ->
       scope.playlistId = scope.$parent.$parent.playlistId
+      scope.artists = ''
+      
+      angular.forEach scope.track.artists, (artist, key) ->
+        scope.artists += artist.name
+        if key < scope.track.artists.length - 1
+          scope.artists += ', '
       
       scope.addSong = (song) ->
         if scope.playlistId

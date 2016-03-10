@@ -13,6 +13,12 @@ angular.module 'spotifyPlaylistCollab'
       scope.song.hasPreview = !!(track.preview_url)
       scope.song.isOwner = !!(scope.song.added_by.id == $rootScope.userId && scope.playlistId)
       scope.song.hasControls = !!(scope.song.hasPreview || scope.song.isOwner)
+      scope.artists = ''
+      
+      angular.forEach track.artists, (artist, key) ->
+        scope.artists += artist.name
+        if key < track.artists.length - 1
+          scope.artists += ', '
       
       elem.on 'click', '.song-toggle', () ->
         player.toggle(track)
