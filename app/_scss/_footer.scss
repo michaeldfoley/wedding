@@ -8,6 +8,10 @@
   bottom: 0;
   height: $footer-height;
   width: 100%;
+  
+  .playlist & {
+    margin-bottom: $footer-height;
+  }
 }
 
 // Footer Layout
