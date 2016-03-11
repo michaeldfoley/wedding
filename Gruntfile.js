@@ -24,7 +24,7 @@ module.exports = function (grunt) {
     watch: {
       sass: {
         files: ['<%= yeoman.app %>/_scss/**/*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer:dist', 'penthouse', 'cssmin:critical']
+        tasks: ['sass:server', 'autoprefixer:dist']
       },
       autoprefixer: {
         files: ['<%= yeoman.app %>/css/**/*.css'],
@@ -94,7 +94,8 @@ module.exports = function (grunt) {
         options: {
           server: {
             baseDir: '<%= yeoman.dist %>'
-          }
+          },
+          open: false
         }
       },
       test: {
@@ -572,7 +573,8 @@ module.exports = function (grunt) {
     },
     concurrent: {
       server: [
-        'sass:server',
+        'sass:server', 
+        'autoprefixer:dist',
         'coffee:dist',
         'svg_sprite:stage',
         'responsive_images:stage',
@@ -582,7 +584,8 @@ module.exports = function (grunt) {
         'jekyll:server'
       ],
       dist: [
-        'sass:dist',
+        'sass:dist', 
+        'autoprefixer:dist',
         'coffee:dist',
         'svg_sprite:dist',
         'responsive_images:dist',
@@ -605,8 +608,9 @@ module.exports = function (grunt) {
     var serve = [
       'concurrent:server',
       'injectAngular',
-      'autoprefixer:dist',
       'browserSync:server',
+      'penthouse',
+      'cssmin:critical',
       'watch'
     ]
     
@@ -656,13 +660,14 @@ module.exports = function (grunt) {
     'useminPrepare',
     'modernizr',
     'concat',
-    'autoprefixer:dist',
-    'cssmin',
     'uglify',
     'imagemin',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'browserSync:dist',
+    'penthouse', 
+    'cssmin'
     ]);
 
   grunt.registerTask('deploy', [
