@@ -38,6 +38,9 @@ dist
 node_modules
 .tmp
 
+# Ignore critical path css #
+_critical_*.css
+
 # Ignore for RVM users #
 .ruby-version
 .ruby-gemset
