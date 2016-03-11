@@ -10,6 +10,7 @@
   rect {
     fill: rgba(255,255,255,0.4);
     fill: rgba($brand-secondary,0.4);
+    //transition: all .1s linear;
     transform: scale(.5);
     
     @media (min-width: $screen-sm) {
