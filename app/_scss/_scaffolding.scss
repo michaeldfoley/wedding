@@ -32,7 +32,8 @@ body {
   &:not(.home){
     margin: 0 0 $footer-height;
   }
-  &.playlist {
+
+  &.body-playlist {
     margin-bottom: $footer-height * 2;
   }
 }
