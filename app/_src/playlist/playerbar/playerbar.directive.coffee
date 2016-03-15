@@ -6,14 +6,16 @@ playlistApp.directive 'mfplayerbar', ['$rootScope', 'player', 'playlist', ($root
     }
     templateUrl: '/js/playlist/playerbar/playerbar-template.html'
     link: (scope, elem) ->
-      elem.on 'click', '.playerbar-toggle', () ->
+      scope.toggleTrack = () ->
         player.toggle(scope.song)
       
-      elem.on 'click', '.playerbar-next:not(.disabled)', () ->
-        player.toggle( playlist.nextSong(player.current).track )
-      
-      elem.on 'click', '.playerbar-prev:not(.disabled)', () ->
-        player.toggle( playlist.prevSong(player.current).track )
+      scope.nextTrack = ($event) ->
+        if !scope.isLast
+          player.toggle( playlist.nextSong(player.current).track )
+        
+      scope.prevTrack = ($event) ->
+        if !scope.isFirst
+          player.toggle( playlist.prevSong(player.current).track )
       
       scope.$on '$destroy', () ->
         deregister()

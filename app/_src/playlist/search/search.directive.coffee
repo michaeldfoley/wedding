@@ -16,12 +16,12 @@ playlistApp.directive 'mfsearch', ['$rootScope', 'Spotify', 'player', 'smoothScr
         scope.closeSearch(c)
       
             
-      elem.on 'click', '#songQuery', () ->
+      scope.scroll = ($event) ->
         options =
           duration: 200,
           easing: 'easeIn',
           offset: 60
-        smoothScroll(this, options)
+        smoothScroll($event.target, options)
       
       scope.search = () ->
         if scope.songQuery.length < 3

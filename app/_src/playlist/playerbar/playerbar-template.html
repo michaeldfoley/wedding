@@ -12,14 +12,14 @@
     </div>
   </div>
   <div class="playerbar-controls" ng-if="player">
-    <div class="playerbar-prev" ng-class="{disabled: isFirst}" aria-role="button" ng-disabled="isFirst" title="Previous song">
+    <div class="playerbar-prev" ng-click="prevTrack()" ng-class="{disabled: isFirst}" aria-role="button" ng-disabled="isFirst" title="Previous song">
       <svg role="presentation" aria-hidden="true"><use xlink:href="/img/sprite.symbol.svg#song-direction" /></svg>
     </div>
-    <div class="playerbar-toggle song-toggle" aria-role="button" aria-disabled="false" title="{{(isPlaying)?'Pause':'Play a preview'}}">
+    <div class="playerbar-toggle song-toggle" ng-click="toggleTrack()" aria-role="button" aria-disabled="false" title="{{(isPlaying)?'Pause':'Play a preview'}}">
       <svg role="presentation" aria-hidden="true" ng-if="!isPlaying"><use xlink:href="/img/sprite.symbol.svg#song-play" /></svg>
       <svg role="presentation" aria-hidden="true" ng-if="isPlaying"><use xlink:href="/img/sprite.symbol.svg#song-pause" /></svg>
     </div>
-    <div class="playerbar-next" ng-class="{disabled: isLast}" aria-role="button" ng-disabled="isLast" title="Next song">
+    <div class="playerbar-next" ng-click="nextTrack()" ng-class="{disabled: isLast}" aria-role="button" ng-disabled="isLast" title="Next song">
       <svg role="presentation" aria-hidden="true"><use xlink:href="/img/sprite.symbol.svg#song-direction" /></svg>
     </div>
   </div>

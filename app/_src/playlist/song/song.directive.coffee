@@ -19,14 +19,15 @@ playlistApp.directive 'mfsong', ['$rootScope', 'player', 'playlist', ($rootScope
         if key < track.artists.length - 1
           scope.artists += ', '
       
-      elem.on 'click', '.song-toggle', () ->
+      scope.toggleTrack = () ->
         player.toggle(track)
       
-      elem.on 'click', '.song-delete', () ->
+      scope.removeTrack = () ->
         elem.parent().addClass('deleting')
           .one 'webkitAnimationEnd oanimationend msAnimationEnd animationend', () ->
             playlist.removeSong(scope.playlistId.owner, scope.playlistId.id, scope.song)
             return
+        return
       
       
       scope.$on '$destroy', () ->

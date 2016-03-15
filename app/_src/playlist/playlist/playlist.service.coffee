@@ -14,7 +14,6 @@ playlistApp.factory 'playlist', ['$rootScope', 'Spotify', '$filter', ($rootScope
               resetToken()
     
     songsUpdated = (type, song) ->
-      console.log 'playlist update'
       $rootScope.$emit 'playlist.update',
         type: type
         song: song

@@ -11,9 +11,9 @@ playlistApp.directive 'mffreq', ['frequency', 'audio', 'player', '$rootScope', '
         frequency.startDrawing()
         
         scope.$on '$destroy', () ->
-          playerUpdate()
+          deregister()
           
-        playerUpdate = $rootScope.$on 'player.update', (event, args) ->
+        deregister = $rootScope.$on 'player.update', (event, args) ->
           id = scope.song.track.external_ids.isrc
           
           if args.status == 'playing' && player.isCurrent(id)

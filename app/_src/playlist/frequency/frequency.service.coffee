@@ -18,7 +18,7 @@ playlistApp.factory 'frequency', () ->
       
       
       createSvg = (parent, height, width) ->
-        d3.select(parent.context)
+        d3.select(parent[0])
           .append('svg')
           .attr('height', height)
           .attr('width', width)
@@ -46,7 +46,6 @@ playlistApp.factory 'frequency', () ->
           
         renderChart: () ->
           analyser.getByteFrequencyData(frequencyData)
-          
           svg.selectAll('rect')
             .data(frequencyData)
             .attr 'y', (d) ->
