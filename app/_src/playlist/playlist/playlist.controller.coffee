@@ -1,5 +1,4 @@
-angular.module "spotifyPlaylistCollab"
-  .controller 'PlaylistCtrl', [
+playlistApp.controller 'PlaylistCtrl', [
     '$rootScope',
     '$scope',
     'Spotify',

@@ -1,5 +1,4 @@
-angular.module 'spotifyPlaylistCollab'
-  .factory 'frequency', () ->
+playlistApp.factory 'frequency', () ->
     AudioContext = (window.AudioContext || false)
     if !AudioContext
       return false

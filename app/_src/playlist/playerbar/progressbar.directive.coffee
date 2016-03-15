@@ -1,5 +1,4 @@
-angular.module 'spotifyPlaylistCollab'
-  .directive 'mfprogressbar', ['$rootScope', 'audio', '$timeout', ($rootScope, audio, $timeout) ->
+playlistApp.directive 'mfprogressbar', ['$rootScope', 'audio', '$timeout', ($rootScope, audio, $timeout) ->
     restrict: 'A'
     scope: {}
     link: (scope, elem) ->

@@ -1,5 +1,4 @@
-angular.module 'spotifyPlaylistCollab'
-  .directive 'mfsearch', ['$rootScope', 'Spotify', 'player', 'smoothScroll', ($rootScope, Spotify, player, smoothScroll) ->
+playlistApp.directive 'mfsearch', ['$rootScope', 'Spotify', 'player', 'smoothScroll', ($rootScope, Spotify, player, smoothScroll) ->
     restrict: 'E'
     replace: true
     templateUrl: '/js/playlist/search/search-template.html'

@@ -1,5 +1,4 @@
-angular.module 'spotifyPlaylistCollab'
-  .factory 'playlist', ['$rootScope', 'Spotify', '$filter', ($rootScope, Spotify, $filter) ->
+playlistApp.factory 'playlist', ['$rootScope', 'Spotify', '$filter', ($rootScope, Spotify, $filter) ->
     
     resetToken = ()->
       $rootScope.token = ''

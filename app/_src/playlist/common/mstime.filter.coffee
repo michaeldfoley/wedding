@@ -1,5 +1,4 @@
-angular.module 'spotifyPlaylistCollab'
-  .filter 'mstotime', ->
+playlistApp.filter 'mstotime', ->
     (input) ->
       if int = parseInt(input)
         seconds = ~~((int/1000)%60)

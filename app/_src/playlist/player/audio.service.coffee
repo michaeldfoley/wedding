@@ -1,3 +1,2 @@
-angular.module 'spotifyPlaylistCollab'
-  .service 'audio', () ->
+playlistApp.service 'audio', () ->
     new Audio()

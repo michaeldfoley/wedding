@@ -1,5 +1,4 @@
-angular.module 'spotifyPlaylistCollab'
-  .directive 'mfplaylist', ['$rootScope', 'playlist', ($rootScope, playlist) ->
+playlistApp.directive 'mfplaylist', ['$rootScope', 'playlist', ($rootScope, playlist) ->
     restrict: 'E'
     replace: true
       

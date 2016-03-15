@@ -1,5 +1,4 @@
-angular.module 'spotifyPlaylistCollab'
-  .directive 'mfalert', ['$rootScope', '$timeout', ($rootScope, $timeout) ->
+playlistApp.directive 'mfalert', ['$rootScope', '$timeout', ($rootScope, $timeout) ->
     restrict: 'E'
     replace: true
     scope:{}

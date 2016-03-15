@@ -185,6 +185,9 @@ module.exports = function (grunt) {
     },
     coffee: {
       dist: {
+        options: {
+          bare: true
+        },
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/_src',
@@ -194,6 +197,9 @@ module.exports = function (grunt) {
         }]
       },
       test: {
+        options: {
+          bare: true
+        },
         files: [{
           expand: true,
           cwd: 'test/spec',
@@ -205,7 +211,7 @@ module.exports = function (grunt) {
     },
     angularFileLoader: {
       options: {
-        scripts: ['.tmp/js/playlist/**/*.js'],
+        scripts: ['.tmp/js/playlist/**/*.js', '!.tmp/js/playlist/index.js'],
         relative: '.tmp/img',
         html: {recipe:  '<script src="/%" type="text/javascript"></script>'},
       },

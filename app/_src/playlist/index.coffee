@@ -1,4 +1,4 @@
-angular.module 'spotifyPlaylistCollab', [
+playlistApp = angular.module 'spotifyPlaylistCollab', [
   'spotify',
   'ngAria',
   'smoothScroll',
@@ -8,8 +8,7 @@ angular.module 'spotifyPlaylistCollab', [
   .config [
     '$locationProvider',
     'SpotifyProvider',
-    '$httpProvider',
-    ($locationProvider, SpotifyProvider, $httpProvider) ->
+    ($locationProvider, SpotifyProvider) ->
           
       SpotifyProvider.setClientId '37026114ba074d349b5badec6bda2844'
       SpotifyProvider.setRedirectUri window.location.protocol + '//' + window.location.hostname + (if window.location.port then ':' + window.location.port else '') + '/spotify-callback.html'

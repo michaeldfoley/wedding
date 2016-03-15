@@ -1,5 +1,4 @@
-angular.module 'spotifyPlaylistCollab'
-  .directive 'mffreq', ['frequency', 'audio', 'player', '$rootScope', '$timeout', (frequency, audio, player, $rootScope, $timeout) ->
+playlistApp.directive 'mffreq', ['frequency', 'audio', 'player', '$rootScope', '$timeout', (frequency, audio, player, $rootScope, $timeout) ->
     restrict: 'E'
     replace: true
     scope: {

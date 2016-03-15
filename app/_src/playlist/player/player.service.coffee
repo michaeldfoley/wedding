@@ -1,5 +1,4 @@
-angular.module 'spotifyPlaylistCollab'
-  .factory 'player', ['audio', '$rootScope', (audio, $rootScope) ->
+playlistApp.factory 'player', ['audio', '$rootScope', (audio, $rootScope) ->
     audio.crossOrigin = 'anonymous'
     
     audio.addEventListener("playing", () ->
