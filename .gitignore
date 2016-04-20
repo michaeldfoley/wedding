@@ -38,6 +38,10 @@ dist
 node_modules
 .tmp
 
+# Ignore authfiles
+.auth*
+firebase.json
+
 # Ignore critical path css #
 _critical_*.css
 

@@ -29,7 +29,7 @@ body {
   color: $text-color;
   background-color: $body-bg;
   
-  &:not(.home){
+  &:not(.body-home){
     margin: 0 0 $footer-height;
   }
 

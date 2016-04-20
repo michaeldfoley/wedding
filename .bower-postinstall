@@ -1,3 +1,0 @@
-#!/bin/sh
-
-mv app/_bower_components/normalize-css/normalize.css app/_bower_components/normalize-css/_normalize.scss

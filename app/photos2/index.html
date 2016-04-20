@@ -1,0 +1,41 @@
+---
+layout: default
+nav-name: Photos 2
+title: Photos
+heading: photos
+description: View photos from our wedding as well as our engagement shoot.
+weight: 5
+---
+
+<article class="post">
+{% include heading.html %}
+  <section class="gallery gallery-engagement" ng-app="photos">
+    <div ng-controller="PhotosCtrl">
+      
+      
+      <section class="login" ng-show="!currentUser">
+        <form name="myForm" ng-submit="login()" novalidate="novalidate">
+          <h1>Hi there!</h1>
+          <p>Login to access site features</p>
+          <p ng-show="message" class="error formerror">{{message}}</p>
+          <input type="password" name="password" placeholder="Password" ng-model="user.password"/>
+          <button type="submit" ng-disabled="myForm.$invalid" class="btn">Login</button>
+        </form>
+      </section>
+      
+      <div ng-show="currentUser">
+        <span>Hi {{currentUser.firstname}}</span>
+        <a href="#" ng-click="logout()">logout</a>
+      </div>
+      <main class="cf" ng-view>
+      </main>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-img js-lazyload" data-noscript="" style="padding-bottom: {{ photo.ratio }}%">
+        <noscript>
+          <img src="../img/photos/{{ photo.src }}-medium.{{ type }}" srcset="../img/photos/{{ photo.src }}-small.{{ type }} 480w, ../img/photos/{{ photo.src }}-medium.{{ type }} 768w, ../img/photos/{{ photo.src }}-large.{{ type }} 1200w, ../img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw">
+        </noscript>
+      </div>
+    </div>
+  </section>
+</article>

@@ -14,6 +14,9 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
   // Load all Grunt tasks
   require('load-grunt-tasks')(grunt);
+  
+  
+  var fbConfig = grunt.file.readJSON('.auth-fb.json');
 
   grunt.initConfig({
     // Configurable paths
@@ -21,14 +24,18 @@ module.exports = function (grunt) {
       app: 'app',
       dist: 'dist'
     },
+    fbConfig: fbConfig,
     watch: {
       sass: {
         files: ['<%= yeoman.app %>/_scss/**/*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer:dist']
+        tasks: ['sass:server', 'autoprefixer:stage', 'penthouse', 'cssmin:critical'],
+        options: {
+          interrupt: true
+        }
       },
       autoprefixer: {
         files: ['<%= yeoman.app %>/css/**/*.css'],
-        tasks: ['copy:stageCss', 'autoprefixer:dist']
+        tasks: ['copy:stageCss', 'autoprefixer:stage']
       },
       coffee: {
         files: ['<%= yeoman.app %>/**/*.coffee'],
@@ -38,8 +45,8 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/_src/**/*.js'],
         tasks: ['copy:stageJs']
       },
-      playlist: {
-        files: ['.tmp/js/playlist/**/*.js'],
+      angularJS: {
+        files: ['.tmp/js/{playlist,photos}/**/*.js'],
         tasks: ['injectAngular']
       },
       coffeeTest: {
@@ -50,7 +57,7 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/img/**/*.svg'],
         tasks: ['svg_sprite:stage']
       },
-      angular_html: {
+      angularTemplates: {
         files: [
           '<%= yeoman.app %>/_src/**/*.html'
         ],
@@ -176,10 +183,16 @@ module.exports = function (grunt) {
       options: {
         browsers: ['last 2 versions', '> 5%']
       },
-      dist: {
+      stage: {
         expand: true,
         cwd: '.tmp',
-        src: '**/{css,concat}/*.css',
+        src: 'css/*.css',
+        dest: '.tmp'
+      },
+      dist: {
+        expand: true,
+        cwd: '.tmp/concat/',
+        src: 'css/*.css',
         dest: '.tmp'
       }
     },
@@ -211,15 +224,15 @@ module.exports = function (grunt) {
     },
     angularFileLoader: {
       options: {
-        scripts: ['.tmp/js/playlist/**/*.js', '!.tmp/js/playlist/index.js'],
-        relative: '.tmp/img',
+        scripts: ['.tmp/js/{playlist,photos}/**/*.js', '!.tmp/js/{playlist,photos}/index.js'],
+        relative: '.tmp',
         html: {recipe:  '<script src="/%" type="text/javascript"></script>'},
       },
       server: {
-        src: '.jekyll/playlist/index.html'
+        src: '.jekyll/{playlist,photos2}/index.html'
       },
       dist: {
-        src: '<%= yeoman.dist %>/playlist/index.html'
+        src: '<%= yeoman.dist %>/{playlist,photos2}/index.html'
       }
     },
     jekyll: {
@@ -246,7 +259,7 @@ module.exports = function (grunt) {
     },
     replace: {
       server: {
-        src: '.jekyll/playlist/index.html',
+        src: '.jekyll/**/index.html',
         overwrite: true, 
         replacements: [{
           from: '<script src="js', 
@@ -254,7 +267,7 @@ module.exports = function (grunt) {
         }]
       },
       dist: {
-        src: '<%= yeoman.dist %>/playlist/index.html',
+        src: '<%= yeoman.dist %>/**/index.html',
         overwrite: true, 
         replacements: [{
           from: '<script src="js', 
@@ -266,7 +279,9 @@ module.exports = function (grunt) {
       options: {
         dest: '<%= yeoman.dist %>'
       },
-      html: '<%= yeoman.dist %>/index.html'
+      dist: {
+        src: ['<%= yeoman.dist %>/index.html', '<%= yeoman.dist %>/playlist/index.html', '<%= yeoman.dist %>/photos2/index.html']
+      }
     },
     usemin: {
       options: {
@@ -320,7 +335,11 @@ module.exports = function (grunt) {
       dist: {
         options: {
           check: 'gzip'
-        }
+        },
+        expand: true,
+				cwd: '.tmp/concat',
+				src: 'css/*.css',
+				dest: '<%= yeoman.dist %>'
       },
       critical: {
         expand: true,
@@ -426,16 +445,18 @@ module.exports = function (grunt) {
             // Jekyll processes and moves HTML and text files.
             // Usemin moves CSS and javascript inside of Usemin blocks.
             // Copy moves asset files and directories.
-            '_src/**/*.js',
             'fonts/**/*',
-            // Like Jekyll, exclude files & folders prefixed with an underscore.
             '!**/_*{,/**}',
-            // Explicitly add any files your site needs for distribution here.
-            '_bower_components/jquery/jquery.min.js',
             'favicon.{ico,png}',
             'apple-touch*.png'
           ],
           dest: '<%= yeoman.dist %>'
+        },{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/_bower_components/normalize-css/',
+          src: 'normalize.css',
+          dest: '.tmp/css'
         },{
           expand: true,
           dot: true,
@@ -451,6 +472,13 @@ module.exports = function (grunt) {
           dot: true,
           cwd: '<%= yeoman.app %>/css',
           src: '**/*.css',
+          dest: '.tmp/css'
+        },
+        {
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/_bower_components/normalize-css/',
+          src: 'normalize.css',
           dest: '.tmp/css'
         }]
       },
@@ -474,7 +502,7 @@ module.exports = function (grunt) {
           expand: true,
           dot: true,
           cwd: '<%= yeoman.app %>/_src',
-          src: 'playlist/**/*.html',
+          src: '{playlist,photos}/**/*.html',
           dest: '.tmp/js'
         }]
       }
@@ -535,35 +563,14 @@ module.exports = function (grunt) {
     },
     modernizr: {
       dist: {
-        devFile : '<%= yeoman.app %>/_bower_components/modernizr/modernizr.js',
-        outputFile : '.tmp/js/modernizr.js',
-
-        extra : {
-          shiv : false,
-          printshiv : false,
-          load : false,
-          mq : false,
-          cssclasses : true
-        },
-
-        extensibility : {
-          addtest : false,
-          prefixed : false,
-          teststyles : false,
-          testprops : true,
-          testallprops : true,
-          hasevents : false,
-          prefixes : true,
-          domprefixes : true,
-          cssclassprefix: ''
-        },
+        devFile : '<%= yeoman.app %>/_bower_components/modernizr/src',
+        dest: '.tmp/js/modernizr.js',
+        
+        options: [
+          'html5shiv'
+        ],
         
         uglify : false,
-        parseFiles : true,
-        matchCommunityTests : false,
-        
-        tests: [
-        ],
         
         files: {
           src: [
@@ -577,21 +584,45 @@ module.exports = function (grunt) {
       }
   
     },
+    yaml: {
+      dist: {
+        options: {
+          space: 2
+        },
+        files: {
+          '.tmp/data/photos.json': ['<%= yeoman.app %>/_data/photos2.yml']
+        }
+      }
+    },
+    
+    firebase: {
+      options: {
+        mode: 'upload',
+        reference: 'https://emandmike.firebaseio.com',
+        token: '<%= fbConfig.token %>'
+      },
+      load: {
+        files: [ { src: '.tmp/data/photos.json' } ]
+      }
+    },
+    
+    exec: {
+      firebase: 'firebase deploy'
+    },
+    
     concurrent: {
       server: [
         'sass:server', 
-        'autoprefixer:dist',
+        'autoprefixer:stage',
         'coffee:dist',
         'svg_sprite:stage',
         'responsive_images:stage',
         'copy:stageCss',
         'copy:stageJs',
-        'copy:stageTemplates',
-        'jekyll:server'
+        'copy:stageTemplates'
       ],
       dist: [
         'sass:dist', 
-        'autoprefixer:dist',
         'coffee:dist',
         'svg_sprite:dist',
         'responsive_images:dist',
@@ -599,7 +630,8 @@ module.exports = function (grunt) {
       ]
     }
   });
-
+  
+  
   // Define Tasks
   grunt.registerTask('injectAngular', function (target) {
     if (target === 'dist') {
@@ -613,7 +645,9 @@ module.exports = function (grunt) {
     
     var serve = [
       'concurrent:server',
+      'jekyll:server',
       'injectAngular',
+      'modernizr',
       'browserSync:server',
       'penthouse',
       'cssmin:critical',
@@ -633,6 +667,12 @@ module.exports = function (grunt) {
     
     grunt.task.run(serve);
   });
+  
+  grunt.registerTask('uploadImages', [
+    'yaml',
+    'firebase',
+    'exec:firebase'
+  ]);
 
   grunt.registerTask('server', function () {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
@@ -663,23 +703,23 @@ module.exports = function (grunt) {
     'jekyll:dist',
     'concurrent:dist',
     'injectAngular:dist',
-    'useminPrepare',
     'modernizr',
+    'useminPrepare',
     'concat',
+    'autoprefixer:dist',
     'uglify',
+    'cssmin:dist',
     'imagemin',
     'filerev',
     'usemin',
-    'htmlmin',
-    'browserSync:dist',
-    'penthouse', 
-    'cssmin'
+    'htmlmin'
     ]);
 
   grunt.registerTask('deploy', [
     'check',
     'test',
     'build',
+    'uploadImages',
     'buildcontrol'
     ]);
 
