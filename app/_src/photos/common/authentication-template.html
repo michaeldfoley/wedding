@@ -1,0 +1,10 @@
+<section class="login">
+  <form name="authentication" ng-submit="login()" novalidate="novalidate">
+    <h1>Hi there!</h1>
+    <p>Login to access site features</p>
+    <p class="loading" ng-show="loading">Loading</p>
+    <p class="error formerror" ng-show="feedback">{{feedback}}</p>
+    <input type="password" name="password" placeholder="Password" ng-model="user.password"/>
+    <button type="submit" ng-disabled="authentication.$invalid" class="btn">Login</button>
+  </form>
+</section>
