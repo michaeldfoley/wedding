@@ -1,7 +1,9 @@
 photosApp.directive 'mfauthentication', ['Authentication', (Authentication) ->
     restrict: 'E'
     replace: true
-    scope: {}
+    scope: {
+      message: "="
+    }
     templateUrl: '/js/photos/common/authentication-template.html'
     link: (scope, elem, attrs) ->
       scope.user = {}

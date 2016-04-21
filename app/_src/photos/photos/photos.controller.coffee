@@ -21,7 +21,9 @@ photosApp.controller 'PhotosCtrl', [
             $scope.currentAlbum = data.images
         
         else
-          console.log "login is required and you're not logged in"
+          $scope.message = 
+            heading: 'Please Login to View This Album'
+            text: 'If you do not have the password, email Mike at <a href="mailto:hi@emandmike.us">hi@emandmike.us</a>.'
     
     $rootScope.$on 'loggedin', () ->
       $scope.getAlbum()
