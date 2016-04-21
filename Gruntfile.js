@@ -590,20 +590,31 @@ module.exports = function (grunt) {
         options: {
           space: 2
         },
-        files: {
-          '.tmp/data/photos.json': ['<%= yeoman.app %>/_data/photos2.yml']
-        }
+        files: [{
+          expand: true, 
+          cwd: '<%= yeoman.app %>/_data/', 
+          src: ['**/*.yml'], 
+          dest: '.tmp/data'
+        }]
       }
     },
     
     firebase: {
       options: {
         mode: 'upload',
-        reference: 'https://emandmike.firebaseio.com',
         token: '<%= fbConfig.token %>'
       },
-      load: {
-        files: [ { src: '.tmp/data/photos.json' } ]
+      photos: {
+        options: {
+          reference: 'https://emandmike.firebaseio.com/photos',
+        },
+        files: [ { src: '.tmp/data/engagement.json' },  { src: '.tmp/data/other.json' } ]
+      },
+      albums: {
+        options: {
+          reference: 'https://emandmike.firebaseio.com/',
+        },
+        files: [ { src: '.tmp/data/albums.json' } ]
       }
     },
     

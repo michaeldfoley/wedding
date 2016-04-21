@@ -9,9 +9,10 @@ weight: 5
 
 <article class="post" ng-app="photos">
 {% include heading.html %}
-  <div ng-controller="PhotosCtrl" ng-init="getAlbums()">
-    <mfauthentication ng-if="!loggedin()"></mfauthentication>
-    <mfphotoalbums album="album" ng-repeat="album in photoAlbums"></mfphotoalbums>
+  <div ng-controller="PhotoAlbumsCtrl" ng-init="getAlbums()">
+    {% raw %}
+      <a ng-repeat="album in photoAlbums" ng-href="#/{{ album.id }}" ng-bind="album.name"></a>
+    {% endraw %}
   </div>
   <div ng-view></div>
 </article>

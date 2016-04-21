@@ -3,5 +3,5 @@ photosApp = angular.module 'photos', ['ngRoute', 'firebase']
   .config ($routeProvider) ->
     $routeProvider
       .when '/:id',
-        templateUrl: '/js/photos/photoAlbum/photoAlbum-view.html'
-        controller: 'PhotoAlbumCtrl'
+        templateUrl: '/js/photos/photos/photos-view.html'
+        controller: 'PhotosCtrl'

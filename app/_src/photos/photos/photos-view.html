@@ -1,0 +1,4 @@
+<section class="gallery" ng-class="albumClass" ng-init="getAlbum()">
+  <mfauthentication ng-if="!currentAlbum && !signedIn()"></mfauthentication>
+  <mfphoto photo="photo" ng-repeat="photo in currentAlbum"></mfphoto>
+</section>

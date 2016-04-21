@@ -1,0 +1,8 @@
+engagement:
+  id: "engagement"
+  name: "Engagement Photos"
+  login: false
+other:
+  id: "other"
+  name: "Other Photos"
+  login: true
