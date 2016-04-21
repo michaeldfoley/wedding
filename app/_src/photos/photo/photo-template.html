@@ -1,5 +1,5 @@
 <div class="gallery-item" bindonce="photo">
   <div class="gallery-img js-lazyload" data-noscript="" bo-style="{'padding-bottom': photo.ratio + '%'}">
-    <img bo-src="photo.imageUrl" bo-attr bo-attr-srcset="photo.srcset" bo-alt="photo.alt" sizes="(min-width: 768px) 50vw, 100vw">
+    <img bo-src="photo.src | src" bo-attr bo-attr-srcset="photo.src | srcset" bo-alt="photo.alt" sizes="(min-width: 768px) 50vw, 100vw">
   </div>
 </div>
