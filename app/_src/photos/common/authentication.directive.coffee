@@ -1,4 +1,4 @@
-photosApp.directive 'mfauthentication', ['$rootScope', 'Authentication', ($rootScope, Authentication) ->
+photosApp.directive 'mfauthentication', ['Authentication', (Authentication) ->
     restrict: 'E'
     replace: true
     scope: {}

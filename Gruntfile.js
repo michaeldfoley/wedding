@@ -59,7 +59,7 @@ module.exports = function (grunt) {
       },
       angularTemplates: {
         files: [
-          '<%= yeoman.app %>/_src/**/*.html'
+          '<%= yeoman.app %>/_src/{playlist,photos}/**/*.html'
         ],
         tasks: ['copy:stageTemplates']
       },
@@ -388,7 +388,7 @@ module.exports = function (grunt) {
       stage: {
         expand: true,
         cwd: '<%= yeoman.app %>',
-        src: ['img/**/*.{jpg,gif,png}'],
+        src: ['img/**/*.{jpg,gif,png}', '!img/photos/**/*'],
         dest: '.tmp',
         newFilesOnly: true
       },
@@ -517,7 +517,8 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/js/**/*.js',
             '<%= yeoman.dist %>/css/**/*.css',
             '<%= yeoman.dist %>/img/**/*.{gif,jpg,jpeg,png,svg,webp}',
-            '<%= yeoman.dist %>/fonts/**/*.{eot*,otf,svg,ttf,woff}'
+            '<%= yeoman.dist %>/fonts/**/*.{eot*,otf,svg,ttf,woff}',
+            '!<%= yeoman.dist %>/img/photos/*'
           ]
         }]
       }

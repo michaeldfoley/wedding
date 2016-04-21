@@ -7,21 +7,11 @@ description: View photos from our wedding as well as our engagement shoot.
 weight: 5
 ---
 
-<article class="post">
+<article class="post" ng-app="photos">
 {% include heading.html %}
-  <section class="gallery gallery-engagement" ng-app="photos">
-    <div ng-controller="PhotosCtrl">
-      
-      <mfauthentication ng-show="!loggedin()"></mfauthentication>
-      
-      
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-img js-lazyload" data-noscript="" style="padding-bottom: {{ photo.ratio }}%">
-        <noscript>
-          <img src="../img/photos/{{ photo.src }}-medium.{{ type }}" srcset="../img/photos/{{ photo.src }}-small.{{ type }} 480w, ../img/photos/{{ photo.src }}-medium.{{ type }} 768w, ../img/photos/{{ photo.src }}-large.{{ type }} 1200w, ../img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw">
-        </noscript>
-      </div>
-    </div>
-  </section>
+  <div ng-controller="PhotosCtrl" ng-init="getAlbums()">
+    <mfauthentication ng-if="!loggedin()"></mfauthentication>
+    <mfphotoalbums album="album" ng-repeat="album in photoAlbums"></mfphotoalbums>
+  </div>
+  <div ng-view></div>
 </article>

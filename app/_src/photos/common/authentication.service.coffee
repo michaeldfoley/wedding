@@ -1,12 +1,14 @@
-photosApp.factory 'Authentication', ($firebase, $firebaseAuth, FIREBASE_URL, $rootScope, $q) ->
+photosApp.factory 'Authentication', ($rootScope, $firebase, $firebaseAuth, FIREBASE_URL, $q) ->
   ref = new Firebase(FIREBASE_URL)
   authObj = $firebaseAuth(ref);
   
-  myObject =
+  auth =
     login: (user) ->
       authObj.$authWithPassword 
         email: user.email,
         password: user.password
+      .then (user) ->
+        $rootScope.$emit('loggedin', user)
       .catch (error) ->
         return $q.reject(error)
       
@@ -15,8 +17,3 @@ photosApp.factory 'Authentication', ($firebase, $firebaseAuth, FIREBASE_URL, $ro
     
     signedIn: () ->
       authObj.$getAuth() != null
-  
-  $rootScope.signedIn = () ->
-    myObject.signedIn()
-  
-  myObject
