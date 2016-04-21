@@ -1,4 +1,4 @@
-<section class="gallery" ng-class="albumClass" ng-init="getAlbum()">
+<section bindonce="albumClass" class="gallery" bo-class="albumClass" ng-init="getAlbum()">
   <mfauthentication ng-if="!currentAlbum && !signedIn()" message="message"></mfauthentication>
   <mfphoto photo="photo" ng-repeat="photo in currentAlbum"></mfphoto>
 </section>

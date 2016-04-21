@@ -1,7 +1,5 @@
-<div class="gallery-item">
-  <div class="gallery-img js-lazyload" data-noscript="" style="padding-bottom: {{ photo.ratio }}%">
-    <noscript>
-      <img src="https://emandmike.firebaseapp.com/photos/{{ photo.src }}-medium.jpg" srcset="https://emandmike.firebaseapp.com/photos/{{ photo.src }}-small.jpg 480w, https://emandmike.firebaseapp.com/photos/{{ photo.src }}-medium.jpg 768w, https://emandmike.firebaseapp.com/photos/{{ photo.src }}-large.jpg 1200w, https://emandmike.firebaseapp.com/photos/{{ photo.src }}-xlarge.jpg 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw">
-    </noscript>
+<div class="gallery-item" bindonce="photo">
+  <div class="gallery-img js-lazyload" data-noscript="" bo-style="{'padding-bottom': photo.ratio + '%'}">
+    <img bo-src="photo.imageUrl" bo-attr bo-attr-srcset="photo.srcset">
   </div>
 </div>
