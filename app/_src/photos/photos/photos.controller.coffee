@@ -18,6 +18,7 @@ photosApp.controller 'PhotosCtrl', [
         else
           Albums.getAlbum($scope.id).then (data) ->
             $scope.currentAlbum = data.album.images
+            $scope.message = data.message
     
     $rootScope.$on 'loggedin', () ->
       $scope.getAlbum()
