@@ -3,9 +3,10 @@
 // --------------------------------------------------
 
 .lightbox {
-  position: absolute;
+  position: fixed;
   top: 0;
-  height: 100%;
+  height: 100vh;
+  min-height: 300px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -18,8 +19,11 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  min-height: 300px;
-  padding: 50px 50px 70px;
+  padding: 40px 0;
+  
+  @media (min-width: $screen-sm) {
+    padding: 50px 50px 70px;
+  }
 }
 
 .lightbox-image {
@@ -38,6 +42,12 @@
   position: absolute;
   top: 50%;
   margin-top: -60px;
+  opacity: 0;
+  transition: opacity .3s;
+  
+  @media (min-width: $screen-sm) {
+    opacity: 1;
+  }
 }
 
 .lightbox-direction {
@@ -59,6 +69,43 @@
 
 .lightbox-direction--next {
   transform: scaleX(-1);
+}
+
+
+//
+// Lightbox list
+// --------------------------------------------------
+
+.lightbox-list {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+  display: none;
+  
+  @media (min-width: $screen-sm) {
+    display: flex;
+  }
+}
+
+.lightbox-listitem {
+  margin: 0 5px;
+  overflow: hidden;
+  
+  img {
+    height: 30px;
+    transition: height .15s;
+  }
+  
+  &.active {
+    border: 1px solid #fff;
+  }
+}
+.lightbox-list:hover img {
+  height: 60px;
 }
 
 

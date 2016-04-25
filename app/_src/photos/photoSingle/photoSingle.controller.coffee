@@ -20,14 +20,13 @@ photosApp.controller 'PhotoSingleCtrl', [
         $location.path( "/" +  $scope.id ).replace()
       $scope.image = data
     
-    
     keydown = (e) ->
       if (e.keyCode == 37 || e.keyCode == 38) && $scope.image.prev
-        window.location.href = "#/" +  $scope.id + "/" + $scope.image.prev.src
+        window.location.hash = "/" +  $scope.id + "/" + $scope.image.prev.src
       if (e.keyCode == 39 || e.keyCode == 40) && $scope.image.next
-        window.location.href = "#/" +  $scope.id + "/" + $scope.image.next.src
+        window.location.hash = "/" +  $scope.id + "/" + $scope.image.next.src
       if (e.keyCode == 27 || e.keyCode == 88)
-        window.location.href = "#/" +  $scope.id
+        window.location.hash = "/" +  $scope.id
     
     $doc.on 'keydown', keydown
     

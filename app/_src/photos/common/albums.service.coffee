@@ -40,6 +40,9 @@ photosApp.factory 'Albums', ($firebaseObject, FIREBASE_URL, Authentication, $q) 
         
         image['prev'] = data.album.images[ imageIndex - 1 ]
         image['next'] = data.album.images[ imageIndex + 1 ]
+        
+        image['neighbors'] = data.album.images.filter (image, index) ->
+          index > imageIndex - 4 && index < imageIndex + 4
         return image
           
     
