@@ -1,0 +1,94 @@
+//
+// Lightbox
+// --------------------------------------------------
+
+.lightbox {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #222;
+  z-index: $zindex-7;
+}
+
+.lightbox-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+  padding: 50px 50px 70px;
+}
+
+.lightbox-image {
+  max-height: 100%;
+}
+
+
+//
+// Lightbox controls
+// --------------------------------------------------
+
+.lightbox-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  margin-top: -60px;
+}
+
+.lightbox-direction {
+  margin: 0 15px;
+  width: 15px;
+  opacity: .7;
+  transition: opacity .3s, transform .3s;
+  
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.lightbox-direction--icon {
+  fill: #fff;
+  height: 60px;
+}
+
+.lightbox-direction--next {
+  transform: scaleX(-1);
+}
+
+
+//
+// Lightbox buttons
+// --------------------------------------------------
+
+.lightbox-close {
+  border: none;
+  background: none;
+  color: #fff;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 15px 15px 10px;
+  padding-bottom: 5px;
+  font-size: .8em;
+  line-height: 1;
+  transition: opacity .3s;
+  
+  &:hover {
+    color: #fff;
+    opacity: 1;
+    text-decoration: underline;
+  }
+}
+.lightbox-close--icon {
+  width: 17px;
+  height: 17px;
+  margin: -3px 4px 0 0;
+  fill: #fff;
+}

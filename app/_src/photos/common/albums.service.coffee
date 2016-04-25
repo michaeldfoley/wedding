@@ -30,6 +30,19 @@ photosApp.factory 'Albums', ($firebaseObject, FIREBASE_URL, Authentication, $q) 
             text: 'If you do not have the password, email Mike at <a href="mailto:hi@emandmike.us">hi@emandmike.us</a>.'
           return payload
     
+    getImage: (albumId, id) ->
+      album.getAlbum(albumId).then (data)->
+        image = 
+          current: data.album.images.filter((image) ->
+            image.src == id
+          )[0]
+        imageIndex = data.album.images.indexOf(image['current'])
+        
+        image['prev'] = data.album.images[ imageIndex - 1 ]
+        image['next'] = data.album.images[ imageIndex + 1 ]
+        return image
+          
+    
     isAlbum: (albumId) ->
       album.getAlbums().then (data) ->
         !!data[albumId]

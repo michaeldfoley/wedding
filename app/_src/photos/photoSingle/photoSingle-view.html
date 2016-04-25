@@ -1,0 +1,18 @@
+<section class="lightbox">
+  <a bindonce="album" bo-href="'#/' + id" class="lightbox-close">
+    <svg class="lightbox-close--icon" role="presentation"><use xlink:href="../img/sprite.symbol.svg#arrow" /></svg><span bo-bind="'Back to ' + album.name"></span>
+  </a>
+  <div class="lightbox-item" bindonce="image">
+    <img bo-src="image.current.src | src" bo-attr bo-attr-srcset="image.current.src | srcset" bo-alt="image.current.alt" class="lightbox-image">
+  </div>
+  <div class="lightbox-controls" bindonce="image">
+    <a bo-if="image.prev" bo-href="'#/' + id + '/' + image.prev.src" class="lightbox-direction">
+      <svg class="lightbox-direction--icon" role="presentation"><use xlink:href="../img/sprite.symbol.svg#photo-direction" /></svg>
+    </a>
+    <span bo-if="!image.prev" class="lightbox-direction inactive"></span>
+    <a bo-if="image.next" bo-href="'#/' + id + '/' + image.next.src" class="lightbox-direction">
+      <svg class="lightbox-direction--icon lightbox-direction--next" role="presentation"><use xlink:href="../img/sprite.symbol.svg#photo-direction" /></svg>
+    </a>
+    <span bo-if="!image.next" class="lightbox-direction inactive"></span>
+  </div>
+</section>

@@ -9,3 +9,6 @@ photosApp = angular.module 'photos', [
       .when '/:id',
         templateUrl: '/js/photos/photos/photos-view.html'
         controller: 'PhotosCtrl'
+      .when '/:id/:photo',
+        templateUrl: '/js/photos/photoSingle/photoSingle-view.html'
+        controller: 'PhotoSingleCtrl'
