@@ -14,7 +14,7 @@ photosApp.controller 'PhotosCtrl', [
     $scope.getAlbum = () ->
       Albums.isAlbum($scope.id).then (isAlbum) ->
         if !isAlbum
-          $location.path( "/" )
+          $location.path( "/" ).replace()
         else
           Albums.getAlbum($scope.id).then (data) ->
             $scope.currentAlbum = data.album.images
