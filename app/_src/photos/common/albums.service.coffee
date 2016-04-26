@@ -1,11 +1,16 @@
 photosApp.factory 'Albums', ($firebaseObject, FIREBASE_URL, Authentication, $q) ->
   
+  albums = {}
+  
   album =
     getAlbums: () ->
+      if Object.getOwnPropertyNames(albums).length > 0
+        return $q.when(albums)
+        
       ref = new Firebase(FIREBASE_URL + 'albums')
       photoAlbums = $firebaseObject(ref)
       photoAlbums.$loaded().then (data) ->
-        data
+        return albums = data
       .catch (error) ->
         return $q.reject(error)
     
@@ -13,17 +18,23 @@ photosApp.factory 'Albums', ($firebaseObject, FIREBASE_URL, Authentication, $q) 
       payload =
         album: {}
         message: {}
-    
+      
       album.loginRequired(albumId).then (loginRequired) ->
         if !loginRequired || Authentication.signedIn()
+          
+          if albums[albumId].images
+            payload.album = albums[albumId]
+            return payload
+          
           ref = new Firebase(FIREBASE_URL + 'photos/' + albumId)
           photoAlbum = $firebaseObject(ref)
-          
           photoAlbum.$loaded().then (currentAlbum) ->
-            payload.album = currentAlbum
+            albums[albumId].images = currentAlbum.images
+            payload.album = albums[albumId]
             return payload
           .catch (error) ->
             return $q.reject(error)
+            
         else
           payload.message =
             heading: 'Please Login to View This Album'
@@ -31,7 +42,7 @@ photosApp.factory 'Albums', ($firebaseObject, FIREBASE_URL, Authentication, $q) 
           return payload
     
     getImage: (albumId, id) ->
-      album.getAlbum(albumId).then (data)->
+      album.getAlbum(albumId).then (data) ->
         image = 
           current: data.album.images.filter((image) ->
             image.src == id
