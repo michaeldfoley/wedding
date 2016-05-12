@@ -1,14 +1,71 @@
 photosApp = angular.module 'photos', [
-  'ngRoute', 
+  'ui.router', 
   'firebase',
-  'pasvaz.bindonce']
+  'pasvaz.bindonce',
+  'ngAnimate']
   .constant 'FIREBASE_URL', 'https://emandmike.firebaseio.com/'
   .constant 'FIREBASE_PHOTOS', 'https://emandmike.firebaseapp.com/photos'
-  .config ($routeProvider) ->
-    $routeProvider
-      .when '/:id',
-        templateUrl: '/js/photos/photos/photos-view.html'
-        controller: 'PhotosCtrl'
-      .when '/:id/:photo',
-        templateUrl: '/js/photos/photoSingle/photoSingle-view.html'
-        controller: 'PhotoSingleCtrl'
+  .config ($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) ->
+    $urlMatcherFactoryProvider.strictMode(false)
+    $stateProvider
+      .state 'albums',
+        url: ''
+        templateUrl: '/js/photos/albums/albums-view.html'
+        controller: 'AlbumsCtrl'
+        resolve:
+          albums: (Albums) ->
+            Albums.get()
+            
+      .state 'login',
+        url: '/login'
+        views:
+          '':
+            templateUrl: '/js/photos/login/login-view.html'
+            controller: 'LoginCtrl'
+        
+      .state 'gallery',
+        url: '/:id'
+        views:
+          '':
+            templateUrl: '/js/photos/gallery/gallery-view.html'
+            controller: 'GalleryCtrl'
+          'items@gallery':
+            templateUrl: '/js/photos/galleryItem/galleryItem-view.html'
+            controller: 'GalleryItemCtrl'
+        resolve: 
+          album: ($stateParams, Albums) ->
+            Albums.getAlbum($stateParams.id)
+            .catch (error) ->
+              message: error
+        
+      .state 'gallery.lightbox', 
+        url: '/:photo'
+        views:
+          'items@gallery': 
+            templateUrl: '/js/photos/lightboxItem/lightboxItem-view.html'
+            controller: 'LightboxItemCtrl'
+          'controls@gallery': 
+            templateUrl: '/js/photos/lightboxControls/lightboxControls-view.html'
+            controller: 'LightboxControlsCtrl'
+          'list@gallery': 
+            templateUrl: '/js/photos/lightboxList/lightboxList-view.html'
+            controller: 'LightboxListCtrl'
+        resolve:
+          index: ($stateParams, Albums, album)->
+            Albums.getImagePosition(album.images, $stateParams.photo)
+        
+  .run ($rootScope, $state, Authentication, Albums) ->
+    $rootScope.$on '$stateChangeStart', (event, toState, toParams)->
+        
+      event.targetScope.activeClass = ''
+      if toParams.photo
+        event.targetScope.activeClass = 'lightbox'
+      if toParams.id
+        Albums.loginRequired(toParams.id).then (loginRequired) ->
+          if loginRequired && !Authentication.signedIn()
+            event.targetScope.loginText = toState.loginText
+            event.targetScope.returnTo = 
+              name: toState.name
+              params: toParams
+            $state.go('login')
+          

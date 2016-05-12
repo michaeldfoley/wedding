@@ -1,0 +1,14 @@
+<a bindonce="album" ui-sref="gallery({ id: album.id })" class="lightbox-close">
+  <svg class="lightbox-close--icon" role="presentation"><use xlink:href="../img/sprite.symbol.svg#arrow" /></svg><span bo-bind="'Back to ' + album.name"></span>
+</a>
+
+<div class="lightbox-controls" bindonce="direction">
+  <a bo-if="direction.prev" ui-sref="gallery.lightbox(direction.prev)" class="lightbox-direction">
+    <svg class="lightbox-direction--icon" role="presentation"><use xlink:href="../img/sprite.symbol.svg#photo-direction" /></svg>
+  </a>
+  <span bo-if="!direction.prev" class="lightbox-direction inactive"></span>
+  <a bo-if="direction.next" ui-sref="gallery.lightbox(direction.next)" class="lightbox-direction">
+    <svg class="lightbox-direction--icon lightbox-direction--next" role="presentation"><use xlink:href="../img/sprite.symbol.svg#photo-direction" /></svg>
+  </a>
+  <span bo-if="!direction.next" class="lightbox-direction inactive"></span>
+</div>

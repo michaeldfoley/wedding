@@ -1,67 +1,64 @@
-photosApp.factory 'Albums', ($firebaseObject, FIREBASE_URL, Authentication, $q) ->
+photosApp.factory 'Albums', ($firebaseObject, FIREBASE_URL, $q) ->
   
-  albums = {}
+  state = {}
   
-  album =
-    getAlbums: () ->
-      if Object.getOwnPropertyNames(albums).length > 0
-        return $q.when(albums)
+  albums =
+    get: () ->
+      if Object.getOwnPropertyNames(state).length > 0
+        return $q.when(state)
         
       ref = new Firebase(FIREBASE_URL + 'albums')
       photoAlbums = $firebaseObject(ref)
       photoAlbums.$loaded().then (data) ->
-        return albums = data
+        return state = data
       .catch (error) ->
         return $q.reject(error)
     
     getAlbum: (albumId) ->
-      payload =
-        album: {}
-        message: {}
+      albums.isAlbum(albumId).then (isAlbum) ->
+        
+        if !isAlbum
+          return false
+          
+        if state[albumId].images
+          return state[albumId]
+        
+        ref = new Firebase(FIREBASE_URL + 'photos/' + albumId)
+        photoAlbum = $firebaseObject(ref)
+        photoAlbum.$loaded().then (currentAlbum) ->
+          state[albumId].images = currentAlbum.images
+          return state[albumId]
+        .catch (error) ->
+          return $q.reject(error)
+    
+    getCurrentImage: (images, id) ->
+      current = images.filter (image) ->
+        image.src == id
+      current[0]
+    
+    getImagePosition: (images, id) ->
+      current = images.filter (image) ->
+        image.src == id
+      return images.indexOf( current[0] )
+    
+    getAdjacent: (album, index) ->
+      direction = {}
+      if index > 0
+        direction['prev'] = 
+          id: album.id
+          photo: album.images[index - 1].src
       
-      album.loginRequired(albumId).then (loginRequired) ->
-        if !loginRequired || Authentication.signedIn()
+      if index < album.images.length - 1
+        direction['next'] = 
+          id: album.id
+          photo: album.images[index + 1].src
+      return direction
           
-          if albums[albumId].images
-            payload.album = albums[albumId]
-            return payload
-          
-          ref = new Firebase(FIREBASE_URL + 'photos/' + albumId)
-          photoAlbum = $firebaseObject(ref)
-          photoAlbum.$loaded().then (currentAlbum) ->
-            albums[albumId].images = currentAlbum.images
-            payload.album = albums[albumId]
-            return payload
-          .catch (error) ->
-            return $q.reject(error)
-            
-        else
-          payload.message =
-            heading: 'Please Login to View This Album'
-            text: 'If you do not have the password, email Mike at <a href="mailto:hi@emandmike.us">hi@emandmike.us</a>.'
-          return payload
-    
-    getImage: (albumId, id) ->
-      album.getAlbum(albumId).then (data) ->
-        image = 
-          current: data.album.images.filter((image) ->
-            image.src == id
-          )[0]
-        imageIndex = data.album.images.indexOf(image['current'])
-        
-        image['prev'] = data.album.images[ imageIndex - 1 ]
-        image['next'] = data.album.images[ imageIndex + 1 ]
-        
-        image['neighbors'] = data.album.images.filter (image, index) ->
-          index > imageIndex - 4 && index < imageIndex + 4
-        return image
-          
-    
     isAlbum: (albumId) ->
-      album.getAlbums().then (data) ->
+      albums.get().then (data) ->
         !!data[albumId]
     
     loginRequired: (albumId) ->
-      album.getAlbums().then (data) ->
+      albums.get().then (data) ->
         if data[albumId]
           data[albumId].login

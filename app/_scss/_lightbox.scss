@@ -5,21 +5,23 @@
 .lightbox {
   position: fixed;
   top: 0;
-  height: 100vh;
+  height: 100%;
   min-height: 300px;
   width: 100%;
   padding: 0;
   margin: 0;
   background: #222;
-  z-index: $zindex-7;
+  z-index: $zindex-4;
 }
 
 .lightbox-item {
   display: flex;
   align-items: center;
   justify-content: center;
+  position:absolute;
   height: 100%;
   padding: 40px 0;
+  width: 100%;
   
   @media (min-width: $screen-sm) {
     padding: 50px 50px 70px;
@@ -28,6 +30,23 @@
 
 .lightbox-image {
   max-height: 100%;
+  flex: 0 0 auto;
+  object-fit: scale-down;
+}
+
+
+.lightbox-next .lightbox-item.ng-enter {
+  animation: slideInRight .5s;
+}
+.lightbox-next .lightbox-item.ng-leave {
+  animation: slideOutLeft .5s;
+}
+
+.lightbox-prev .lightbox-item.ng-enter {
+  animation: slideInLeft .5s;
+}
+.lightbox-prev .lightbox-item.ng-leave {
+  animation: slideOutRight .5s;
 }
 
 
@@ -36,29 +55,39 @@
 // --------------------------------------------------
 
 .lightbox-controls {
-  display: flex;
-  justify-content: space-between;
+  height: 100%;
   width: 100%;
   position: absolute;
-  top: 50%;
-  margin-top: -60px;
-  opacity: 0;
-  transition: opacity .3s;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0;
+  z-index: $zindex-1;
   
   @media (min-width: $screen-sm) {
     opacity: 1;
+    padding: 50px 0 70px;
   }
 }
 
 .lightbox-direction {
-  margin: 0 15px;
-  width: 15px;
-  opacity: .7;
+  height: 100%;
+  width: 60px;
+  opacity: 0;
   transition: opacity .3s, transform .3s;
   
-  &:hover {
-    opacity: 1;
-    transform: scale(1.1);
+  @media (min-width: $screen-sm) {
+    height: auto;
+    width: 15px;
+    opacity: .7;
+    margin: 0 15px;
+  
+    &:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
   }
 }
 
@@ -76,15 +105,16 @@
 // Lightbox list
 // --------------------------------------------------
 
+
 .lightbox-list {
   position: absolute;
   bottom: 15px;
   left: 50%;
-  transform: translate(-50%, 0);
-  justify-content: center;
+  transform: translateX(-50%);
   padding: 0;
   list-style: none;
   display: none;
+  z-index: $zindex-2;
   
   @media (min-width: $screen-sm) {
     display: flex;
@@ -104,8 +134,8 @@
     border: 1px solid #fff;
   }
 }
-.lightbox-list:hover img {
-  height: 60px;
+.lightbox-list:hover img{
+  height: 45px;
 }
 
 
@@ -126,6 +156,7 @@
   font-size: .8em;
   line-height: 1;
   transition: opacity .3s;
+  z-index: $zindex-2;
   
   &:hover {
     color: #fff;

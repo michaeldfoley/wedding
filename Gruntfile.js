@@ -661,7 +661,6 @@ module.exports = function (grunt) {
       'injectAngular',
       'modernizr',
       'browserSync:server',
-      'penthouse',
       'cssmin:critical',
       'watch'
     ]

@@ -90,3 +90,45 @@
     margin-bottom: 0px;
   }
 }
+
+@keyframes slideInLeft {
+  from {
+    visibility: visible;
+    transform: translate3d(-100%, 0, 0);
+  }
+  
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    visibility: visible;
+    transform: translate3d(100%, 0, 0);
+  }
+  
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}

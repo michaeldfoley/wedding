@@ -1,0 +1,8 @@
+<section class="section container photo-albums">
+  <a bindonce ng-repeat="album in albums" ui-sref="gallery({ id: album.id })" class="photo-album">
+    <div class="photo-thumb">
+      <img bo-src="album.cover | src" bo-attr bo-attr-srcset="album.cover | srcset" bo-alt="album.name" sizes="(min-width: 768px) 50vw, 100vw">
+    </div>
+    <h3 bo-bind="album.name"></h3>
+  </a>
+</section>

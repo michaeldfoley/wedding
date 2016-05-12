@@ -1,4 +1,28 @@
 //
+// Photo Albums
+// --------------------------------------------------
+
+
+@media (min-width: $screen-xs) {
+  .photo-albums {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .photo-album {
+    width: 45%;
+  }
+  
+  .photo-thumb {
+    display: block;
+    height: 0;
+    padding-bottom: 66.66667%;
+    overflow: hidden;
+  }
+}
+
+
+//
 // Gallery Layout
 // --------------------------------------------------
 
@@ -11,7 +35,7 @@
   padding-bottom: 15px;
 }
 
-@media (min-width: $screen-sm) {
+@media (min-width: $screen-xs) {
   .gallery {
     display: flex;
     flex-direction: column;
@@ -19,13 +43,27 @@
   }
   
   .gallery-engagement {
+    height: 550vw;
+  }
+  
+  .gallery-other {
+    height: 650vw;
+  }
+  
+  .gallery-item {
+    width: 50%;
+    padding: 0 5px 5px 0;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .gallery-engagement {
     height: 260vw;
   }
   
   .gallery-other {
     height: 310vw;
   }
-  
   .gallery-item {
     width: 33.3%;
     padding: 0 5px 5px 0;

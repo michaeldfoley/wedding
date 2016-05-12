@@ -1,8 +1,10 @@
 engagement:
   id: "engagement"
+  cover: "engagement-6589"
   name: "Engagement Photos"
   login: false
 other:
   id: "other"
+  cover: "emmike-2248"
   name: "Other Photos"
   login: true
