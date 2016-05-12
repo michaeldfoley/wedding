@@ -6,7 +6,7 @@ photosApp.controller 'LightboxItemCtrl', [
   'album',
   'Albums',
   ($scope, $rootScope, $stateParams, index, album, Albums) ->
-    $scope.sectionClass = 'lightbox-item'
+    $scope.itemsClass = 'lightbox-item'
     $scope.photo = album.images[index]
     $scope.direction = Albums.getAdjacent(album, index)
     

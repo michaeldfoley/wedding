@@ -106,18 +106,56 @@
 // --------------------------------------------------
 
 
+.lightbox-morelist,
 .lightbox-list {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0;
-  list-style: none;
   display: none;
+}
+
+.lightbox-morelist {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+}
+
+.lightbox-list {
+  margin: 0;
+  padding: 0 50px;
+  list-style: none;
   z-index: $zindex-2;
+}
   
-  @media (min-width: $screen-sm) {
+@media (min-width: $screen-sm) {
+  .lightbox-morelist,
+  .lightbox-list {
     display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.lightbox-list--prev,
+.lightbox-list--next {
+  opacity: 0;
+  line-height: 1;
+  transition: opacity .3s;
+  cursor: pointer;
+  
+  &.ng-enter {
+    animation: fadeIn .3s
+  }
+  &.ng-leave {
+    animation: fadeOut .3s
+  }
+  
+  .lightbox-direction--icon {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+  }
+  
+  .lightbox-list:hover & {
+    opacity: 1;
   }
 }
 

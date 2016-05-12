@@ -4,6 +4,6 @@ photosApp.controller 'GalleryItemCtrl', [
   'album',
   ($scope, $stateParams, album) ->
     $scope.id = $stateParams.id
-    $scope.sectionClass = 'gallery gallery-' + $scope.id
+    $scope.itemsClass = 'gallery gallery-' + $scope.id
     $scope.album = album
 ]
