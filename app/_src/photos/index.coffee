@@ -2,6 +2,7 @@ photosApp = angular.module 'photos', [
   'ui.router', 
   'firebase',
   'pasvaz.bindonce',
+  'ngTouch',
   'ngAnimate']
   .constant 'FIREBASE_URL', 'https://emandmike.firebaseio.com/'
   .constant 'FIREBASE_PHOTOS', 'https://emandmike.firebaseapp.com/photos'

@@ -11,11 +11,17 @@ photosApp.controller 'LightboxControlsCtrl', [
     $scope.album = album
     $scope.direction = Albums.getAdjacent(album, index)
     
+    
+    $scope.prev = () ->
+      $state.go('gallery.lightbox', $scope.direction['prev'])
+    $scope.next = () ->
+      $state.go('gallery.lightbox', $scope.direction['next'])
+    
     keydown = (e) ->
       if (e.keyCode == 37 || e.keyCode == 38) && index > 0
-        $state.go('gallery.lightbox', $scope.direction['prev'])
+        $scope.prev()
       if (e.keyCode == 39 || e.keyCode == 40) && index < album.images.length - 1
-        $state.go('gallery.lightbox', $scope.direction['next'])
+        $scope.next()
       if (e.keyCode == 27 || e.keyCode == 88)
         $state.go('gallery', {id: album.id})
     $doc.on 'keydown', keydown

@@ -2,7 +2,7 @@
   <svg class="lightbox-close--icon" role="presentation"><use xlink:href="../img/sprite.symbol.svg#arrow" /></svg><span bo-bind="'Back to ' + album.name"></span>
 </a>
 
-<div class="lightbox-controls" bindonce="direction">
+<div class="lightbox-controls" bindonce="direction"  ng-swipe-right="prev()" ng-swipe-left="next()">
   <a bo-if="direction.prev" ui-sref="gallery.lightbox(direction.prev)" class="lightbox-direction">
     <svg class="lightbox-direction--icon" role="presentation"><use xlink:href="../img/sprite.symbol.svg#photo-direction" /></svg>
   </a>
