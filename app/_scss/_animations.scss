@@ -32,7 +32,7 @@
   }
 }
 
-@keyframes fadeIn {
+@keyframes zoomIn {
   from {
     opacity: 0;
   }
@@ -42,7 +42,7 @@
   }
 }
 
-@keyframes fadeOut {
+@keyframes zoomOut {
   from {
     opacity: 1;
   }
@@ -79,7 +79,7 @@
 @keyframes slideDownIn {
   from {
     opacity: 0;
-    transform: translate3d(0, -100%, 0);
+    transform: translate(0, -100%);
   }
   
   to {
@@ -95,7 +95,7 @@
   
   to {
     opacity: 0;
-    transform: translate3d(0, -100%, 0);
+    transform: translate(0, -100%);
   }
 }
 
@@ -113,40 +113,44 @@
 
 @keyframes slideInLeft {
   from {
-    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+    transform: translate(-100%, 0);
   }
   
   to {
-    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0);
   }
 }
 
 @keyframes slideInRight {
   from {
-    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+    transform: translate(100%, 0);
   }
   
   to {
-    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0);
   }
 }
 
 @keyframes slideOutLeft {
   from {
-    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0);
   }
   
   to {
-    transform: translate3d(-100%, 0, 0);
+    visibility: hidden;
+    transform: translate(-100%, 0);
   }
 }
 
 @keyframes slideOutRight {
   from {
-    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0);
   }
   
   to {
-    transform: translate3d(100%, 0, 0);
+    visibility: hidden;
+    transform: translate(100%, 0);
   }
 }
