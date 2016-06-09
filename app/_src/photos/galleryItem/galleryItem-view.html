@@ -1,7 +1,7 @@
 <div class="gallery-item" bindonce="photo" ng-repeat="photo in album.images">
   <div class="gallery-img js-lazyload" data-noscript="" bo-style="{'padding-bottom': photo.ratio + '%'}">
     <a ui-sref="gallery.lightbox({ id: album.id, photo: photo.src })">
-      <img bo-src="photo.src | src" bo-attr bo-attr-srcset="photo.src | srcset" bo-alt="photo.alt" sizes="(min-width: 768px) 50vw, 100vw">
+      <img bo-src="photo.src | src" bo-attr bo-attr-srcset="photo.src | srcset" bo-alt="photo.alt" sizes="(min-width: 100rem) 25vw, (min-width: 48rem) 33vw, (min-width: 30rem) 50vw, 100vw">
     </a>
   </div>
 </div>
