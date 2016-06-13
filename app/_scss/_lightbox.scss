@@ -92,7 +92,10 @@
 }
 
 .lightbox-direction--icon {
-  fill: #fff;
+  fill: none;
+  stroke: white;
+  stroke-width: 3;
+  stroke-linecap: round;
   height: 60px;
 }
 
@@ -185,7 +188,6 @@
   border: none;
   background: none;
   color: #fff;
-  opacity: 0.7;
   position: absolute;
   top: 0;
   left: 0;
@@ -198,7 +200,6 @@
   
   &:hover {
     color: #fff;
-    opacity: 1;
     text-decoration: underline;
   }
 }
@@ -206,5 +207,39 @@
   width: 17px;
   height: 17px;
   margin: -3px 4px 0 0;
-  fill: #fff;
+  fill: none;
+  stroke: white;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.lightbox-download {
+  display: none;
+  position: absolute;
+  bottom: 4px;
+  right: 0;
+  width: 35px;
+  margin: 0 15px;
+  z-index: $zindex-2;
+  
+  @media (min-width: $screen-sm) {
+    display: block;
+  }
+
+  .download-base,
+  .download-arrow {
+    fill: none;
+    stroke: white;
+    stroke-width: 4;
+    stroke-linecap: round;
+  }
+}
+
+.lightbox-close,
+.lightbox-download {
+  opacity: 0.7;
+  
+  &:hover {
+    opacity: 1;
+  }
 }

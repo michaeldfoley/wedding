@@ -2,14 +2,14 @@ photosApp.controller 'LightboxControlsCtrl', [
   '$scope',
   '$rootScope',
   '$state',
-  '$stateParams',
   'index',
   'album',
   'Albums',
-  ($scope, $rootScope, $state, $stateParams, index, album, Albums) ->
+  ($scope, $rootScope, $state, index, album, Albums) ->
     $doc = angular.element(document)
     $scope.album = album
     $scope.direction = Albums.getAdjacent(album, index)
+    $scope.current = album.images[index]
     
     
     $scope.prev = () ->

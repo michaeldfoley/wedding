@@ -6,11 +6,16 @@ article {
   padding-bottom: 60px;
 }
 
+.post {
+  font-size: $font-size-base * .9;
+}
+
 @media (min-width: $screen-xs) {
   article {
     padding-top: 60px;
   }
   .post {
     padding-top: 0;
+    font-size: $font-size-base;
   }
 }

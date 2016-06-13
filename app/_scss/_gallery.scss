@@ -3,7 +3,31 @@
 // --------------------------------------------------
 
 
-@media (min-width: $screen-xs) {
+.photo-album {
+  display: block;
+  max-width: $screen-sm * .667;
+  margin: 0 auto $grid-column-gutter/2;
+  position: relative;
+}
+  
+.photo-album-thumb {
+  display: block;
+  height: 0;
+  padding-bottom: 66.66667%;
+  overflow: hidden;
+}
+  
+.photo-album-name {
+  margin: 0;
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5) 60%);
+  color: #fff;
+}
+
+@media (min-width: $screen-sm) {
   .photo-albums {
     display: flex;
     justify-content: space-between;
@@ -11,13 +35,6 @@
   
   .photo-album {
     width: 45%;
-  }
-  
-  .photo-thumb {
-    display: block;
-    height: 0;
-    padding-bottom: 66.66667%;
-    overflow: hidden;
   }
 }
 

@@ -148,6 +148,9 @@ module.exports = function (grunt) {
       serverReset: [
         '.tmp',
         '.jekyll'
+      ],
+      tmp: [
+        '.tmp'
       ]
     },
     sass: {
@@ -385,18 +388,18 @@ module.exports = function (grunt) {
           quality: 80
         }],
       },
-      stage: {
+      site: {
         expand: true,
         cwd: '<%= yeoman.app %>',
         src: ['img/**/*.{jpg,gif,png}', '!img/photos/**/*'],
         dest: '.tmp',
         newFilesOnly: true
       },
-      dist: {
+      gallery: {
         expand: true,
-        cwd: '<%= yeoman.app %>',
-        src: ['img/**/*.{jpg,gif,png}'],
-        dest: '<%= yeoman.dist %>'
+        cwd: '.tmp/gallery',
+        src: ['**/*.{jpg,gif,png}'],
+        dest: '.tmp/gallery'
       }
     },
     imagemin: {
@@ -504,6 +507,15 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>/_src',
           src: '{playlist,photos}/**/*.html',
           dest: '.tmp/js'
+        }]
+      },
+      gallery: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/img/photos',
+          src: '**/*.{jpg,gif,png}',
+          dest: '.tmp/gallery/photos'
         }]
       }
     },
@@ -628,7 +640,7 @@ module.exports = function (grunt) {
         'autoprefixer:stage',
         'coffee:dist',
         'svg_sprite:stage',
-        'responsive_images:stage',
+        'responsive_images:site',
         'copy:stageCss',
         'copy:stageJs',
         'copy:stageTemplates'
@@ -637,7 +649,7 @@ module.exports = function (grunt) {
         'sass:dist', 
         'coffee:dist',
         'svg_sprite:dist',
-        'responsive_images:dist',
+        'responsive_images:site',
         'copy:dist'
       ]
     }
@@ -680,7 +692,10 @@ module.exports = function (grunt) {
   });
   
   grunt.registerTask('uploadImages', [
+    'clean:tmp',
     'yaml',
+    'copy:gallery',
+    'responsive_images:gallery',
     'firebase',
     'exec:firebase'
   ]);
