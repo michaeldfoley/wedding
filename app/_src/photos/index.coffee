@@ -55,7 +55,8 @@ photosApp = angular.module 'photos', [
           index: ($stateParams, Albums, album)->
             Albums.getImagePosition(album.images, $stateParams.photo)
         
-  .run ($rootScope, $state, Authentication, Albums) ->
+  .run ($rootScope, $state, Authentication, Albums, Df) ->
+    Df.InitializeState()
     $rootScope.$on '$stateChangeStart', (event, toState, toParams)->
         
       event.targetScope.activeClass = ''
