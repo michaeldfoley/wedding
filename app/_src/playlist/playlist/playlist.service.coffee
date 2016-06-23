@@ -82,6 +82,13 @@ playlistApp.factory 'playlist', ['$rootScope', 'Spotify', '$filter', ($rootScope
             .then () ->
               songsUpdated('remove', song)
         
+      firstSong: () ->
+        position = playlist.songIds.length - 1
+        # if the next song doesn't have a preview find one that does
+        while !playlist.songs[position].hasPreview
+          position--
+        playlist.songs[position]
+        
       nextSong: (id) ->
         position = playlist.songIds.indexOf(id) - 1
         # if the next song doesn't have a preview find one that does
