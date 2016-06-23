@@ -93,6 +93,10 @@
   &:hover {
     box-shadow: 0px 0px 0px 2px #ffffff;
   }
+  
+  &:focus {
+    outline: none;
+  }
 }
 
 .isPlaying .song-toggle svg {
