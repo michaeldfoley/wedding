@@ -70,7 +70,6 @@ photosApp = angular.module 'photos', [
       if toParams.id
         Albums.loginRequired(toParams.id).then (loginRequired) ->
           if loginRequired && !Authentication.signedIn()
-            event.targetScope.loginText = toState.loginText
             event.targetScope.returnTo = 
               name: toState.name
               params: toParams

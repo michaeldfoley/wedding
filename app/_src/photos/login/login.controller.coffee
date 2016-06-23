@@ -4,26 +4,33 @@ photosApp.controller 'LoginCtrl', [
   '$window',
   'Authentication', 
   ($scope, $state, $window, Authentication) ->
+    buttonText = 'Login'
+    buttonTextActive = 'Submitting...'
     $scope.user = {}
     $scope.user['email'] = 'hi@emandmike.us'
+    $scope.feedback = {}
+    $scope.buttonText = buttonText
     $window.document.getElementById('password').focus()
     if $scope.returnTo && $scope.returnTo['name'] == 'gallery'
       $scope.heading = 'Please login to view this album'
     
     $scope.login = ->
       if (!$scope.user.password)
-        $scope.feedback = 'Password is required.'
+        $scope.feedback.error = 'Password is required.'
       else
-        $scope.feedback = '';
-        $scope.loading = true
+        $scope.feedback.error = '';
+        $scope.buttonText = buttonTextActive
         Authentication.login($scope.user)
         .then () ->
-          $scope.loading = false
+          $scope.buttonText = buttonText
           if $scope.returnTo
             $state.go $scope.returnTo.name, $scope.returnTo.params
+          else
+            $state.go 'albums'
           
         .catch (error) ->
-          $scope.loading = false
-          $scope.feedback = error.toString()
+          $scope.buttonText = buttonText
+          $scope.user['password'] = ''
+          $scope.feedback.error = error.toString()
       
 ]

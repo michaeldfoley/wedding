@@ -36,6 +36,27 @@
   &::-webkit-input-placeholder  { color: $input-color-placeholder; }
 }
 
+.form-control--error,
+.form-control--error:focus {
+  border-color: $input-error;
+}
+
+.form-horizontal {
+  display: flex;
+  
+  .form-button {
+    margin-left: -1px;
+  }
+}
+
+.form-message {
+  font-size: $font-size-small;
+}
+
+.form-message--error {
+  color: $input-error;
+}
+
 input[type="search"] {
   -webkit-appearance: none;
   border-radius: $search-border-radius;

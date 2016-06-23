@@ -45,8 +45,8 @@
 
 
 .gallery-controls {
+  margin: 0 ($grid-column-gutter / -4);
   text-align: center;
-  margin: 0 ($grid-column-gutter / -4)
 }
 
 .gallery-controls--item {

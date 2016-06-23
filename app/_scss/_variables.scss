@@ -138,7 +138,7 @@ $input-border:                   #ccc !default;
 $input-border-focus:             desaturate(lighten($brand-primary, 40%), 80%) !default;
 
 //** Border radius
-$input-border-radius:            4px !default;
+$input-border-radius:            0px !default;
 $search-border-radius:           30px !default;
 
 //** Placeholder text color
@@ -160,6 +160,9 @@ $input-group-addon-border-color: $input-border !default;
 
 //** Disabled cursor for form controls and buttons.
 $cursor-disabled:                not-allowed !default;
+
+//** Error color.
+$input-error:                    #d72636 !default;
 
 
 //-- Z-index master list

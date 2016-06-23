@@ -2,9 +2,10 @@
   <form name="authentication" ng-submit="login()" novalidate="novalidate">
     <h3 bo-bind="heading">Please login</h3>
     <p>If you do not have the password, email Mike at <a href="mailto:hi@emandmike.us">hi@emandmike.us</a>.</p>
-    <p class="loading" ng-show="loading">Loading</p>
-    <p class="error formerror" ng-show="feedback">{{feedback}}</p>
-    <input type="password" id="password" name="password" placeholder="Password" ng-model="user.password"/>
-    <button type="submit" ng-disabled="authentication.$invalid" class="btn">Login</button>
+    <div class="form-horizontal">
+      <input type="password" id="password" name="password" placeholder="Password" ng-model="user.password" class="form-control" ng-class="{'form-control--error': feedback.error}" />
+      <button type="submit" ng-disabled="!user.password" class="btn form-button">{{buttonText}}</button>
+    </div>
+    <p class="error form-message form-message--error" ng-show="feedback.error">{{feedback.error}}</p>
   </form>
 </section>
