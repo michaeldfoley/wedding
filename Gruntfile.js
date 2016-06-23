@@ -232,10 +232,10 @@ module.exports = function (grunt) {
         html: {recipe:  '<script src="/%" type="text/javascript"></script>'},
       },
       server: {
-        src: '.jekyll/{playlist,photos2}/index.html'
+        src: '.jekyll/{playlist,photos}/index.html'
       },
       dist: {
-        src: '<%= yeoman.dist %>/{playlist,photos2}/index.html'
+        src: '<%= yeoman.dist %>/{playlist,photos}/index.html'
       }
     },
     jekyll: {
@@ -283,7 +283,7 @@ module.exports = function (grunt) {
         dest: '<%= yeoman.dist %>'
       },
       dist: {
-        src: ['<%= yeoman.dist %>/index.html', '<%= yeoman.dist %>/playlist/index.html', '<%= yeoman.dist %>/photos2/index.html']
+        src: ['<%= yeoman.dist %>/index.html', '<%= yeoman.dist %>/playlist/index.html', '<%= yeoman.dist %>/photos/index.html']
       }
     },
     usemin: {

@@ -1,42 +1,13 @@
 ---
 layout: default
 nav-name: Photos
-title: Photos of Us
+title: Photos
 heading: photos
-description: Some photos of us throughout the year. Check back after the wedding to see the event photos.
-weight: 4
+description: View photos from our wedding as well as our engagement shoot.
+weight: 5
 ---
 
-<article class="post">
+<article class="post" ng-app="photos">
 {% include heading.html %}
-  <section class="gallery gallery-engagement">
-    {% for photo in site.data.engagement %}
-      {% assign type = 'jpg' %}
-      {% if photo.type != null %}
-        {% assign type = photo.type %}
-      {% endif %}
-    <div class="gallery-item">
-      <div class="gallery-img js-lazyload" data-noscript="" style="padding-bottom: {{ photo.ratio }}%">
-        <noscript>
-          <img src="../img/photos/{{ photo.src }}-medium.{{ type }}" srcset="../img/photos/{{ photo.src }}-small.{{ type }} 480w, ../img/photos/{{ photo.src }}-medium.{{ type }} 768w, ../img/photos/{{ photo.src }}-large.{{ type }} 1200w, ../img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw">
-        </noscript>
-      </div>
-    </div>
-    {% endfor %}
-  </section>
-  <section class="gallery gallery-other">
-    {% for photo in site.data.photos %}
-      {% assign type = 'jpg' %}
-      {% if photo.type != null %}
-        {% assign type = photo.type %}
-      {% endif %}
-    <div class="gallery-item">
-      <div class="gallery-img js-lazyload" data-noscript="" style="padding-bottom: {{ photo.ratio }}%">
-        <noscript>
-          <img src="../img/photos/{{ photo.src }}-medium.{{ type }}" srcset="../img/photos/{{ photo.src }}-small.{{ type }} 480w, ../img/photos/{{ photo.src }}-medium.{{ type }} 768w, ../img/photos/{{ photo.src }}-large.{{ type }} 1200w, ../img/photos/{{ photo.src }}-xlarge.{{ type }} 2000w" alt="{{ photo.alt }}" sizes="(min-width: 768px) 50vw, 100vw">
-        </noscript>
-      </div>
-    </div>
-    {% endfor %}
-  </section>
+  <div ui-view ng-class="[activeClass,animateClass]"></div>
 </article>
