@@ -33,7 +33,12 @@ photosApp = angular.module 'photos', [
           'items@gallery':
             templateUrl: '/js/photos/galleryItem/galleryItem-view.html'
             controller: 'GalleryItemCtrl'
+          'controls@gallery': 
+            templateUrl: '/js/photos/galleryControls/galleryControls-view.html'
+            controller: 'GalleryControlsCtrl'
         resolve: 
+          albums: (Albums) ->
+            Albums.get()
           album: ($stateParams, Albums) ->
             Albums.getAlbum($stateParams.id)
             .catch (error) ->

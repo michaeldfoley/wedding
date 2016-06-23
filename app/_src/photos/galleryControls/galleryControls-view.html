@@ -1,0 +1,5 @@
+<div class="container">
+  <div class="gallery-controls" bindonce="albums">
+    <a ng-repeat="album in albums" ui-sref="gallery({ id: album.id })" bo-bind="album.name" class="gallery-controls--item"></a>
+  </div>
+</div>

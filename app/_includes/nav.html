@@ -4,7 +4,7 @@
     {% for p in pages %}
       {% if p.weight > 0 %}
         <li>
-          <a {% if p.url == page.url %}class="active"{% else %}href="{{ p.url | remove:'index.html'}}"{% endif %}>
+          <a {% if p.url == page.url %}class="active"{% endif %}href="{{ p.url | remove:'index.html'}}">
             {{ p.nav-name }}
           </a>
         </li>

@@ -40,6 +40,29 @@
 
 
 //
+// Gallery Controls
+// --------------------------------------------------
+
+
+.gallery-controls {
+  text-align: center;
+  margin: 0 ($grid-column-gutter / -4)
+}
+
+.gallery-controls--item {
+  display: inline-block;
+  margin: 0 ($grid-column-gutter / 4) 15px;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  
+  @media (min-width: $screen-sm) {
+    margin-left: ($grid-column-gutter / 2);
+    margin-right: ($grid-column-gutter / 2);
+  }
+}
+
+
+//
 // Gallery Layout
 // --------------------------------------------------
 
