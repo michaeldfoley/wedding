@@ -1,4 +1,4 @@
-photosApp.factory 'Albums', ($firebaseObject, FIREBASE_URL, $q, Df) ->
+photosApp.factory 'Albums', ($firebaseObject, $q, Df) ->
   
   state = {}
   
@@ -6,8 +6,7 @@ photosApp.factory 'Albums', ($firebaseObject, FIREBASE_URL, $q, Df) ->
     get: () ->
       if Object.getOwnPropertyNames(state).length > 0
         return $q.when(state)
-        
-      ref = new Firebase(FIREBASE_URL + 'albums')
+      ref = firebase.database().ref('/albums/')
       photoAlbums = $firebaseObject(ref)
       photoAlbums.$loaded().then (data) ->
         return state = data
@@ -23,12 +22,12 @@ photosApp.factory 'Albums', ($firebaseObject, FIREBASE_URL, $q, Df) ->
         if state[albumId].images
           return state[albumId]
         
-        ref = new Firebase(FIREBASE_URL + 'photos/' + albumId)
+        ref = firebase.database().ref('/photos/' + albumId)
         photoAlbum = $firebaseObject(ref)
         photoAlbum.$loaded().then (currentAlbum) ->
           state[albumId].images = currentAlbum.images.filter (image) ->
             return !Df.GetState() || image.df != true
-            
+          
           return state[albumId]
         .catch (error) ->
           return $q.reject(error)

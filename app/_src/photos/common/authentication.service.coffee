@@ -1,17 +1,14 @@
-photosApp.factory 'Authentication', ($firebase, $firebaseAuth, FIREBASE_URL, $q) ->
-  ref = new Firebase(FIREBASE_URL)
-  authObj = $firebaseAuth(ref);
+photosApp.factory 'Authentication', ($firebaseAuth, $q) ->
+  authObj = $firebaseAuth()
   
   auth =
     login: (user) ->
-      authObj.$authWithPassword 
-        email: user.email,
-        password: user.password
+      authObj.$signInWithEmailAndPassword(user.email,user.password)
       .catch (error) ->
         return $q.reject(error)
       
     logout: () ->
-      authObj.$unauth();
+      authObj.$signOut();
     
     signedIn: () ->
       authObj.$getAuth() != null

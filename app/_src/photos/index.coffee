@@ -4,9 +4,14 @@ photosApp = angular.module 'photos', [
   'pasvaz.bindonce',
   'ngTouch',
   'ngAnimate']
-  .constant 'FIREBASE_URL', 'https://emandmike.firebaseio.com/'
   .constant 'FIREBASE_PHOTOS', 'https://emandmike.firebaseapp.com/photos'
   .config ($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) ->
+    firebase.initializeApp
+      apiKey: 'AIzaSyCR1jUuzOIfD2a7wITtApWGuLQNdDJudmo'
+      authDomain: 'emandmike.firebaseapp.com'
+      databaseURL: 'https://emandmike.firebaseio.com'
+      storageBucket: 'firebase-emandmike.appspot.com'
+      
     $urlMatcherFactoryProvider.strictMode(false)
     $stateProvider
       .state 'albums',
@@ -39,10 +44,12 @@ photosApp = angular.module 'photos', [
         resolve: 
           albums: (Albums) ->
             Albums.get()
-          album: ($stateParams, Albums) ->
-            Albums.getAlbum($stateParams.id)
-            .catch (error) ->
-              message: error
+          album: ($stateParams, Albums, Authentication) ->
+            Albums.loginRequired($stateParams.id).then (loginRequired) ->
+              if !loginRequired || Authentication.signedIn()
+                Albums.getAlbum($stateParams.id)
+                .catch (error) ->
+                  message: error
         
       .state 'gallery.lightbox', 
         url: '/:photo'
