@@ -27,11 +27,17 @@ photosApp.factory 'Albums', ($firebaseObject, $q, Df) ->
         photoAlbum.$loaded().then (currentAlbum) ->
           state[albumId].images = currentAlbum.images.filter (image) ->
             image.ratio = image.width / image.height
+            #if state[albumId].download
+            albums.getDownloadLink(albumId, image.src).then (url)->
+              image.downloadUrl = url
             return !Df.GetState() || image.df != true
           
           return state[albumId]
         .catch (error) ->
           return $q.reject(error)
+    
+    getDownloadLink: (albumId, src) ->
+      firebase.storage().ref(albumId + "/" + src + ".jpg").getDownloadURL()
     
     getCurrentImage: (images, id) ->
       current = images.filter (image) ->

@@ -11,7 +11,6 @@ photosApp.controller 'LightboxControlsCtrl', [
     $scope.direction = Albums.getAdjacent(album, index)
     $scope.current = album.images[index]
     
-    
     $scope.prev = () ->
       $state.go('gallery.lightbox', $scope.direction['prev'])
     $scope.next = () ->
