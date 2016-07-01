@@ -3,7 +3,8 @@ photosApp = angular.module 'photos', [
   'firebase',
   'pasvaz.bindonce',
   'ngTouch',
-  'ngAnimate']
+  'ngAnimate',
+  'hj.gridify']
   .constant 'FIREBASE_PHOTOS', 'https://emandmike.firebaseapp.com/photos'
   .config ($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) ->
     firebase.initializeApp
@@ -41,7 +42,7 @@ photosApp = angular.module 'photos', [
           'controls@gallery': 
             templateUrl: '/js/photos/galleryControls/galleryControls-view.html'
             controller: 'GalleryControlsCtrl'
-        resolve: 
+        resolve:
           albums: (Albums) ->
             Albums.get()
           album: ($stateParams, Albums, Authentication) ->

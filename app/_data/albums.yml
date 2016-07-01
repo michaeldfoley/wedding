@@ -1,10 +1,22 @@
+wedding:
+  id: "wedding"
+  cover: "wedding-172"
+  name: "Wedding Photos"
+  login: true
+  download: true
+  order: 1
+  size: 2
 engagement:
   id: "engagement"
   cover: "engagement-6589"
   name: "Engagement Photos"
   login: false
+  download: false
+  order: 2
 other:
   id: "other"
   cover: "emmike-2248"
   name: "Other Photos"
-  login: true
+  login: false
+  download: false
+  order: 3

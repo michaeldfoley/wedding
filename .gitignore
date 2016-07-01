@@ -38,6 +38,9 @@ dist
 node_modules
 .tmp
 
+# Gallery
+app/img/gallery
+
 # Ignore authfiles
 .auth*
 firebase.json

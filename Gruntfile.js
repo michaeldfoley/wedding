@@ -132,10 +132,8 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
+            '.tmp',
             '<%= yeoman.dist %>/*',
-            // Running Jekyll also cleans the target directory.  Exclude any
-            // non-standard `keep_files` here (e.g., the generated files
-            // directory from Jekyll Picture Tag).
             '!<%= yeoman.dist %>/.git*'
           ]
         }]
@@ -148,9 +146,6 @@ module.exports = function (grunt) {
       serverReset: [
         '.tmp',
         '.jekyll'
-      ],
-      tmp: [
-        '.tmp'
       ]
     },
     sass: {
@@ -391,15 +386,15 @@ module.exports = function (grunt) {
       site: {
         expand: true,
         cwd: '<%= yeoman.app %>',
-        src: ['img/**/*.{jpg,gif,png}', '!img/photos/**/*'],
+        src: ['img/**/*.{jpg,gif,png}','!img/gallery/**/*'],
         dest: '.tmp',
         newFilesOnly: true
       },
       gallery: {
         expand: true,
-        cwd: '.tmp/gallery',
-        src: ['**/*.{jpg,gif,png}'],
-        dest: '.tmp/gallery'
+        cwd: '<%= yeoman.app %>',
+        src: ['img/gallery/**/*.{jpg,gif,png}'],
+        dest: '.tmp'
       }
     },
     imagemin: {
@@ -508,15 +503,6 @@ module.exports = function (grunt) {
           src: '{playlist,photos}/**/*.html',
           dest: '.tmp/js'
         }]
-      },
-      gallery: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= yeoman.app %>/img/photos',
-          src: '**/*.{jpg,gif,png}',
-          dest: '.tmp/gallery/photos'
-        }]
       }
     },
     filerev: {
@@ -529,8 +515,7 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/js/**/*.js',
             '<%= yeoman.dist %>/css/**/*.css',
             '<%= yeoman.dist %>/img/**/*.{gif,jpg,jpeg,png,svg,webp}',
-            '<%= yeoman.dist %>/fonts/**/*.{eot*,otf,svg,ttf,woff}',
-            '!<%= yeoman.dist %>/img/photos/*'
+            '<%= yeoman.dist %>/fonts/**/*.{eot*,otf,svg,ttf,woff}'
           ]
         }]
       }
@@ -583,15 +568,16 @@ module.exports = function (grunt) {
           'html5shiv'
         ],
         
+        tests: [
+          'srcset'
+        ],
+        
         uglify : false,
         
         files: {
           src: [
-            '.tmp/**/*',
-            '<%= yeoman.app %>/**/*',
-            '!<%= yeoman.app %>/_bower_components/lazysizes/plugins/**/*',
-            '!<%= yeoman.app %>/_bower_components/modernizr/**/*',
-            '!<%= yeoman.app %>/**/bower.json',
+            '{.tmp,<%= yeoman.app %>}/**/*.{js,coffee,css,sass,scss,html}',
+            '!<%= yeoman.app %>/_bower_components/{lazysizes,modernizr}/**/*'
             ]
         }
       }
@@ -620,7 +606,7 @@ module.exports = function (grunt) {
         options: {
           reference: 'https://emandmike.firebaseio.com/photos',
         },
-        files: [ { src: '.tmp/data/engagement.json' },  { src: '.tmp/data/other.json' } ]
+        files: [ { src: '.tmp/data/wedding.json' }, { src: '.tmp/data/engagement.json' },  { src: '.tmp/data/other.json' } ]
       },
       albums: {
         options: {
@@ -692,9 +678,7 @@ module.exports = function (grunt) {
   });
   
   grunt.registerTask('uploadImages', [
-    'clean:tmp',
     'yaml',
-    'copy:gallery',
     'responsive_images:gallery',
     'firebase',
     'exec:firebase'
@@ -724,7 +708,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'clean',
+    'clean:dist',
     // Jekyll cleans files from the target directory, so must run first
     'jekyll:dist',
     'concurrent:dist',

@@ -1,128 +1,160 @@
 images:
   - alt: "Barbara and Patrick's wedding"
     src: IMG_0340
-    ratio: 75
+    width: 3648
+    height: 2736
   
   - alt: "At Sosena's graduation party"
     src: emmike-0216
-    ratio: 63.75
+    width: 640
+    height: 408
   
   - alt: "Key West"
     src: emmike-1595
-    ratio: 75
+    width: 2000
+    height: 1500
   
   - alt: "Portland"
     src: emmike-2191
-    ratio: 75
+    width: 1280
+    height: 960
   
   - alt: "Yankee game"
     src: emmike-0069
-    ratio: 74.7
+    width: 2000
+    height: 1494
   
   - alt: "Early selfie"
     src: IMG_0069
-    ratio: 74.7
+    width: 2592
+    height: 1936
   
   - alt: "Outside Cobble Hill park"
     src: emmike-1
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Portland hike"
     src: emmike-2240
-    ratio: 75
+    width: 1280
+    height: 960
   
   - alt: "Hike with the dog"
     src: IMG_0824
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Yankee game"
     src: emmike-0522
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Lis and Chris's wedding"
     src: IMG_2338
-    ratio: 66.6667
+    width: 5616
+    height: 3744
   
   - alt: "Asbury Park"
     src: emmike-2
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Lego man and Mighty Mouse"
     src: emmike-0898
-    ratio: 133.3333
+    width: 1200
+    height: 1600
   
   - alt: "Bastille Day on Smith Street"
     src: emmike-0062
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Kitchen selfie"
     src: emmike-0791
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Museum of Contemporary Art Chicago"
     src: IMG_1174
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Dog obedience graduation"
     src: emmike-4
-    ratio: 67.2979
+    width: 792
+    height: 533
   
   - alt: "Tennis"
     src: emmike-3
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Brooklyn Nets photo booth"
     src: emmike-1529
-    ratio: 100
+    width: 800
+    height: 800
   
   - alt: "Dancing at Barbara and Patrick's wedding"
     src: IMG_0138
-    ratio: 150
+    width: 2496
+    height: 3744
   
   - alt: "Portland Hike"
     src: emmike-2248
-    ratio: 75
+    width: 1280
+    height: 960
   
   - alt: "Joanna and Dant's wedding"
     src: emmike-2340
-    ratio: 75
+    width: 2000
+    height: 1500
   
   - alt: "Brooklyn Cyclones"
     src: emmike-0451
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Portland waterfront"
     src: emmike-2213
-    ratio: 75
+    width: 1280
+    height: 960
   
   - alt: "Key West"
     src: IMG_1747
-    ratio: 74.7
+    width: 2592
+    height: 1936
   
   - alt: "Decorating for Karen's 60th birthday"
     src: emmike-1097
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Overlooking Liberty Science Center"
     src: IMG_2440
-    ratio: 76.2
+    width: 3264
+    height: 2448
   
   - alt: "Taking the dog to the park in the snow"
     src: emmike-1307
-    ratio: 133.3333
+    width: 480
+    height: 640
   
   - alt: "Lake Placid"
     src: emmike-0625
-    ratio: 75
+    width: 640
+    height: 480
   
   - alt: "Snowman with Lucy"
     src: 356
-    ratio: 133.3333
+    width: 2304
+    height: 3072
   
   - alt: "Brooklyn bridge park beach"
     src: emmike-2029
-    ratio: 75
+    width: 1280
+    height: 960
   
   - alt: "Napa"
     src: emmike-3370
-    ratio: 66.65
+    width: 2000
+    height: 1333

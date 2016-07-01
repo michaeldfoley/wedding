@@ -1,9 +1,16 @@
 photosApp.controller 'GalleryItemCtrl', [
   '$scope',
-  '$stateParams',
+  '$window',
   'album',
-  ($scope, $stateParams, album) ->
-    $scope.id = $stateParams.id
-    $scope.itemsClass = 'gallery gallery-' + $scope.id
+  ($scope, $window, album) ->
+    $scope.itemsClass = 'gallery'
     $scope.album = album
+    $scope.perRow = () ->
+      if $window.innerWidth > 1600
+        return 4
+      if $window.innerWidth > 768
+        return 3
+      if $window.innerWidth > 480
+        return 2
+      return 1
 ]

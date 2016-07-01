@@ -26,6 +26,7 @@ photosApp.factory 'Albums', ($firebaseObject, $q, Df) ->
         photoAlbum = $firebaseObject(ref)
         photoAlbum.$loaded().then (currentAlbum) ->
           state[albumId].images = currentAlbum.images.filter (image) ->
+            image.ratio = image.width / image.height
             return !Df.GetState() || image.df != true
           
           return state[albumId]

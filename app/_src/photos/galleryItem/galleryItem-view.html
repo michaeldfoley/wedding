@@ -1,7 +1,9 @@
-<div class="gallery-item" bindonce="photo" ng-repeat="photo in album.images">
-  <div class="gallery-img js-lazyload" data-noscript="" bo-style="{'padding-bottom': photo.ratio + '%'}">
-    <a ui-sref="gallery.lightbox({ id: album.id, photo: photo.src })">
-      <img bo-src="photo.src | src" bo-attr bo-attr-srcset="photo.src | srcset" bo-alt="photo.alt" sizes="(min-width: 100rem) 25vw, (min-width: 48rem) 33vw, (min-width: 30rem) 50vw, 100vw">
-    </a>
-  </div>
-</div>
+<hj-gridify hj-gridify-options="{collection: album.images, perRow: perRow, gutter: 10, watch: true}">
+  <a class="gallery-item" bindonce="item" ui-sref="gallery.lightbox({ id: album.id, photo: item.src })">
+    <img src="item.src | src"
+         srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+         bo-attr bo-attr-data-srcset="item.src | srcset"
+         data-sizes="(min-width: 100rem) 50vw, (min-width: 48rem) 60vw, (min-width: 30rem) 75vw, 100vw"
+         bo-alt="item.alt" class="js-lazyload">
+  </a>
+</hj-gridify>
