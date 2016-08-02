@@ -93,10 +93,12 @@ photosApp.config [
 photosApp.run [
     '$rootScope', 
     '$state',
+    '$location',
+    '$window',
     'Authentication', 
     'Albums', 
     'Df',
-    ($rootScope, $state, Authentication, Albums, Df) ->
+    ($rootScope, $state, $location, $window, Authentication, Albums, Df) ->
       Df.InitializeState()
       $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams)->
       
@@ -109,4 +111,6 @@ photosApp.run [
                 name: toState.name
                 params: toParams
               $state.go('login')
+      $rootScope.$on '$stateChangeSuccess', (event) ->
+        $window.ga('send', 'pageview', $location.path())
 ]
