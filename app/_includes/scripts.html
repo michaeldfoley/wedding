@@ -1,29 +1,40 @@
 
 <!-- build:js({app,.tmp}) /js/script.js -->
-<script src="/js/modernizr.js" async=""></script>
-<script src="/js/console.js" async=""></script>
-<script src="/js/tabfocus.js" async=""></script>
+<script src="/js/console.js"></script>
+<script src="/js/tabfocus.js"></script>
+<script src="/js/svg4everybody.ie8.js"></script>
 <!-- endbuild -->
+
+{% if page.url == '/photos/index.html' %}
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+{% endif %}
+
+{% if page.url == '/playlist/index.html' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+{% endif %}
+
 {% if page.url == '/playlist/index.html' or page.url == '/photos/index.html' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+
 <!-- build:js({app,.tmp}) /js/ng.js -->
-<script src="/js/lazyload.js" async=""></script>
-<script src="/_bower_components/lazysizes/lazysizes.js" async=""></script>
-<script src="/_bower_components/angular/angular.js"></script>
-<script src="/_bower_components/angular-animate/angular-animate.js"></script>
-<script src="/_bower_components/angular-touch/angular-touch.js"></script>
 <script src="/_bower_components/angular-aria/angular-aria.js"></script>
-<script src="/_bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="/_bower_components/ngSmoothScroll/lib/angular-smooth-scroll.js"></script>
 <script src="/_bower_components/angular-bindonce/bindonce.js"></script>
+
+<script src="/_bower_components/ngSmoothScroll/lib/angular-smooth-scroll.js"></script>
 <script src="/_bower_components/angular-off-click/offClick.js"></script>
 <script src="/_bower_components/angular-ui-unique/unique.js"></script>
 <script src="/_bower_components/angular-spotify/src/angular-spotify.js"></script>
 <script src="/_bower_components/d3/d3.js"></script>
-<script src="/_bower_components/firebase/firebase.js"></script>
+<script src="/js/playlist/index.js" type="text/javascript"></script>
+
+
+<script src="/js/lazyload.js"></script>
+<script src="/_bower_components/lazysizes/lazysizes.js"></script>
+<script src="/_bower_components/angular-animate/angular-animate.js"></script>
+<script src="/_bower_components/angular-touch/angular-touch.js"></script>
+<script src="/_bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="/_bower_components/angularfire/dist/angularfire.js"></script>
 <script src="/_bower_components/angular-gridify/angular-gridify.js"></script>
-
-<script src="/js/playlist/index.js" type="text/javascript"></script>
 <script src="/js/photos/index.js" type="text/javascript"></script>
 <!-- angular -->
 <!-- endangular -->

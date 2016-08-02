@@ -23,6 +23,10 @@
   padding: 40px 0 10px;
   width: 100%;
   animation: zoomIn .3s;
+  
+  .gallery + & {
+    animation: zoomOut .3s;
+  }
 
   .lightbox-next &,
   .lightbox-prev & {

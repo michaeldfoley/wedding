@@ -13,4 +13,4 @@
   <span bo-if="!direction.next" class="lightbox-direction inactive"></span>
 </div>
 
-<a bindonce="current" ng-if="current.downloadUrl" title="Download a high res version"  bo-href="current.downloadUrl" class="lightbox-download" bo-attr bo-attr-download="current.src" mfdownload></a>
+<a bindonce="downloadUrl" ng-if="downloadUrl" title="Download a high res version"  bo-href="downloadUrl" class="lightbox-download" bo-attr bo-attr-download="current.src" mfdownload></a>

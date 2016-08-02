@@ -6,10 +6,16 @@ photosApp.controller 'LightboxControlsCtrl', [
   'album',
   'Albums',
   ($scope, $rootScope, $state, index, album, Albums) ->
+    $scope.$parent.activeClass = 'lightbox'
     $doc = angular.element(document)
     $scope.album = album
     $scope.direction = Albums.getAdjacent(album, index)
     $scope.current = album.images[index]
+    
+    if album.download
+      Albums.getDownloadLink(album.id, $scope.current.src).then (url) ->
+        $scope.$evalAsync ()->
+          $scope.downloadUrl = url
     
     $scope.prev = () ->
       $state.go('gallery.lightbox', $scope.direction['prev'])

@@ -756,11 +756,13 @@ images:
     src: wedding-366
     width: 3840
     height: 5760
+    df: true
 
   - alt: "Wedding Photos"
     src: wedding-369
     width: 5760
     height: 3840
+    df: true
 
   - alt: "Wedding Photos"
     src: wedding-373
@@ -1518,11 +1520,6 @@ images:
 
   - alt: "Wedding Photos"
     src: wedding-720
-    width: 5760
-    height: 3840
-
-  - alt: "Wedding Photos"
-    src: wedding-721
     width: 5760
     height: 3840
 

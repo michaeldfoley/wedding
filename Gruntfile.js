@@ -15,7 +15,7 @@ module.exports = function (grunt) {
   // Load all Grunt tasks
   require('load-grunt-tasks')(grunt);
   
-  
+  var modRewrite  = require('connect-modrewrite');
   var fbConfig = grunt.file.readJSON('.auth-fb.json');
 
   grunt.initConfig({
@@ -91,6 +91,11 @@ module.exports = function (grunt) {
               '.jekyll',
               '.tmp',
               '<%= yeoman.app %>'
+            ],
+            middleware: [
+                modRewrite([
+                    '^/photos/(.*) /photos/index.html [L]'
+                ])
             ]
           },
           port: 3000,
@@ -100,7 +105,12 @@ module.exports = function (grunt) {
       dist: {
         options: {
           server: {
-            baseDir: '<%= yeoman.dist %>'
+            baseDir: '<%= yeoman.dist %>',
+            middleware: [
+                modRewrite([
+                    '^/photos/(.*) /photos/index.html [L]'
+                ])
+            ]
           },
           open: false
         }
@@ -132,7 +142,10 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
-            '.tmp',
+            '.tmp/*',
+            '!.tmp/img',
+            '.tmp/img/*',
+            '!.tmp/img/gallery',
             '<%= yeoman.dist %>/*',
             '!<%= yeoman.dist %>/.git*'
           ]
@@ -382,13 +395,13 @@ module.exports = function (grunt) {
           width: 2000,
           quality: 80
         }],
+        newFilesOnly: true
       },
       site: {
         expand: true,
         cwd: '<%= yeoman.app %>',
         src: ['img/**/*.{jpg,gif,png}','!img/gallery/**/*'],
-        dest: '.tmp',
-        newFilesOnly: true
+        dest: '.tmp'
       },
       gallery: {
         expand: true,
@@ -404,7 +417,7 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.dist %>',
+          cwd: '.tmp',
           src: '**/*.{jpg,jpeg,png}',
           dest: '<%= yeoman.dist %>'
         }]
@@ -443,6 +456,7 @@ module.exports = function (grunt) {
             // Jekyll processes and moves HTML and text files.
             // Usemin moves CSS and javascript inside of Usemin blocks.
             // Copy moves asset files and directories.
+            'spotify-callback.html',
             'fonts/**/*',
             '!**/_*{,/**}',
             'favicon.{ico,png}',
@@ -461,6 +475,12 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>/_src',
           src: '**/*.js',
           dest: '.tmp/js'
+        },{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/_src',
+          src: '{playlist,photos}/**/*.html',
+          dest: '<%= yeoman.dist %>/js'
         }]
       },
       // Copy CSS into .tmp directory for Autoprefixer processing
@@ -515,7 +535,8 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/js/**/*.js',
             '<%= yeoman.dist %>/css/**/*.css',
             '<%= yeoman.dist %>/img/**/*.{gif,jpg,jpeg,png,svg,webp}',
-            '<%= yeoman.dist %>/fonts/**/*.{eot*,otf,svg,ttf,woff}'
+            '<%= yeoman.dist %>/fonts/**/*.{eot*,otf,svg,ttf,woff}',
+            '!<%= yeoman.dist %>/img/gallery/**/*',
           ]
         }]
       }
@@ -565,7 +586,7 @@ module.exports = function (grunt) {
         dest: '.tmp/js/modernizr.js',
         
         options: [
-          'html5shiv'
+          'html5printshiv'
         ],
         
         tests: [
@@ -623,10 +644,9 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'sass:server', 
-        'autoprefixer:stage',
         'coffee:dist',
         'svg_sprite:stage',
-        'responsive_images:site',
+        'responsive_images',
         'copy:stageCss',
         'copy:stageJs',
         'copy:stageTemplates'
@@ -635,7 +655,6 @@ module.exports = function (grunt) {
         'sass:dist', 
         'coffee:dist',
         'svg_sprite:dist',
-        'responsive_images:site',
         'copy:dist'
       ]
     }
@@ -655,6 +674,7 @@ module.exports = function (grunt) {
     
     var serve = [
       'concurrent:server',
+      'autoprefixer:stage',
       'jekyll:server',
       'injectAngular',
       'modernizr',
@@ -704,14 +724,13 @@ module.exports = function (grunt) {
     'coffee:dist',
     'jshint:all',
     'csslint:check'
-    // 'scsslint'
   ]);
 
   grunt.registerTask('build', [
     'clean:dist',
-    // Jekyll cleans files from the target directory, so must run first
     'jekyll:dist',
     'concurrent:dist',
+    'responsive_images',
     'injectAngular:dist',
     'modernizr',
     'useminPrepare',
@@ -726,11 +745,10 @@ module.exports = function (grunt) {
     ]);
 
   grunt.registerTask('deploy', [
-    'check',
-    'test',
     'build',
-    'uploadImages',
-    'buildcontrol'
+    'yaml',
+    'firebase',
+    'exec:firebase'
     ]);
 
   grunt.registerTask('default', [

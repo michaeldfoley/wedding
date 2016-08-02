@@ -35,7 +35,12 @@
   }
   
   .photo-album {
-    width: 45%;
+    margin: 0 0 $grid-column-gutter/2;
+    max-width: none;
+    width: 48%;
+  }
+  .photo-album-2 {
+    width: 100%;
   }
 }
 
@@ -70,6 +75,10 @@
 
 .gallery {
   padding: 0 15px;
+}
+
+.gallery-item {
+  display: block;
 }
 
 .gallery-item img {

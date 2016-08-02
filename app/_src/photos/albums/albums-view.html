@@ -1,8 +1,11 @@
-<section class="section container photo-albums">
-  <a bindonce ng-repeat="album in albums" ui-sref="gallery({ id: album.id })" class="photo-album">
-    <div class="photo-album-thumb">
-      <img bo-src="album.cover | src" bo-attr bo-attr-srcset="album.cover | srcset" bo-alt="album.name" sizes="(min-width: 768px) 20rem, 100vw">
-    </div>
-    <h3 class="photo-album-name" bo-bind="album.name"></h3>
-  </a>
+<section class="section container">
+  <div class="photo-albums">
+    <a bindonce ng-repeat="album in albums | orderBy:'order'" ui-sref="gallery({ id: album.id })" class="photo-album" bo-class="{'photo-album-{{album.size}}': album.size}">
+      <div class="photo-album-thumb">
+        <img bo-if="album.size > 1" bo-src="album.cover | src" bo-attr bo-attr-srcset="album.cover | srcset" bo-alt="album.name" sizes="(min-width: 768px) 48rem, 100vw">
+        <img bo-if="!album.size || album.size <= 1" bo-src="album.cover | src" bo-attr bo-attr-srcset="album.cover | srcset" bo-alt="album.name" sizes="(min-width: 768px) 24rem, 100vw">
+      </div>
+      <h3 class="photo-album-name" bo-bind="album.name"></h3>
+    </a>
+  </div>
 </section>

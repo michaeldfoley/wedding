@@ -3,4 +3,5 @@ photosApp.controller 'GalleryControlsCtrl', [
   'albums',
   ($scope, albums) ->
     $scope.albums = albums
+    $scope.$parent.activeClass = ''
 ]

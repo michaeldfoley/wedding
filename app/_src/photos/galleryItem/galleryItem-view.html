@@ -1,8 +1,7 @@
 <hj-gridify hj-gridify-options="{collection: album.images, perRow: perRow, gutter: 10, watch: true}">
-  <a class="gallery-item" bindonce="item" ui-sref="gallery.lightbox({ id: album.id, photo: item.src })">
-    <img src="item.src | src"
-         srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-         bo-attr bo-attr-data-srcset="item.src | srcset"
+  <a class="gallery-item" bindonce="item" bo-id="item.src" ui-sref="gallery.lightbox({ id: album.id, photo: item.src })">
+    <img bo-attr bo-attr-data-src="item.src | src" 
+         bo-attr-data-srcset="item.src | srcset"
          data-sizes="(min-width: 100rem) 50vw, (min-width: 48rem) 60vw, (min-width: 30rem) 75vw, 100vw"
          bo-alt="item.alt" class="js-lazyload">
   </a>

@@ -7,6 +7,9 @@
     <base href="{{ page.url | replace: 'index.html', '' }}">
     <meta name="description" content="{{ page.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- build:js({app,.tmp}) /js/modernizr.js -->
+      <script src="/js/modernizr.js"></script>
+    <!-- endbuild -->
     {% assign ishome = false %}
     {% if page.url == '/index.html' %}
       {% assign ishome = true %}
@@ -35,13 +38,6 @@
     {% if site.environment == 'production' %}
     </noscript>
     {% endif %}
-    
-    <script type="text/javascript">
-      {% include _html5shiv.js %}
-    </script>
-    <script type="text/javascript">
-      {% include _svg4everybody.ie8.js %}
-    </script>
     <script type="text/javascript">
       {% include _type.js %}
     </script>

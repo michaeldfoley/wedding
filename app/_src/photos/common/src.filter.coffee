@@ -1,6 +1,9 @@
-photosApp.filter 'src', (FIREBASE_PHOTOS) ->
+photosApp.filter 'src', [
+  "FIREBASE_PHOTOS", 
+  (FIREBASE_PHOTOS) ->
   
-  (input, size) ->
-    size ?= "medium"
-    append = if size != 'original' then '-' + size else ''
-    return FIREBASE_PHOTOS + '/' + input + append + '.jpg'
+    (input, size) ->
+      size ?= "medium"
+      append = if size != 'original' then '-' + size else ''
+      return FIREBASE_PHOTOS + '/' + input + append + '.jpg'
+]

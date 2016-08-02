@@ -29,7 +29,6 @@ photosApp.controller 'LightboxListCtrl', [
     $scope.morePhotos = morePhotos()
     
     $scope.listAdvance = (direction) ->
-      console.log 'advance'
       if direction == 'prev'
         $scope.photoList = photoList(Math.max($scope.morePhotos.begin, 0))
         $scope.morePhotos = morePhotos()
