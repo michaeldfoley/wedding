@@ -6,7 +6,7 @@
     "modernizr": "^3.3.1",
     "normalize-css": "~3.0.3",
     "angular": "~1.4.8",
-    "angular-spotify": "~1.2.1",
+    "angular-spotify": "^1.5.1",
     "angular-bindonce": "~0.3.3",
     "angular-off-click": "^0.0.9",
     "angular-ui-unique": "angular-ui-utils#bower-unique",

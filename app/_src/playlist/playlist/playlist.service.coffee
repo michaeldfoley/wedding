@@ -7,10 +7,10 @@ playlistApp.factory 'playlist', ['$rootScope', 'Spotify', '$filter', ($rootScope
     getPlaylistCount = (playlistOwner, playlistId) ->
       if $rootScope.token
         Spotify.getPlaylistTracks(playlistOwner, playlistId, {fields:'total'})
-          .then (data) ->
-            return data      
+          .then (result) ->
+            return result.data
           , (e) ->
-            if e.error.status == 401
+            if e.status == 401
               resetToken()
     
     songsUpdated = (type, song) ->
@@ -23,7 +23,8 @@ playlistApp.factory 'playlist', ['$rootScope', 'Spotify', '$filter', ($rootScope
       getUserId: () ->
         if $rootScope.token
           Spotify.getCurrentUser()
-            .then (data) ->
+            .then (result) ->
+              data = result.data
               $rootScope.userId = data.id
       
       songIds: []
@@ -42,7 +43,8 @@ playlistApp.factory 'playlist', ['$rootScope', 'Spotify', '$filter', ($rootScope
               if count
                 playlistOptions.offset = if count.total > 100 then count.total - 100 else 0
                 Spotify.getPlaylistTracks(playlistOwner, playlistId, playlistOptions)
-                  .then (data) ->
+                  .then (result) ->
+                    data = result.data
                     playlist.songs = data.items
                     playlist.songs.sort(orderByDate)
                     playlist.songIds = []
@@ -50,7 +52,7 @@ playlistApp.factory 'playlist', ['$rootScope', 'Spotify', '$filter', ($rootScope
                       playlist.songIds.push(item.track.external_ids.isrc)
                     )
                   , (e) ->
-                    if e.error.status = 401
+                    if e.status == 401
                       resetToken()
               
            

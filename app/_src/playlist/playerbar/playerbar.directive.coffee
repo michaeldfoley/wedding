@@ -21,20 +21,20 @@ playlistApp.directive 'mfplayerbar', ['$rootScope', 'player', 'playlist', ($root
            
       
       keydown = (e) ->
-        if e.keyCode in [32,37,39]
+        if e.keyCode in [32,37,39] && e.target.nodeName != "INPUT"
           e.preventDefault()
           
-        if e.keyCode == 32
-          if scope.player
-            scope.toggleTrack()
-          else
-            player.toggle(playlist.firstSong().track)
+          if e.keyCode == 32
+            if scope.player
+              scope.toggleTrack()
+            else
+              player.toggle(playlist.firstSong().track)
+              
+          if e.keyCode == 37
+            scope.prevTrack()
             
-        if e.keyCode == 37
-          scope.prevTrack()
-          
-        if e.keyCode == 39
-          scope.nextTrack()
+          if e.keyCode == 39
+            scope.nextTrack()
         
       $doc.on 'keydown', keydown  
       

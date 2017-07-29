@@ -681,18 +681,18 @@ module.exports = function (grunt) {
       'browserSync:server',
       'cssmin:critical',
       'watch'
-    ]
+    ];
     
     if (target === 'dist') {
       return grunt.task.run(['build', 'browserSync:dist']);
     }
     
     if (target === 'reset') {
-      serve.unshift('clean:serverReset')
+      serve.unshift('clean:serverReset');
       return grunt.task.run(serve);
     }
     
-    serve.unshift('clean:server')
+    serve.unshift('clean:server');
     
     grunt.task.run(serve);
   });

@@ -29,7 +29,8 @@ playlistApp.directive 'mfsearch', ['$rootScope', 'Spotify', 'player', 'smoothScr
           
         else if scope.songQuery != lastSearched
           Spotify.search(scope.songQuery+'*', 'track')
-            .then (data) ->
+            .then (result) ->
+              data = result.data
               scope.searchResults = data.tracks
               scope.lastResults = data.tracks
         
