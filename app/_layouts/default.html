@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ page.title }}</title>
-    <base href="{{ page.url | replace: 'index.html', '' }}">
+    <base href="{{ page.url }}">
     <meta name="description" content="{{ page.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- build:js({app,.tmp}) /js/modernizr.js -->
       <script src="/js/modernizr.js"></script>
     <!-- endbuild -->
     {% assign ishome = false %}
-    {% if page.url == '/index.html' %}
+    {% if page.url == '/' %}
       {% assign ishome = true %}
     {% endif %}
-    
+
     {% if site.environment == 'production' %}
     <style type="text/css">
       {% if ishome %}
@@ -29,7 +29,7 @@
     </script>
     <noscript>
     {% endif %}
-    
+
     <!-- build:css({app,.tmp}) /css/style.css -->
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -46,14 +46,14 @@
     <!--[if lt IE 8]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
+
     {% if ishome == false %}
       {% include header.html %}
     {% endif %}
     <main role="main">
       {{ content }}
     </main>
-    
+
     {% if ishome == false %}
       {% include footer.html %}
     {% endif %}

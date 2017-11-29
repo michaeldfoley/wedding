@@ -40,5 +40,5 @@ markdown: kramdown
 highlighter: false
 environment: 'development'
 
-gems:
+plugins:
   - jekyll-sitemap
